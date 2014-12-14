@@ -284,7 +284,10 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<property name="kydReportService" ref="kydReportService"></property>
 		<property name="recruitService" ref="recruitService"></property>
 	</bean>
-	
+	<!-- NavigationBar -->
+	<bean id="navigationBarAction" class="com.kuaiyidian.action.front.NavigationBarAction" scope="prototype">
+		<property name="navigationBarService" ref="navigationBarService" />
+	</bean>
 	<bean id="frontReportsAction" class="com.kuaiyidian.action.usercenter.FrontReportsAction" scope="prototype" parent="baseFrontAction">
 		<property name="reportService" ref="reportService"></property>
 		<property name="productCategoryService" ref="productCategoryService"></property>

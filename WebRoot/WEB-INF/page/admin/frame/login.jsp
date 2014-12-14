@@ -122,10 +122,10 @@
                             </tr>
                             <tr>
                                 <td width="210">
-                                <s:textfield  name="paramMap.code" cssClass="login_text" theme="simple" cssStyle="width: 120px"/>
+                                <s:textfield  name="paramMap.code" cssClass="login_text" theme="simple" cssStyle="width: 150px"/>
                                 <td width="70">
                                    <img src="imageCode.do?pageId=adminlogin" title="点击更换验证码" style="cursor: pointer;"
-													id="codeNum" width="145" height="20"
+													id="codeNum" width="110" height="20"
 													onclick="javascript:switchCode()"></img></td>
                             </tr>
                             <tr>

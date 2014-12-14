@@ -9,6 +9,5 @@
 		<action name="index" class="indexAction" method="index">
 			<result name="success" >/WEB-INF/page/front/index.jsp</result>
 		</action>
-		
 	</package>
 </struts>

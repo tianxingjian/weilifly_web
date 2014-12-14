@@ -2,32 +2,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ include file="/include/taglib.jsp"%>
 		<link rel="shortcut icon"  href="/images/favicon.ico"  />
-		<link href="/css/Common.css" type="text/css" rel="stylesheet" />
 		<link type="text/css" href="css/style.css" rel="stylesheet"/>
 		<link type="text/css" href="css/base.css" rel="stylesheet" />
 		<link type="text/css" href="css/framework.css" rel="stylesheet"/>
 		<link rel="stylesheet" href="css/noscript.css" media="screen,all" id="noscript" />
-<script type="text/javascript">
-	function search_mybtn(){
-	  var  keyWord  = $("#keyWord").val();
-	  if(keyWord==null||keyWord==""||keyWord =="请输入关键字"||keyWord==undefined){
-	     return false;
-	  }
-	   $("#keyWord").val(encodeURI(keyWord)) ;
-	   return $("#searchFm").submit();  
-	}
-	$(function(){
-	      var  top_url  =  window.location.href ;
-	       $(".topUrl").each(function(i,n){
-	           var url  = $(n).attr("href");
-	           if(top_url.indexOf(url)!=-1){
-	               $(n).parent().attr("class","cur");
-	               var Left = $(n).position().left;
-	               $(".sliding-block").css({"left":Left,"width":44});
-	           }
-	      });
-	});
-</script>
 <div class="suspend-box">
    <div class="jt" id="jt"></div>
    <ul class="sus-ul">
@@ -35,7 +13,7 @@
       <li style="background:url(${helMap.shopImg}) #fff;" ><a href="${helMap.shopUrl}" target="_blank">${helMap.shopTitle}</a></li>
      </s:if>
      <s:if test="helMap.serviceStatus==1">
-      <li style="background:url(${helMap.serviceImg }) #fff;"><a href="${helMap.serviceUrl }" target="_blank">${helMap.serviceTitle}</a></li>
+      <li style="background:url(${helMap.serviceImg}) #fff;"><a href="${helMap.serviceUrl }" target="_blank">${helMap.serviceTitle}</a></li>
       </s:if>
    </ul>
 </div>
@@ -46,10 +24,15 @@
 				<div id="mainmenu">
 					<div class="sliding-block"></div>
 					<ul id="menu">
-					<s:iterator value="#request.navigationBarFirstList" var="firstBean" status="st">
-						<li><a href="index.do">首页</a></li>
-					</s:iterator>
 						<!-- <li class="selected dropdown"><a href="index.do">首页</a>
+							<ul>
+								<li><a href="#">方法论</a>
+								</li>
+								<li><a href="#">最连续沙龙</a>
+								</li>
+								<li><a href="#">必读书籍</a>
+								</li>
+							</ul>
 						</li>
 						<li>微力研究院
 							<ul>
@@ -104,7 +87,3 @@
 			</div>
 </div>
 <!--头部外围盒子结束 head-box-->
-
-
-
-

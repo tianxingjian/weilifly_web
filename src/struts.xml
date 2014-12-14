@@ -69,6 +69,8 @@
  	<include file="struts/front/frontDownload.xml" />
 	<include file="struts/front/frontWebsiteMap.xml" />
 	<include file="struts/front/search.xml"/>
+	
+	<include file="struts/front/frontNavigationBar.xml" />
  	
 	<!-- 代理商 -->
 	
