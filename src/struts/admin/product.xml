@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="product" extends="admin-default" namespace="/admin">
+	
+		<action name="addProductInit" class="productAction" method="addProductInit">
+			<result name="success">/WEB-INF/page/admin/product_add.jsp</result>
+		</action>
+	
+		<action name="addProduct" class="productAction" method="addProduct">
+		</action>
+	
+		<action name="updateProductInit" class="productAction" method="updateProductInit">
+			<result name="success">/WEB-INF/page/admin/product_update.jsp</result>
+		</action>
+	
+		<action name="updateProduct" class="productAction" method="updateProduct">
+			<result name="input">/WEB-INF/page/admin/product_update.jsp</result>
+			<result name="success" type="redirect" >queryProductList.do</result>
+		</action>
+	
+		<action name="deleteProduct" class="productAction" method="deleteProduct">
+			<result name="success" type="redirect" >queryProductList.do</result>
+		</action>
+		
+		<action name="queryProductInit" class="productAction" method="queryProductInit">
+			<result name="success">/WEB-INF/page/admin/product_index.jsp</result>
+		</action>
+		
+		<action name="queryProductInfo" class="productAction" method="queryProductInfo">
+			<result name="success">/WEB-INF/page/admin/product_index_info.jsp</result>
+		</action>
+		
+		<action name="queryProductRadioInit" class="productAction" method="queryProductRadioInit">
+			<result name="success">/WEB-INF/page/admin/product_radio_index.jsp</result>
+		</action>
+		
+		<action name="queryProductRadioInfo" class="productAction" method="queryProductRadioInfo">
+			<result name="success">/WEB-INF/page/admin/product_radio_index_info.jsp</result>
+		</action>
+		
+	</package>
+</struts>

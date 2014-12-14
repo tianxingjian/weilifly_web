@@ -1,0 +1,229 @@
+#main { width: 100%; margin: 0px; padding: 0px; background-color: #DEE6EF; overflow:hidden; }
+#left{ float: left; width: 152px; padding-left:6px;}
+#right{ width: auto; overflow:hidden;}
+
+body {	margin-top: 0px;margin-left: 0px;margin-bottom: 0px;margin-right: 0px;background-color:#DEE6EF;}
+
+.manu {
+	padding-right: 3px; padding-left: 3px; padding-bottom: 3px; margin: 3px; padding-top: 3px; text-align: center
+}
+.manu a {
+	border-right: #c2d1e2 1px solid; padding-right: 5px; border-top: #c2d1e2 1px solid; padding-left: 5px; padding-bottom: 2px; margin: 2px; border-left: #c2d1e2 1px solid; color: #3e4959; padding-top: 2px; border-bottom: #c2d1e2 1px solid; text-decoration: none
+}
+.manu a:hover {
+	border-right: #c2d1e2 1px solid; border-top: #c2d1e2 1px solid; border-left: #c2d1e2 1px solid; color: #3e4959; border-bottom: #c2d1e2 1px solid; background-color: #c8d7ea;
+}
+.manu a:active {
+	border-right: #c2d1e2 1px solid; border-top: #c2d1e2 1px solid; border-left: #c2d1e2 1px solid; color: #3e4959; border-bottom: #c2d1e2 1px solid
+}
+.manu .current {
+	border-right: #8594a9 1px solid; padding-right: 5px; border-top: #8594a9 1px solid; padding-left: 5px; font-weight: bold; padding-bottom: 2px; margin: 2px; border-left: #8594a9 1px solid; color: #fff; padding-top: 2px; border-bottom: #8594a9 1px solid; background-color: #8594a9; 
+}
+.manu .disabled {
+	border-right: #eee 1px solid; padding-right: 5px; border-top: #eee 1px solid; padding-left: 5px; padding-bottom: 2px; margin: 2px; border-left: #eee 1px solid; color: #ddd; padding-top: 2px; border-bottom: #eee 1px solid; 
+}
+
+.white12 { font-size: 12px;color: #ffffff; font-family: "tahoma"; line-height: 20px; }
+.white12 a:link { font-family: "tahoma"; color: #ffffff; text-decoration: none;}
+.white12 a:active { font-family: "tahoma";color: #ffffff; text-decoration: none;}
+.white12 a:visited { font-family: "tahoma";color: #ffffff; text-decoration: none;}
+.white12 a:hover { font-family: "tahoma";color: #ffffff; text-decoration: none;}
+
+.black12 { font-size: 12px;color: #333; font-family: "tahoma"; line-height: 20px; }
+.black12 a:link { font-family: "tahoma"; color: #333; text-decoration: none;}
+.black12 a:active { font-family: "tahoma";color: #333; text-decoration: none;}
+.black12 a:visited { font-family: "tahoma";color: #333; text-decoration: none;}
+.black12 a:hover { font-family: "tahoma";color: #333; text-decoration: none;}
+
+.f66 { font-size: 12px;color: #666; font-family: "tahoma"; line-height: 20px; }
+.f66 a:link { font-family: "tahoma"; color: #666; text-decoration: none;}
+.f66 a:active { font-family: "tahoma";color: #666; text-decoration: none;}
+.f66 a:visited { font-family: "tahoma";color: #666; text-decoration: none;}
+.f66 a:hover { font-family: "tahoma";color: #666; text-decoration: none;}
+
+.f99 { font-size: 12px;color: #999; font-family: "tahoma"; line-height: 20px; }
+.f99 a:link { font-family: "tahoma"; color: #999; text-decoration: none;}
+.f99 a:active { font-family: "tahoma";color: #999; text-decoration: none;}
+.f99 a:visited { font-family: "tahoma";color: #999; text-decoration: none;}
+.f99 a:hover { font-family: "tahoma";color: #999; text-decoration: none;}
+
+.white14 { font-size: 14px;color: #ffffff; font-family: "tahoma"; line-height: 20px; }
+.white14 a:link { font-family: "tahoma"; color: #ffffff; text-decoration: none;}
+.white14 a:active { font-family: "tahoma";color: #ffffff; text-decoration: none;}
+.white14 a:visited { font-family: "tahoma";color: #ffffff; text-decoration: none;}
+.white14 a:hover { font-family: "tahoma";color: #ffffff; text-decoration: none;}
+
+.blue12 { font-size: 12px;color: #3e4959; font-family: "tahoma"; line-height: 20px; }
+.blue12 a:link { font-family: "tahoma"; color: #3e4959; text-decoration: none;}
+.blue12 a:active { font-family: "tahoma";color: #3e4959; text-decoration: none;}
+.blue12 a:visited { font-family: "tahoma";color: #3e4959; text-decoration: none;}
+.blue12 a:hover { font-family: "tahoma";color: #cc0000; text-decoration: none;}
+
+.red12 { font-size: 12px;color: #cc0000; font-family: "tahoma"; line-height: 20px; }
+.red12 a:link { font-family: "tahoma"; color: #cc0000; text-decoration: none;}
+.red12 a:active { font-family: "tahoma";color: #cc0000; text-decoration: none;}
+.red12 a:visited { font-family: "tahoma";color: #cc0000; text-decoration: none;}
+.red12 a:hover { font-family: "tahoma";color: #cc0000; text-decoration: none;}
+
+.point {color: #333;font-size: 12px; font-family: "宋体"; line-height: 20px; }
+.point_2 { font-size: 12px;color: #fff; font-family: "宋体"; line-height: 20px; }
+
+
+
+
+.img_case{padding:0px;border:1px solid #ffffff;margin:1px;}
+
+.img_case_2{padding:0px;border:1px solid #f1e8e4;margin:1px;}
+
+.login_text{
+	height:20px;
+	border: 1px solid #c8d7ea;
+	background-color:#ffffff;
+	color:#666666;
+	font-size:12px;
+	padding-left:3px;
+	font-family: "tahoma";
+	padding-top:5px;
+	background-image: url(../../images/admin/wb_bg.jpg);
+}
+
+.in_text_2{
+	height:16px;
+	border: 1px solid #cccccc;
+	background-color:#ffffff;
+	color:#666666;
+	font-size:12px;
+	padding-left:3px;
+	font-family: "tahoma";
+	padding-top:3px;
+	background-image: url(../../images/admin/wb_bg.jpg);
+}
+
+.in_text_250{
+	height:16px;
+	width:250px;
+	border: 1px solid #cccccc;
+	background-color:#ffffff;
+	color:#666666;
+	font-size:12px;
+	padding-left:3px;
+	font-family: "tahoma";
+	padding-top:3px;
+	background-image: url(../../images/admin/wb_bg.jpg);
+}
+.in_text_200{
+	height:16px;
+	width:200px;
+	border: 1px solid #cccccc;
+	background-color:#ffffff;
+	color:#666666;
+	font-size:12px;
+	padding-left:3px;
+	font-family: "tahoma";
+	padding-top:3px;
+	background-image: url(../../images/admin/wb_bg.jpg);
+}
+.in_text_150{
+	height:16px;
+	width:150px;
+	border: 1px solid #cccccc;
+	background-color:#ffffff;
+	color:#666666;
+	font-size:12px;
+	padding-left:3px;
+	font-family: "tahoma";
+	padding-top:3px;
+	background-image: url(../../images/admin/wb_bg.jpg);
+}
+.in_text_50{
+	height:16px;
+	width:50px;
+	border: 1px solid #cccccc;
+	background-color:#ffffff;
+	color:#666666;
+	font-size:12px;
+	padding-left:3px;
+	font-family: "tahoma";
+	padding-top:3px;
+	background-image: url(../../images/admin/wb_bg.jpg);
+}
+
+
+.gvHeader
+{
+	font-size: 12px;
+	color: #3e4959; 
+	font-family: "tahoma"; 
+	line-height: 20px;
+	height: 28px;
+	text-align: center;
+	background-image: url(../../images/admin/title_bg_blue.jpg);
+}
+
+.gvItem
+{
+	font-size: 12px;
+	color: #3e4959; 
+	font-family: "tahoma";
+	background-color: #fff;
+	height: 28px;
+	text-align: center;
+}
+.gvItem a:link { font-family: "tahoma"; color: #3e4959; text-decoration: none;}
+.gvItem a:visited { font-family: "tahoma";color: #3e4959; text-decoration: none;}
+.gvItem a:hover { font-family: "tahoma";color: #cc0000; text-decoration: none;}
+.gvItem a:active { font-family: "tahoma";color: #3e4959; text-decoration: none;}
+
+.gvPage
+{
+	font-size: 12px;
+	color: #3e4959; 
+	font-family: "tahoma";
+	background-color: #fff;
+	height: 30px;
+}
+.gvPage a:link { font-family: "tahoma"; color: #3e4959; text-decoration: none;}
+.gvPage a:active { font-family: "tahoma";color: #3e4959; text-decoration: none;}
+.gvPage a:visited { font-family: "tahoma";color: #3e4959; text-decoration: none;}
+.gvPage a:hover { font-family: "tahoma";color: #cc0000; text-decoration: none;}
+
+.gvNewsItem
+{
+	text-align: left;
+	height: 18px;
+	border: 1px solid #cccccc;
+	border-collapse: collapse;
+}
+
+.gvHidden
+{
+	display: none;
+}
+.pages {
+	margin: 5px auto
+}
+.pages a {
+	display: block; font-size: 12px; line-height: 17px; height: 17px; text-decoration: none! important
+}
+.pages span {
+	display: block; font-size: 12px; line-height: 17px; height: 17px; text-decoration: none! important
+}
+.pages_num a {
+	width: 15px; text-align: center
+}
+.pages_num a:hover {
+	font-weight: bold
+}
+.iptt2 {
+	border-right: #accbde 1px solid; border-top: #accbde 1px solid; border-left: #accbde 1px solid; width: 33px; color: #989c9f; line-height: 17px; border-bottom: #accbde 1px solid; height: 17px; text-align: center
+}
+.pages .pages_span {
+	padding-right: 4px; padding-left: 4px; font-size: 12px! important; padding-bottom: 0px; line-height: 17px! important; padding-top: 0px
+}
+
+.require-field{
+	color:#FF0000;
+}
+.pagegr{
+	text-align: center;
+}

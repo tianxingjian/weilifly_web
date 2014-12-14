@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+     <struts>
+	<package name="report" extends="admin-default" namespace="/admin">
+	
+			<action name="queryReportInit"
+			class="reportAction" method="queryReportInit">
+			<result name="success">
+				/WEB-INF/page/admin/report_index.jsp
+			</result>
+		</action>
+		
+		<action name="queryReport" class="reportAction"
+			method="queryReport">
+			<result name="success">
+				/WEB-INF/page/admin/report_index_info.jsp
+			</result>
+		</action>	
+		
+		<action name="addReportInit" class="reportAction"
+			method="addReportInit">
+			<result name="success">
+				/WEB-INF/page/admin/report_add.jsp
+			</result>
+		</action>
+				<action name="addReport" class="reportAction"
+			method="addReport">
+			<result name="input">
+				/WEB-INF/page/admin/report_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryReportInit.do
+			</result>
+		</action>
+		
+		<action name="updateReportInit" class="reportAction"
+			method="updateReportInit">
+			<result name="success">
+				/WEB-INF/page/admin/report_update.jsp
+			</result>
+		</action>
+		<action name="updateReport" class="reportAction"
+			method="updateReport">
+			<result name="input">
+				/WEB-INF/page/admin/report_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryReportInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+		<action name="deleteReport" class="reportAction"
+			method="deleteReport">
+			<result name="input">
+				queryReportInit.do
+			</result>
+			<result name="success" type="redirect">
+				queryReportInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+	</package>
+</struts>

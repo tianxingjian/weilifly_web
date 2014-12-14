@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.multipart.maxSize" value="524288000"/>
+	<constant name="struts.custom.i18n.resources" value="system" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.ui.theme" value="simple" />
+	
+	<include file="struts/shove/kindEditorUploadAction.xml" />
+	
+	<include file="struts/admin/role.xml" />
+	<include file="struts/admin/admin.xml" />
+	<include file="struts/admin/productCategory.xml" />
+	<include file="struts/admin/parameter.xml" />
+	<include file="struts/admin/question.xml" />
+	<include file="struts/admin/webDistribute.xml" />
+	<include file="struts/admin/product.xml" />
+	<include file="struts/admin/productParameter.xml" />
+	<include file="struts/admin/materials.xml" />
+	<include file="struts/admin/attribute.xml" />
+	<include file="struts/admin/config.xml" />
+	<include file="struts/admin/materialsAttribute.xml" />
+	<include file="struts/admin/updateProgram.xml" />
+	<include file="struts/admin/downloadHelp.xml" />
+	<include file="struts/admin/region.xml" />
+	<include file="struts/admin/advertisement.xml" />
+	<include file="struts/admin/user.xml" />
+	<include file="struts/admin/brand.xml" />
+	<include file="struts/admin/newspaper.xml" />
+	<include file="struts/admin/kydReport.xml" />
+	<include file="struts/admin/designCategory.xml" />
+	<include file="struts/admin/design.xml" />
+	<include file="struts/admin/report.xml" />
+    <include file="struts/admin/recruit.xml" />
+	<include file="struts/admin/info.xml" />
+	<include file="struts/admin/infoContent.xml" />
+	<include file="struts/admin/brandAdvertise.xml" />
+	<include file="struts/admin/weiliResearch.xml" />
+	<include file="struts/admin/development.xml" />
+	<include file="struts/admin/banner.xml" />
+	<include file="struts/admin/seoPage.xml" />
+	<include file="struts/admin/productDetail.xml" />
+	<include file="struts/admin/serviceType.xml" />
+	<include file="struts/admin/imgList.xml" />
+	<include file="struts/admin/webDistributeType.xml" />
+	<include file="struts/admin/recruitType.xml" />
+	
+	<!-- 前台 -->
+	<include file="struts/front/index.xml" />
+	<include file="struts/front/service.xml" />
+	<include file="struts/front/frontBrand.xml" />
+ 	<include file="struts/front/login.xml" />
+ 	<include file="struts/front/frontInfoContent.xml"></include>
+ 	<include file="struts/front/frontRecruit.xml"></include>
+ 	<include file="struts/front/frontProduct.xml" />
+
+ 	<include file="struts/usercenter/report.xml" />
+ 	<include file="struts/front/downloadHelp.xml" />
+ 	<include file="struts/usercenter/design.xml" />
+
+ 	<include file="struts/front/frontWebDistribute.xml" />
+ 	<include file="struts/front/frontDownload.xml" />
+	<include file="struts/front/frontWebsiteMap.xml" />
+	<include file="struts/front/search.xml"/>
+ 	
+	<!-- 代理商 -->
+	
+	<!-- 防注入 -->
+	<include file="com/shove/web/security/injection_interceptor.xml" />
+	
+	
+	<package name="admin-default" extends="struts-default">
+		<interceptors>
+			<interceptor name="AdminSessionInterceptor" class="com.kuaiyidian.system.interceptor.AdminSessionInterceptor" />
+			<interceptor-stack name="adminStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="AdminSessionInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="adminStack" />
+		<global-results>
+			<result name="noLogin">/WEB-INF/page/error.jsp</result>
+			<result name="pagejump" type="redirect">adminMessage.do</result>
+		</global-results>
+		
+		<action name="adminMessage">
+			<result>/WEB-INF/page/admin/frame/message.jsp</result>
+		</action>
+	</package>	
+	
+	<package name="admin" extends="admin-default" namespace="/admin">
+		<action name="default">
+			<result>/WEB-INF/page/admin/frame/default.jsp</result>
+		</action>
+
+		<action name="main" >
+			<result>/WEB-INF/page/admin/frame/main.jsp</result>
+		</action>
+		
+		<action name="menu">
+			<result name="success">/WEB-INF/page/admin/frame/menu.jsp</result>
+		</action>
+		
+		<action name="top">
+		<result>/WEB-INF/page/admin/frame/top.jsp</result>
+		</action>
+	</package>
+	
+	<package name="common" extends="injectionInterceptor-1" namespace="/admin">
+		<!-- 验证码 -->
+		<action name="imageCode" class="commonAction"
+			method="imageCode">
+		</action>
+		
+		<!-- 登录判断验证码过期 -->
+		<action name="codeIsExpired" class="commonAction" method="codeIsExpired"></action>
+		
+		
+		<action name="login">
+			<result>/WEB-INF/page/admin/frame/login.jsp</result>
+		</action>
+		<action name="kindEditorUpload" class="kindEditorAction" method="fileUpload"></action>
+		<action name="kindEditorManager" class="kindEditorAction" method="fileManager"></action>
+		<action name="uploadFileAction" class="uploadCommonentsAction" method="onloadFileUpload">
+			<result name="smallcomponent">/WEB-INF/page/uploadFile.jsp</result>
+			<result name="input">/WEB-INF/page/upload_error.jsp</result>
+		</action>
+		<action name="uploadFiles" class="uploadCommonentsAction" method="uploadFiles">
+			<result name="input">/WEB-INF/page/upload_error.jsp</result>
+			<result name="success">/WEB-INF/page/uploadFile.jsp</result>
+		</action>
+		<!-- 
+		<action name="infoList" class="indexAction" method="infoList">
+		</action>
+		 -->
+		<!-- 管理员登陆 -->
+		<action name="adminLogin" class="adminAction" method="adminLogin">
+			<result name="input">/WEB-INF/page/admin/frame/login.jsp</result>
+			<result name="success" type="redirect">default.do</result>
+		</action>
+		 
+	</package>
+	
+	<package name="usercenter-default" extends="injectionInterceptor-1">
+		<interceptors>
+			<interceptor name="frontUserSessionInterceptor" class="com.kuaiyidian.system.interceptor.FrontUserSeesionInterceptor" />
+			<interceptor-stack name="userCenterStack">
+				<interceptor-ref name="injectionInterceptorStack" />
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="frontUserSessionInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="userCenterStack" />
+		<global-results>
+			<result name="noLogin" type="redirect">../login.do?u=%{afterLoginUrl}</result>
+			<result name="msg">/WEB-INF/page/message.jsp</result> 
+		</global-results>
+		<action name="loginOut" class="indexAction" method="loginOut">
+			<result name="success" type="redirect">index.do</result>
+		</action>
+	</package>
+	
+	<package name="front-default" extends="injectionInterceptor-0">
+		<interceptors>
+	     	<interceptor name="frontPageJumpInterceptor" class="com.kuaiyidian.system.interceptor.FrontPageJumpInterceptor" />
+	     	<interceptor-stack name="FrontStack">
+	     			<interceptor-ref name="injectionInterceptorStack" />
+			      <interceptor-ref name="frontPageJumpInterceptor"/>
+			      <interceptor-ref name="defaultStack"/>
+		    </interceptor-stack>
+		 </interceptors>
+		 <default-interceptor-ref name="FrontStack" />
+	    <global-results>
+				<result name="frontpagejump" >/WEB-INF/page/msg.jsp</result>
+				<result name="msg">/WEB-INF/page/front/message.jsp</result>
+		</global-results>
+		<action name="message" class="indexAction" method="message">
+			<result name="success" >/WEB-INF/page/message.jsp</result>
+		</action>
+		<action name="updateUserPasswrod" class="adminAction" method="updateUserPasswrod" >
+		</action>
+	</package>
+	
+		
+	<package name="app-default" extends="struts-default">
+		<interceptors>
+			<interceptor name="frontUserSessionInterceptor" class="com.kuaiyidian.system.interceptor.FrontUserSeesionInterceptor" />
+			<interceptor-stack name="userCenterStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="frontUserSessionInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="userCenterStack" />
+		<global-results>
+			<result name="noLogin" type="redirect">../login.do?u=%{afterLoginUrl}</result>
+			<result name="msg">/WEB-INF/page/message.jsp</result> 
+		</global-results>
+		<action name="loginOut" class="indexAction" method="loginOut">
+			<result name="success" type="redirect">index.do</result>
+		</action>
+	</package>
+</struts>
+
+

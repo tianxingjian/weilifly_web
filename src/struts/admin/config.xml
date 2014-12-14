@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="config" extends="admin-default" namespace="/admin">
+
+		<action name="updateConfigOnLineInit" class="configAction"
+			method="updateConfigOnLineInit">
+			<result name="success">
+				/WEB-INF/page/admin/config_online_index.jsp
+			</result>
+		</action>
+       <action name="updateConfig" class="configAction" method="updateConfig">
+		</action>
+		
+		<action name="updateServicePolicyInit" class="configAction"
+			method="updateServicePolicyInit">
+			<result name="success">
+				/WEB-INF/page/admin/config_service_policy_index.jsp
+			</result>
+		</action>
+		
+		<action name="updateService" class="configAction"
+			method="updateService">
+		</action>
+		
+		<action name="updatePreSalesConsultingInit" class="configAction"
+			method="updatePreSalesConsultingInit">
+			<result name="success">
+				/WEB-INF/page/admin/config_pre_sales.jsp
+			</result>
+		</action>
+		
+		<action name="updatePreSalesConsulting" class="configAction"
+			method="updatePreSalesConsulting">
+		</action>
+		
+		
+		<action name="updateAfterSalesConsultingInit" class="configAction"
+			method="updateAfterSalesConsultingInit">
+			<result name="success">
+				/WEB-INF/page/admin/config_after_sales.jsp
+			</result>
+		</action>
+		
+		<action name="updateAfterSalesConsulting" class="configAction"
+			method="updateAfterSalesConsulting">
+		</action>
+		
+		
+		<action name="updateWeiXinInit" class="configAction"
+			method="updateWeiXinInit">
+			<result name="success">
+				/WEB-INF/page/admin/config_weixin.jsp
+			</result>
+		</action>
+		
+		<action name="updateWeiXin" class="configAction"
+			method="updateWeiXin">
+		</action>
+		
+		<action name="queryProductConfig" class="configAction"
+			method="queryProductConfig">
+			<result name="success">
+				/WEB-INF/page/admin/product_config_index.jsp
+			</result>
+		</action>
+		
+		<action name="updateProductConfigInit" class="configAction"
+			method="updateProductConfigInit">
+			<result name="success">
+				/WEB-INF/page/admin/product_config_update.jsp
+			</result>
+		</action>
+		
+		<action name="updateProductConfig" class="configAction"
+			method="updateProductConfig">
+		</action>
+		
+		<action name="updateConfigVideoInit" class="configAction"
+			method="updateConfigVideoInit">
+			<result name="success">
+				/WEB-INF/page/admin/config_video_update.jsp
+			</result>
+		</action>
+		
+		<action name="updateConfigVideo" class="configAction"
+			method="updateConfigVideo">
+		</action>
+
+		<action name="updatePhoneInit" class="configAction"
+			method="updatePhoneInit">
+			<result name="success">
+				/WEB-INF/page/admin/config_phone.jsp
+			</result>
+		</action>
+		
+		<action name="updatePhone" class="configAction"
+			method="updatePhone">
+		</action>
+      <!-- 查询儿童类应用隐私协议 -->
+      <action name="queryHotlineInit" class="configAction" method="queryHotlineInit">
+		<result name="success">/WEB-INF/page/admin/children_detail.jsp</result>
+		</action>
+	     <!-- 查询儿童类应用隐私协议 -->
+		<action name="updateGabalnara" class="configAction" method="updateGabalnara">
+		</action>
+      <!-- 右侧浮动块网店 -->
+      <action name="queryShopInit" class="configAction" method="queryShopInit">
+		<result name="success">/WEB-INF/page/admin/shop_detail.jsp</result>
+		</action>
+		<!-- 修改右侧浮动块网店-->
+		<action name="updateShop" class="configAction" method="updateShop">
+		</action>
+      <!-- 资料下载搜索管理 -->
+      <action name="querySearchInit" class="configAction" method="querySearchInit">
+		<result name="success">/WEB-INF/page/admin/search_update.jsp</result>
+		</action>
+		<!-- 修改资料下载搜索管理-->
+		<action name="updateSearch" class="configAction" method="updateSearch">
+		</action>
+      <!-- 弹出广告图片管理 -->
+      <action name="queryAdvertInit" class="configAction" method="queryAdvertInit">
+		<result name="success">/WEB-INF/page/admin/advert_update.jsp</result>
+		</action>
+		<!-- 修改弹出广告图片管理-->
+		<action name="updateAdvert" class="configAction" method="updateAdvert">
+		</action>
+      <!-- APP二维码管理 -->
+      <action name="queryWeiMaInit" class="configAction" method="queryWeiMaInit">
+		<result name="success">/WEB-INF/page/admin/erWeiMa.jsp</result>
+		</action>
+		<!-- 修改APP二维码管理-->
+		<action name="updateWeiMa" class="configAction" method="updateWeiMa">
+		</action>
+      
+	</package>
+</struts>

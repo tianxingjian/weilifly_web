@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="recruitType_info" extends="admin-default"
+		namespace="/admin">
+
+		<action name="queryRecruitType"
+			class="recruitTypeAction" method="queryRecruitType">
+			<result name="success">
+				/WEB-INF/page/admin/recruitType_index.jsp
+			</result>
+		</action>
+
+		<action name="addRecruitTypeInit"
+			class="recruitTypeAction" method="addRecruitTypeInit">
+			<result name="success">
+				/WEB-INF/page/admin/recruitType_add.jsp
+			</result>
+		</action>
+		<action name="addRecruitType" class="recruitTypeAction"
+			method="addRecruitType">
+			<result name="input">
+				/WEB-INF/page/admin/recruitType_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryRecruitType.do
+			</result>
+		</action>
+
+		<action name="updateRecruitTypeInit"
+			class="recruitTypeAction" method="updateRecruitTypeInit">
+			<result name="success">
+				/WEB-INF/page/admin/recruitType_update.jsp
+			</result>
+		</action>
+		<action name="updateRecruitType"
+			class="recruitTypeAction" method="updateRecruitType">
+			<result name="input">
+				/WEB-INF/page/admin/recruitType_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryRecruitType.do
+			</result>
+		</action>
+		<action name="deleteRecruitType" class="recruitTypeAction"
+			method="deleteRecruitType">
+			<result name="input">queryRecruitType.do</result>
+			<result name="success" type="redirect">
+				queryRecruitType.do
+			</result>
+		</action>
+	</package>
+</struts>

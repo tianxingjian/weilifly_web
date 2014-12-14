@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="parameter" extends="admin-default" namespace="/admin">
+	
+		<action name="addParameterInit" class="parameterAction" method="addParameterInit">
+			<result name="success">/WEB-INF/page/admin/parameter_add.jsp</result>
+		</action>
+	
+		<action name="addParameter" class="parameterAction" method="addParameter">
+			<result name="input">/WEB-INF/page/admin/parameter_add.jsp</result>
+			<result name="success" type="redirect" >queryParameterList.do</result>
+		</action>
+	
+		<action name="updateParameterInit" class="parameterAction" method="updateParameterInit">
+			<result name="success">/WEB-INF/page/admin/parameter_update.jsp</result>
+		</action>
+	
+		<action name="updateParameter" class="parameterAction" method="updateParameter">
+			<result name="input">/WEB-INF/page/admin/parameter_update.jsp</result>
+			<result name="success" type="redirect" >queryParameterList.do</result>
+		</action>
+	
+		<action name="deleteParameter" class="parameterAction" method="deleteParameter">
+			<result name="success" type="redirect" >queryParameterList.do</result>
+		</action>
+		
+		<action name="queryParameterList" class="parameterAction" method="queryParameterList">
+			<result name="success">/WEB-INF/page/admin/parameter_index.jsp</result>
+		</action>
+		
+	</package>
+</struts>

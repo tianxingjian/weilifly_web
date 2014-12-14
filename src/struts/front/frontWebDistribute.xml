@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="frontWebDistribute" extends="front-default" namespace="/">
+	<action name="queryWebDistributeListInit" class="frontWebDistributeAction"
+			method="queryWebDistributeListInit">
+			<result name="success">
+				/WEB-INF/page/front/web_distribute_index.jsp
+			</result>
+		</action>
+		<action name="queryWebDistributeList" class="frontWebDistributeAction"
+			method="queryWebDistributeList">
+			<result name="success">
+				/WEB-INF/page/front/web_distribute_index_list.jsp
+			</result>
+		</action>
+		<action name="queryWebDistributeAll" class="frontWebDistributeAction"
+			method="queryWebDistributeAll">
+			 <result name="success">
+				/WEB-INF/page/front/web_distribute_map.jsp
+			</result> 
+		</action>
+		
+		<!-- 省市联动 -->
+		<action name="ajaxqueryRegion" class="regionAction" method="ajaxqueryRegion">
+		</action>
+	</package>
+</struts>

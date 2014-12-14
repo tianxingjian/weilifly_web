@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+     <struts>
+	<package name="design" extends="admin-default" namespace="/admin">
+	    
+	       
+			<action name="queryDesignInit"
+			class="designAction" method="queryDesignInit">
+			<result name="success">
+				/WEB-INF/page/admin/design_index.jsp
+			</result>
+		</action>
+		
+		<action name="queryDesign" class="designAction"
+			method="queryDesign">
+			<result name="success">
+				/WEB-INF/page/admin/design_index_info.jsp
+			</result>
+		</action>	
+		
+		<action name="addDesignInit" class="designAction"
+			method="addDesignInit">
+			<result name="success">
+				/WEB-INF/page/admin/design_add.jsp
+			</result>
+		</action>
+		<action name="addDesign" class="designAction"
+			method="addDesign">
+			<result name="input">
+				/WEB-INF/page/admin/design_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryDesignInit.do
+			</result>
+		</action>
+		
+		<action name="updateDesignInit" class="designAction"
+			method="updateDesignInit">
+			<result name="success">
+				/WEB-INF/page/admin/design_update.jsp
+			</result>
+		</action>
+		<action name="updateDesign" class="designAction"
+			method="updateDesign">
+			<result name="input">
+				/WEB-INF/page/admin/design_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryDesignInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+		<action name="deleteDesign" class="designAction"
+			method="deleteDesign">
+			<result name="input">
+				queryDesignInit.do
+			</result>
+			<result name="success" type="redirect">
+				queryDesignInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+		<action name="queryDesignInit2" class="designAction" method="queryDesignInit2">
+			<result name="success">
+				/WEB-INF/page/admin/design_info_list.jsp
+			</result>
+		</action>
+		<action name="queryDesign2" class="designAction" method="queryDesign2">
+			<result name="success">/WEB-INF/page/admin/design_list.jsp</result>
+		</action>
+	</package>
+</struts>

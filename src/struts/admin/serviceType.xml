@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="serviceType_info" extends="admin-default"
+		namespace="/admin">
+
+		<action name="querySericeType"
+			class="serviceTypeAction" method="querySericeType">
+			<result name="success">
+				/WEB-INF/page/admin/serviceType_index.jsp
+			</result>
+		</action>
+
+		<action name="addServiceTypeInit"
+			class="serviceTypeAction" method="addServiceTypeInit">
+			<result name="success">
+				/WEB-INF/page/admin/serviceType_add.jsp
+			</result>
+		</action>
+		<action name="addServiceType" class="serviceTypeAction"
+			method="addServiceType">
+			<result name="input">
+				/WEB-INF/page/admin/serviceType_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				querySericeType.do
+			</result>
+		</action>
+
+		<action name="updateServiceTypeInit"
+			class="serviceTypeAction" method="updateServiceTypeInit">
+			<result name="success">
+				/WEB-INF/page/admin/serviceType_update.jsp
+			</result>
+		</action>
+		<action name="updateServiceType"
+			class="serviceTypeAction" method="updateServiceType">
+			<result name="input">
+				/WEB-INF/page/admin/serviceType_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				querySericeType.do
+			</result>
+		</action>
+		<action name="deleteSericeType" class="serviceTypeAction"
+			method="deleteSericeType">
+			<result name="input">querySericeType.do</result>
+			<result name="success" type="redirect">
+				querySericeType.do
+			</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+     <struts>
+	<package name="recruit" extends="admin-default" namespace="/admin">
+	
+			<action name="queryRecruitInit"
+			class="recruitAction" method="queryRecruitInit">
+			<result name="success">
+				/WEB-INF/page/admin/recruit_index.jsp
+			</result>
+		</action>
+		
+		<action name="queryRecruit" class="recruitAction"
+			method="queryRecruit">
+			<result name="success">
+				/WEB-INF/page/admin/recruit_index_info.jsp
+			</result>
+		</action>	
+		
+		<action name="addRecruitInit" class="recruitAction"
+			method="addRecruitInit">
+			<result name="success">
+				/WEB-INF/page/admin/recruit_add.jsp
+			</result>
+		</action>
+				<action name="addRecruit" class="recruitAction"
+			method="addRecruit">
+			<result name="input">
+				/WEB-INF/page/admin/recruit_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryRecruitInit.do
+			</result>
+		</action>
+		
+		<action name="updateRecruitInit" class="recruitAction"
+			method="updateRecruitInit">
+			<result name="success">
+				/WEB-INF/page/admin/recruit_update.jsp
+			</result>
+		</action>
+		<action name="updateRecruit" class="recruitAction"
+			method="updateRecruit">
+			<result name="input">
+				/WEB-INF/page/admin/recruit_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryRecruitInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+		<action name="deleteRecruit" class="recruitAction"
+			method="deleteRecruit">
+			<result name="input">
+				queryRecruitInit.do
+			</result>
+			<result name="success" type="redirect">
+				queryRecruitInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+	</package>
+</struts>

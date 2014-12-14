@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="seoPage" extends="admin-default"
+		namespace="/admin">
+		<action name="querySeoPageInit" class="seoPageAction"
+			method="querySeoPageInit">
+			<result name="success">
+				/WEB-INF/page/admin/seo_page_index.jsp
+			</result>
+		</action>
+		<action name="querySeoPageList" class="seoPageAction"
+			method="querySeoPageList">
+			<result name="success">
+				/WEB-INF/page/admin/seo_page_index_info.jsp
+			</result>
+		</action>
+		<action name="updateSeoPageInit" class="seoPageAction"
+			method="updateSeoPageInit">
+			<result name="success">
+				/WEB-INF/page/admin/seo_page_update.jsp
+			</result>
+		</action>
+		<action name="updateSeoPage" class="seoPageAction"
+			method="updateSeoPage">
+			<result name="input">
+				/WEB-INF/page/admin/seo_page_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				querySeoPageInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+		<action name="deleteSeoPage" class="seoPageAction"
+			method="deleteSeoPage">
+			<result name="input">querySeoPageInit.do</result>
+			<result name="success" type="redirect">
+				querySeoPageInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+	</package>
+</struts>

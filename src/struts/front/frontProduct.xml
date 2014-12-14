@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="frontProduct" extends="front-default" namespace="/">
+		<!-- 产品-->
+		<action name="productIndex" class="frontProductAction" method="productIndex">
+			<result name="success" >/WEB-INF/page/front/product_category_index.jsp</result>
+		</action>
+		
+		<action name="queryCategoryInfo" class="frontProductAction" method="queryCategoryInfo">
+			<result name="success" >/WEB-INF/page/front/product_category_list.jsp</result>
+		</action>
+		
+		<!-- 产品对比-->
+		<action name="productCompare" class="frontProductAction" method="productCompare">
+			<result name="success" >/WEB-INF/page/front/product_compare_index.jsp</result>
+		</action>
+		
+		<!-- 产品对比-->
+		<action name="productDetail" class="frontProductAction" method="productDetail">
+			<result name="success" >/WEB-INF/page/front/product_detail.jsp</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="productCategory" extends="admin-default" namespace="/admin">
+	
+		<action name="queryProductCategoryInit" class="productCategoryAction" method="queryProductCategoryInit">
+			<result name="success" >/WEB-INF/page/admin/product_category_index.jsp</result>
+		</action>
+		
+		<action name="queryProductCategoryInfo" class="productCategoryAction" method="queryProductCategoryInfo" >
+			<result name="success" >/WEB-INF/page/admin/product_category_index_info.jsp</result>
+		</action>
+		
+		<action name="addProductCategoryInit" class="productCategoryAction" method="addProductCategoryInit" >
+			<result name="success" >/WEB-INF/page/admin/product_category_add.jsp</result>
+		</action>
+		
+		<action name="addProductCategory" class="productCategoryAction" method="addProductCategory" >
+			<result name="input" >/WEB-INF/page/admin/product_category_add.jsp</result>
+			<result name="success" type="redirect">queryProductCategoryInit.do</result>
+		</action>
+		
+		<action name="updateProductCategoryInit" class="productCategoryAction" method="updateProductCategoryInit" >
+			<result name="success" >/WEB-INF/page/admin/product_category_update.jsp</result>
+		</action>
+		
+		<action name="updateProductCategory" class="productCategoryAction" method="updateProductCategory" >
+			<result name="input" >/WEB-INF/page/admin/product_category_update.jsp</result>
+			<result name="success" type="redirect">queryProductCategoryInit.do</result>
+		</action>
+		
+		<action name="deleteProductCategory" class="productCategoryAction" method="deleteProductCategory" >
+			<result name="success" type="redirect">queryProductCategoryInit.do</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="productParameter" extends="admin-default" namespace="/admin">
+	
+		<action name="addProductParameterInit" class="productParameterAction" method="addProductParameterInit">
+			<result name="success">/WEB-INF/page/admin/product_parameter_add.jsp</result>
+		</action>
+	
+		<action name="addProductParameter" class="productParameterAction" method="addProductParameter">
+			<result name="input">/WEB-INF/page/admin/product_parameter_add.jsp</result>
+			<result name="success" type="redirect" >queryProductParameterList.do</result>
+		</action>
+	
+		<action name="updateProductParameterInit" class="productParameterAction" method="updateProductParameterInit">
+			<result name="success">/WEB-INF/page/admin/product_parameter_update.jsp</result>
+		</action>
+	
+		<action name="updateProductParameter" class="productParameterAction" method="updateProductParameter">
+			<result name="input">/WEB-INF/page/admin/product_parameter_update.jsp</result>
+			<result name="success" type="redirect" >queryProductParameterList.do</result>
+		</action>
+	
+		<action name="deleteProductParameter" class="productParameterAction" method="deleteProductParameter">
+			<result name="success" type="redirect" >queryProductParameterList.do?id=%{id}</result>
+		</action>
+		
+		<action name="queryProductParameterList" class="productParameterAction" method="queryProductParameterList">
+			<result name="success">/WEB-INF/page/admin/product_parameter_index.jsp</result>
+		</action>
+		
+	</package>
+</struts>

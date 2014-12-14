@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+     <struts>
+	<package name="webDistribute" extends="admin-default" namespace="/admin">
+	
+			<action name="queryWebDistributeInit"
+			class="webDistributeAction" method="queryWebDistributeInit">
+			<result name="success">
+				/WEB-INF/page/admin/webDistribute_index.jsp
+			</result>
+		</action>
+		
+		<action name="queryWebDistribute" class="webDistributeAction"
+			method="queryWebDistribute">
+			<result name="success">
+				/WEB-INF/page/admin/webDistribute_index_info.jsp
+			</result>
+		</action>	
+		
+		<action name="addWebDistributeInit" class="webDistributeAction"
+			method="addWebDistributeInit">
+			<result name="success">
+				/WEB-INF/page/admin/webDistribute_add.jsp
+			</result>
+		</action>
+				<action name="addWebDistribute" class="webDistributeAction"
+			method="addWebDistribute">
+			<result name="input">
+				/WEB-INF/page/admin/webDistribute_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryWebDistributeInit.do
+			</result>
+		</action>
+		
+		<action name="updateWebDistributeInit" class="webDistributeAction"
+			method="updateWebDistributeInit">
+			<result name="success">
+				/WEB-INF/page/admin/webDistribute_update.jsp
+			</result>
+		</action>
+		<action name="updateWebDistribute" class="webDistributeAction"
+			method="updateWebDistribute">
+			<result name="input">
+				/WEB-INF/page/admin/webDistribute_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryWebDistributeInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+		<action name="deleteWebDistribute" class="webDistributeAction"
+			method="deleteWebDistribute">
+			<result name="input">
+				queryWebDistributeInit.do
+			</result>
+			<result name="success" type="redirect">
+				queryWebDistributeInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+	</package>
+</struts>

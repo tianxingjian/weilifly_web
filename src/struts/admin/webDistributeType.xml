@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="webDistributeType_info" extends="admin-default"
+		namespace="/admin">
+
+		<action name="queryWebDistributeType"
+			class="webDistributeTypeAction" method="queryWebDistributeType">
+			<result name="success">
+				/WEB-INF/page/admin/web_distribute_type_index.jsp
+			</result>
+		</action>
+
+		<action name="addWebDistributeTypeInit"
+			class="webDistributeTypeAction" method="addWebDistributeTypeInit">
+			<result name="success">
+				/WEB-INF/page/admin/web_distribute_type_add.jsp
+			</result>
+		</action>
+		<action name="addWebDistributeType" class="webDistributeTypeAction"
+			method="addWebDistributeType">
+			<result name="input">
+				/WEB-INF/page/admin/web_distribute_type_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryWebDistributeType.do
+			</result>
+		</action>
+
+		<action name="updateWebDistributeTypeInit"
+			class="webDistributeTypeAction" method="updateWebDistributeTypeInit">
+			<result name="success">
+				/WEB-INF/page/admin/web_distribute_type_update.jsp
+			</result>
+		</action>
+		<action name="updateWebDistributeType"
+			class="webDistributeTypeAction" method="updateWebDistributeType">
+			<result name="input">
+				/WEB-INF/page/admin/web_distribute_type_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryWebDistributeType.do
+			</result>
+		</action>
+		<action name="deleteWebDistributeType" class="webDistributeTypeAction"
+			method="deleteWebDistributeType">
+			<result name="input">queryWebDistributeType.do</result>
+			<result name="success" type="redirect">
+				queryWebDistributeType.do
+			</result>
+		</action>
+	</package>
+</struts>

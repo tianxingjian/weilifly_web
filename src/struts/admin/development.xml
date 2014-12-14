@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="development" extends="admin-default" namespace="/admin">
+	
+		<action name="queryDevelopmentInit" class="developmentAction" method="queryDevelopmentInit">
+			<result name="success">/WEB-INF/page/admin/development_index.jsp</result>
+		</action>
+		
+		<action name="queryDevelopmentInfo" class="developmentAction" method="queryDevelopmentInfo">
+			<result name="success">/WEB-INF/page/admin/development_index_info.jsp</result>
+		</action>
+		
+		<action name="addDevelopmentInit" class="developmentAction" method="addDevelopmentInit">
+			<result name="success">/WEB-INF/page/admin/development_add.jsp</result>
+		</action>
+		
+		<action name="addDevelopment" class="developmentAction" method="addDevelopment">
+		</action>
+		
+		<action name="updateDevelopmentInit" class="developmentAction" method="updateDevelopmentInit">
+			<result name="success">/WEB-INF/page/admin/development_update.jsp</result>
+		</action>
+		
+		<action name="updateDevelopment" class="developmentAction" method="updateDevelopment">
+		</action>
+		
+		<action name="deleteDevelopment" class="developmentAction" method="deleteDevelopment">
+		</action>
+		
+	</package>
+</struts>

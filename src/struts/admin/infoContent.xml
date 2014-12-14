@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="info_content" extends="admin-default"
+		namespace="/admin">
+		<action name="queryInfoContentInit" class="infoContentAction"
+			method="queryInfoContentInit">
+			<result name="success">
+				/WEB-INF/page/admin/info_content_index.jsp
+			</result>
+		</action>
+
+		<action name="queryInfoContent" class="infoContentAction"
+			method="queryInfoContent">
+			<result name="success">
+				/WEB-INF/page/admin/info_content_index_info.jsp
+			</result>
+		</action>
+
+		<action name="addInfoContentInit" class="infoContentAction"
+			method="addInfoContentInit">
+			<result name="success">
+				/WEB-INF/page/admin/info_content_add.jsp
+			</result>
+		</action>
+		<action name="addInfoContent" class="infoContentAction"
+			method="addInfoContent">
+			<result name="input">
+				/WEB-INF/page/admin/info_content_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryInfoContentInit.do
+			</result>
+		</action>
+
+		<action name="updateInfoContentInit" class="infoContentAction"
+			method="updateInfoContentInit">
+			<result name="success">
+				/WEB-INF/page/admin/info_content_update.jsp
+			</result>
+		</action>
+		<action name="updateInfoContent" class="infoContentAction"
+			method="updateInfoContent">
+			<result name="input">
+				/WEB-INF/page/admin/info_content_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryInfoContentInit.do
+			</result>
+		</action>
+		<action name="deleteInfoContent" class="infoContentAction"
+			method="deleteInfoContent">
+			<result name="input">queryInfoContent.do</result>
+			<result name="success" type="redirect">
+				queryInfoContentInit.do
+			</result>
+		</action>
+	</package>
+</struts>

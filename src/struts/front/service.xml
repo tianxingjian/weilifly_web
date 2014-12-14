@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="service" extends="front-default" namespace="/">
+		<action name="queryOnline" class="serviceAction"
+			method="queryOnline">
+			<result name="success">
+				/WEB-INF/page/front/online_support.jsp
+			</result>
+		</action>
+		<action name="queryServicePolicy" class="serviceAction"
+			method="queryServicePolicy">
+			<result name="success">
+				/WEB-INF/page/front/service_policy.jsp
+			</result>
+		</action>
+		<action name="queryQuestionListInit" class="serviceAction"
+			method="queryQuestionListInit">
+			<result name="success">
+				/WEB-INF/page/front/question_list_index.jsp
+			</result>
+		</action>
+		<action name="queryQuestionList" class="serviceAction"
+			method="queryQuestionList">
+			<result name="success">
+				/WEB-INF/page/front/question_list.jsp
+			</result>
+		</action>
+		 <!-- 前台查询儿童类应用隐私协议 -->
+        <action name="privacy" class="serviceAction" method="privacy">
+		<result name="success">/WEB-INF/page/front/childhood.jsp</result>
+		</action>
+	</package>
+</struts>

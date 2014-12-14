@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="frontBrand" extends="front-default" namespace="/">
+		<!-- 品牌-->
+		<action name="brandDetail" class="frontBrandAction" method="brandDetail">
+			<result name="idea" >/WEB-INF/page/front/brand_detail.jsp</result>
+			<result name="culture" >/WEB-INF/page/front/weili_cultrue.jsp</result>
+			<result name="news" >/WEB-INF/page/front/weili_researches.jsp</result>
+			<result name="report" >/WEB-INF/page/front/brand_kyd_report.jsp</result>
+			<result name="advertise" >/WEB-INF/page/front/brand_advertise.jsp</result>
+			<result name="childDetail" >/WEB-INF/page/front/brand_child_detail.jsp</result>
+			<result name="development" >/WEB-INF/page/front/brand_development.jsp</result>
+		</action>
+		
+		<action name="weiliResearchesDetail" class="frontBrandAction" method="weiliResearchesDetail">
+			<result name="success" >/WEB-INF/page/front/weili_researches_detail.jsp</result>
+		</action>
+		
+		<action name="kydReport" class="frontBrandAction" method="kydReport">
+		</action>
+		
+		<action name="brandAdvertise" class="frontBrandAction" method="brandAdvertise">
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="productDetail" extends="admin-default" namespace="/admin">
+	
+		<action name="addProductDetailInit" class="productDetailAction" method="addProductDetailInit">
+			<result name="success">/WEB-INF/page/admin/product_detail_add.jsp</result>
+		</action>
+	
+		<action name="addProductDetail" class="productDetailAction" method="addProductDetail">
+			<result name="input">/WEB-INF/page/admin/product_detail_add.jsp</result>
+			<result name="success" type="redirect" >queryProductDetailList.do</result>
+		</action>
+	
+		<action name="updateProductDetailInit" class="productDetailAction" method="updateProductDetailInit">
+			<result name="success">/WEB-INF/page/admin/product_detail_update.jsp</result>
+		</action>
+	
+		<action name="updateProductDetail" class="productDetailAction" method="updateProductDetail">
+			<result name="input">/WEB-INF/page/admin/product_detail_update.jsp</result>
+			<result name="success" type="redirect" >queryProductDetailList.do</result>
+		</action>
+	
+		<action name="deleteProductDetail" class="productDetailAction" method="deleteProductDetail">
+			<result name="success" type="redirect" >queryProductDetailList.do?id=%{id}</result>
+		</action>
+		
+		<action name="queryProductDetailList" class="productDetailAction" method="queryProductDetailList">
+			<result name="success">/WEB-INF/page/admin/product_detail_index.jsp</result> 
+			<result name="child">/WEB-INF/page/admin/product_detail_child_index.jsp</result> 
+		</action>
+		
+	</package>
+</struts>

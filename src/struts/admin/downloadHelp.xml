@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="downloadHelp" extends="admin-default" namespace="/admin">
+	
+		<action name="queryDownloadHelpInit" class="downloadHelpAction" method="queryDownloadHelpInit">
+			<result name="success">/WEB-INF/page/admin/download_help_index.jsp</result>
+		</action>
+		
+		<action name="queryDownloadHelpInfo" class="downloadHelpAction" method="queryDownloadHelpInfo">
+			<result name="success">/WEB-INF/page/admin/download_help_index_info.jsp</result>
+		</action>
+		
+		<action name="addDownloadHelpInit" class="downloadHelpAction" method="addDownloadHelpInit">
+			<result name="success">/WEB-INF/page/admin/download_help_add.jsp</result>
+		</action>
+		
+		<action name="addDownloadHelp" class="downloadHelpAction" method="addDownloadHelp">
+		</action>
+		
+		<action name="updateDownloadHelpInit" class="downloadHelpAction" method="updateDownloadHelpInit">
+			<result name="success">/WEB-INF/page/admin/download_help_update.jsp</result>
+		</action>
+		
+		<action name="updateDownloadHelp" class="downloadHelpAction" method="updateDownloadHelp">
+		</action>
+		
+		<action name="deleteDownloadHelp" class="downloadHelpAction" method="deleteDownloadHelp">
+		</action>
+		
+	</package>
+</struts>

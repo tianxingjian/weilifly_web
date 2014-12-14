@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="paramMap.sortIndex">
+		<field-validator type="requiredstring">
+			<message>排序不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.title">
+		<field-validator type="requiredstring">
+			<message>标题不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.type">
+		<field-validator type="requiredstring">
+			<message>请选择类型</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[
+	   					(paramMap.type != "-1")
+	   				]]>
+			</param>
+			<message>请选择类型</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.imgPath">
+		<field-validator type="requiredstring">
+			<message>请上传图片</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.imgUrl">
+		<field-validator type="requiredstring">
+			<message>请上传小图片</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.imgFont">
+		<field-validator type="requiredstring">
+			<message>请上传右下角图片</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.url">
+		<field-validator type="requiredstring">
+			<message>链接地址不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.status">
+		<field-validator type="requiredstring">
+			<message>请选择是否显示</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[
+	   					(paramMap.status != "-1")
+	   				]]>
+			</param>
+			<message>请选择是否显示</message>
+		</field-validator>
+	</field>
+
+</validators>

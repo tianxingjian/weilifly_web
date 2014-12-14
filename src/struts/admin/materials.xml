@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="materials" extends="admin-default" namespace="/admin">
+	
+		<action name="queryMaterialsInit" class="materialsAction" method="queryMaterialsInit">
+			<result name="success">/WEB-INF/page/admin/materials_index.jsp</result>
+		</action>
+		
+		<action name="queryMaterialsInfo" class="materialsAction" method="queryMaterialsInfo">
+			<result name="success">/WEB-INF/page/admin/materials_index_info.jsp</result>
+		</action>
+		
+		<action name="addMaterialsInit" class="materialsAction" method="addMaterialsInit">
+			<result name="success">/WEB-INF/page/admin/materials_add.jsp</result>
+		</action>
+		
+		<action name="addMaterials" class="materialsAction" method="addMaterials">
+		</action>
+		
+		<action name="updateMaterialsInit" class="materialsAction" method="updateMaterialsInit">
+			<result name="success">/WEB-INF/page/admin/materials_update.jsp</result>
+		</action>
+		<action name="importProductBatchInit" class="materialsAction" method="importProductBatchInit">
+			<result name="success">/WEB-INF/page/admin/materiali_batch.jsp</result>
+		</action>
+		<action name="importProductBatch" class="materialsAction" method="importProductBatch">
+		</action>
+		
+		<action name="updateMaterials" class="materialsAction" method="updateMaterials">
+		</action>
+		
+		<action name="deleteMaterials" class="materialsAction" method="deleteMaterials">
+		</action>
+		
+	</package>
+</struts>

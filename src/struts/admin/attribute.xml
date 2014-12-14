@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="attribute" extends="admin-default" namespace="/admin">
+	
+		<action name="addAttributeInit" class="attributeAction" method="addAttributeInit">
+			<result name="success">/WEB-INF/page/admin/attribute_add.jsp</result>
+		</action>
+	
+		<action name="addAttribute" class="attributeAction" method="addAttribute">
+			<result name="input">/WEB-INF/page/admin/attribute_add.jsp</result>
+			<result name="attribute" type="redirect">queryAttributeInit.do</result>
+			<result name="attributeSon" type="redirect" >queryAttributeSonInit.do?parentId=%{parentId}</result>
+		</action>
+	
+		<action name="updateAttributeInit" class="attributeAction" method="updateAttributeInit">
+			<result name="success">/WEB-INF/page/admin/attribute_update.jsp</result>
+		</action>
+	
+		<action name="updateAttribute" class="attributeAction" method="updateAttribute">
+			<result name="input">/WEB-INF/page/admin/attribute_update.jsp</result>
+			<result name="attribute" type="redirect">queryAttributeInit.do</result>
+			<result name="attributeSon" type="redirect" >queryAttributeSonInit.do?parentId=%{parentId}</result>
+		</action>
+	
+		<action name="deleteAttribute" class="attributeAction" method="deleteAttribute">
+			<result name="attribute" type="redirect">queryAttributeInit.do</result>
+			<result name="attributeSon" type="redirect" >queryAttributeSonInit.do?parentId=%{parentId}</result>
+		</action>
+		
+		<action name="queryAttributeInit" class="attributeAction" method="queryAttributeInit">
+			<result name="success">/WEB-INF/page/admin/attribute_index.jsp</result>
+		</action>
+		
+		<action name="queryAttributeSonInit" class="attributeAction" method="queryAttributeSonInit">
+			<result name="success">/WEB-INF/page/admin/attribute_son_index.jsp</result>
+		</action>
+		
+		<action name="queryAttributeInfo" class="attributeAction" method="queryAttributeInfo">
+			<result name="success">/WEB-INF/page/admin/attribute_index_info.jsp</result>
+		</action>
+		
+	</package>
+</struts>

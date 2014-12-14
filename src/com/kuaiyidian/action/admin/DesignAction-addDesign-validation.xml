@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="paramMap.sortIndex">
+		<field-validator type="requiredstring">
+			<message>排序不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.title">
+		<field-validator type="requiredstring">
+			<message>标题不能为空</message>
+		</field-validator>
+	</field>
+
+	<field name="paramMap.categoryId">
+		<field-validator type="requiredstring">
+			<message>请选择分类</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[
+	   					(paramMap.categoryId != "-1")
+	   				]]>
+			</param>
+			<message>请选择分类</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.author">
+		<field-validator type="requiredstring">
+			<message>作者不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.status">
+		<field-validator type="requiredstring">
+			<message>请选择是否显示</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[
+	   					(paramMap.status != "-1")
+	   				]]>
+			</param>
+			<message>请选择是否显示</message>
+		</field-validator>
+	</field>
+
+</validators>

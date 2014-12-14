@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="brandAdvertise" extends="admin-default" namespace="/admin">
+	
+		<action name="queryBrandAdvertiseInit" class="brandAdvertiseAction" method="queryBrandAdvertiseInit">
+			<result name="success">/WEB-INF/page/admin/brand_advertise_index.jsp</result>
+		</action>
+		
+		<action name="queryBrandAdvertiseInfo" class="brandAdvertiseAction" method="queryBrandAdvertiseInfo">
+			<result name="success">/WEB-INF/page/admin/brand_advertise_index_info.jsp</result>
+		</action>
+		
+		<action name="addBrandAdvertiseInit" class="brandAdvertiseAction" method="addBrandAdvertiseInit">
+			<result name="success">/WEB-INF/page/admin/brand_advertise_add.jsp</result>
+		</action>
+		
+		<action name="addBrandAdvertise" class="brandAdvertiseAction" method="addBrandAdvertise">
+		</action>
+		
+		<action name="updateBrandAdvertiseInit" class="brandAdvertiseAction" method="updateBrandAdvertiseInit">
+			<result name="success">/WEB-INF/page/admin/brand_advertise_update.jsp</result>
+		</action>
+		
+		<action name="updateBrandAdvertise" class="brandAdvertiseAction" method="updateBrandAdvertise">
+		</action>
+		
+		<action name="deleteBrandAdvertise" class="brandAdvertiseAction" method="deleteBrandAdvertise">
+		</action>
+		
+	</package>
+</struts>

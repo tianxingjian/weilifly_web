@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="bottom_info" extends="admin-default"
+		namespace="/admin">
+
+		<action name="queryInfo"
+			class="infoAction" method="queryInfo">
+			<result name="success">
+				/WEB-INF/page/admin/info_index.jsp
+			</result>
+		</action>
+
+		<action name="addInfoInit"
+			class="infoAction" method="addInfoInit">
+			<result name="success">
+				/WEB-INF/page/admin/info_add.jsp
+			</result>
+		</action>
+		<action name="addInfo" class="infoAction"
+			method="addInfo">
+			<result name="input">
+				/WEB-INF/page/admin/info_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryInfo.do
+			</result>
+		</action>
+
+		<action name="updateInfoInit"
+			class="infoAction" method="updateInfoInit">
+			<result name="success">
+				/WEB-INF/page/admin/info_update.jsp
+			</result>
+		</action>
+		<action name="updateInfo"
+			class="infoAction" method="updateInfo">
+			<result name="input">
+				/WEB-INF/page/admin/info_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryInfo.do
+			</result>
+		</action>
+		<action name="deleteInfo" class="infoAction"
+			method="deleteInfo">
+			<result name="input">queryInfo.do</result>
+			<result name="success" type="redirect">
+				queryInfo.do
+			</result>
+		</action>
+	</package>
+</struts>

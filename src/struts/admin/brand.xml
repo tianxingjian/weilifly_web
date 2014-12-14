@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="brand" extends="admin-default" namespace="/admin">
+	
+		<action name="queryBrandInit" class="brandAction" method="queryBrandInit">
+			<result name="success">/WEB-INF/page/admin/brand_index.jsp</result>
+		</action>
+		
+		<action name="queryBrandInfo" class="brandAction" method="queryBrandInfo">
+			<result name="success">/WEB-INF/page/admin/brand_index_info.jsp</result>
+		</action>
+		
+		<action name="queryBrandList" class="brandAction" method="queryBrandList">
+			<result name="success">/WEB-INF/page/admin/brand_child_index.jsp</result>
+		</action>
+		
+		<action name="addBrandInit" class="brandAction" method="addBrandInit">
+			<result name="success">/WEB-INF/page/admin/brand_add.jsp</result>
+		</action>
+		
+		<action name="addBrandChildInit" class="brandAction" method="addBrandChildInit">
+			<result name="success">/WEB-INF/page/admin/brand_child_add.jsp</result>
+		</action>
+		
+		<action name="addBrand" class="brandAction" method="addBrand">
+		</action>
+		
+		<action name="updateBrandInit" class="brandAction" method="updateBrandInit">
+			<result name="success">/WEB-INF/page/admin/brand_update.jsp</result>
+		</action>
+		
+		<action name="updateBrand" class="brandAction" method="updateBrand">
+		</action>
+		
+		<action name="deleteBrand" class="brandAction" method="deleteBrand">
+		</action>
+		
+	</package>
+</struts>

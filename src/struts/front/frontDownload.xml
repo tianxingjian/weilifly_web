@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="frontDownload" extends="front-default" namespace="/">
+		<!-- 下载综合-->
+		<action name="downloadIndex" class="frontDownloadAction" method="downloadIndex">
+			<result name="success" >/WEB-INF/page/front/download_index.jsp</result>
+		</action>
+		
+		<!-- 升级程序-->
+		<action name="updateProgramIndex" class="frontDownloadAction" method="updateProgramIndex">
+			<result name="success" >/WEB-INF/page/front/update_program_index.jsp</result>
+		</action>
+		
+		<action name="downloadProgram" class="frontDownloadAction" method="downloadProgram">
+		</action>
+		
+		<!-- 广告片-->
+		<action name="advertiseIndex" class="frontDownloadAction" method="advertiseIndex">
+			<result name="success" >/WEB-INF/page/front/advertise_index.jsp</result>
+		</action>
+		
+		<!-- 资料下载-->
+		<action name="materialsIndex" class="frontDownloadAction" method="materialsIndex">
+			<result name="success" >/WEB-INF/page/front/materials_index.jsp</result>
+		</action>
+		
+		<action name="materialsList" class="frontDownloadAction" method="materialsList">
+			<result name="success" >/WEB-INF/page/front/materials_list.jsp</result>
+		</action>
+		
+		<action name="downloadMaterials" class="frontDownloadAction" method="downloadMaterials">
+			<result name="msg" >/WEB-INF/page/message.jsp</result>
+		</action>
+		
+		<action name="downloadIosMaterials" class="frontDownloadAction" method="downloadIosMaterials">
+			<result name="msg" >/WEB-INF/page/message.jsp</result>
+		</action>
+		<action name="downloadAndroidMaterials" class="frontDownloadAction" method="downloadAndroidMaterials">
+			<result name="msg" >/WEB-INF/page/message.jsp</result>
+		</action>
+		
+	</package>
+</struts>

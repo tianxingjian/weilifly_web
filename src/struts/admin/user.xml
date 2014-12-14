@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+     <struts>
+	<package name="user" extends="admin-default" namespace="/admin">
+	
+			<action name="queryUserInit"
+			class="userAction" method="queryUserInit">
+			<result name="success">
+				/WEB-INF/page/admin/user_index.jsp
+			</result>
+		</action>
+		
+		<action name="queryUserList" class="userAction"
+			method="queryUserList">
+			<result name="success">
+				/WEB-INF/page/admin/user_index_info.jsp
+			</result>
+		</action>	
+		
+		<action name="addUserInit" class="userAction"
+			method="addUserInit">
+			<result name="success">
+				/WEB-INF/page/admin/user_add.jsp
+			</result>
+		</action>
+				<action name="addUser" class="userAction"
+			method="addUser">
+			<result name="input">
+				/WEB-INF/page/admin/user_add.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryUserInit.do
+			</result>
+		</action>
+		
+		<action name="updateUserInit" class="userAction"
+			method="updateUserInit">
+			<result name="success">
+				/WEB-INF/page/admin/user_update.jsp
+			</result>
+		</action>
+		<action name="updateUser" class="userAction"
+			method="updateUser">
+			<result name="input">
+				/WEB-INF/page/admin/user_update.jsp
+			</result>
+			<result name="success" type="redirect">
+				queryUserInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+		<action name="deleteUser" class="userAction"
+			method="deleteUser">
+			<result name="input">
+				queryUserInit.do
+			</result>
+			<result name="success" type="redirect">
+				queryUserInit.do?pageNow=%{pageNow}
+			</result>
+		</action>
+	</package>
+</struts>

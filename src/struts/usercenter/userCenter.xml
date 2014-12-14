@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="userLogin" extends="usercenter-default" namespace="/user">
+	<action name="loginInit" class="frontUserAction"
+			method="loginInit">
+			<result name="success">
+				/WEB-INF/page/usercenter/login.jsp
+			</result>
+		</action>
+		<action name="userLogin" class="frontUserAction"
+			method="userLogin">
+			<result name="input">
+				/WEB-INF/page/usercenter/login.jsp
+			</result>
+			<result name="success" type="redirect">
+				userLoginInit.do
+			</result>
+		</action>
+	</package>
+</struts>
