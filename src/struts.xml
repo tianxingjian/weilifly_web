@@ -204,9 +204,6 @@
 			<result name="noLogin" type="redirect">../login.do?u=%{afterLoginUrl}</result>
 			<result name="msg">/WEB-INF/page/message.jsp</result> 
 		</global-results>
-		<action name="loginOut" class="indexAction" method="loginOut">
-			<result name="success" type="redirect">index.do</result>
-		</action>
 	</package>
 </struts>
 
