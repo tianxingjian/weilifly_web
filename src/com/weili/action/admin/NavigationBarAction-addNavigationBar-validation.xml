@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="paramMap.sortIndex">
+		<field-validator type="requiredstring">
+			<message>排序不能为空</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regexExpression">
+				 <![CDATA[\d{1,3}]]>
+			</param>
+			<message>排序必须为数字，且为1-3位的整数</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.name">
+		<field-validator type="requiredstring">
+			<message>菜单项名称不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.orderName">
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[
+	   					(paramMap.orderName != "")
+	   				]]>
+			</param>
+			<message>请选择菜单项等级</message>
+		</field-validator>
+	</field>
+<!-- 	<field name="paramMap.parentId">
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[paramMap.orderName == "二级" && paramMap.parentId == "-1"]]>
+			</param>
+			<message>所属菜单项不能为空</message>
+		</field-validator>
+	</field> -->
+	<field name="paramMap.url">
+		<field-validator type="requiredstring">
+			<message>链接地址不为能空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.enable">
+		<field-validator type="requiredstring">
+			<message>请选择是否显示</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[
+	   					(paramMap.enable != "-1")
+	   				]]>
+			</param>
+			<message>请选择是否显示</message>
+		</field-validator>
+	</field>
+
+</validators>

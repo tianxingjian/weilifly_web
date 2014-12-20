@@ -34,7 +34,7 @@
 				<div style="padding: 15px 10px 0px 10px;">
 					<div>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tr>
+							<tr><%--
 								<td width="100" height="28" align="center" bgcolor="#8594A9"
 									class="white12">
 									<a href="queryAdminInit.do">管理员列表</a>
@@ -42,7 +42,7 @@
 								<td width="2">
 									&nbsp;
 								</td>
-								<td width="100" align="center" bgcolor="#CC0000" class="white12">
+								--%><td width="100" align="center" bgcolor="#CC0000" class="white12">
 									 修改密码
 								</td>
 								<td>

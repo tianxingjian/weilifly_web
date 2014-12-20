@@ -1,0 +1,58 @@
+){
+						cartid = Convert.strToLong(proList.get(0).get("id")+"",-1L ) ;
+					}else{
+						cartid = cartService.addProductCart(productid,product_num , colorid ,userid,cart_price,type);
+					}
+					if(cartid==null||cartid<=0){
+						this.addFieldError("error_msg", "添加商品失败") ;
+						return INPUT;
+					}
+				}
+				
+			}else{
+				this.addFieldError("error_msg", "添加商品失败") ;
+				return INPUT;
+			}
+			if(cartid==null||cartid<=0){
+				this.addFieldError("error_msg", "添加商品失败") ;
+				return INPUT ;
+			}
+		}
+		if(cartid>0&&carIds==null){
+			carIds = cartid+"," ; 
+		}
+		
+		paramMap.put("status", 1 + ""); // 是否可用
+		paramMap.put("provinceid",IConstants.DEFAULT_PROVINCEID+"");
+		paramMap.put("cityid",IConstants.DEFAULT_CITYID+"");
+		paramMap.put("areaid",IConstants.DEFAULT_AREAID+"");
+		//配送物流
+		List<Map<String,Object>> logistList = logisticsService.queryLogisticsAll();
+		request("logistList",logistList);
+		//加载省份
+		List<Map<String,Object>> provincelist = regionService.queryRegionList(-1L, 1L, 1);
+		request("provinceList",provincelist);
+		//加载地址
+		//addressList = addressService.queryUserAddress(userid);
+		
+		request("type",type);
+		request("carIds",carIds);
+		 //1 普通主商品 2普通副商品  3普通立即购买4 预约商品 5抢购商品
+		if(type==IConstants.CART_TYPE_PANIC_IMM||type==IConstants.CART_TYPE_COMM_IMM){
+			Integer[]  statuss = new Integer[1] ;
+			if(type==IConstants.CART_TYPE_PANIC_IMM)statuss[0] = IConstants.CART_TYPE_PANIC_IMM ;
+			if(type==IConstants.CART_TYPE_COMM_IMM)statuss[0] = IConstants.CART_TYPE_COMM_IMM ;
+			Map<String,String> totalMap = cartService.queryProductCartTotalPrice(userid,carIds,statuss);
+				if(totalMap!=null){
+					totalPrice = totalMap.get("total_price");
+					totalItems = totalMap.get("total_items");
+					totalNum = totalMap.get("total_num");
+					if(carIds==null||carIds==""){
+						totalPrice= "0.00" ;
+					}
+				}
+			//根据商品消费总金额查询满足条件的优惠券
+			//可用优惠券
+			Integer coupon_status = IConstants.COUPON_USED_NO ;//未使用的 
+			carList = cartService.queryProductCartByUserId(userid, carIds, statuss) ;
+			List<Long> producti

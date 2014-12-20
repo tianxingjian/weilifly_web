@@ -180,7 +180,7 @@
 							<a href="queryDownloadHelpInit.do?id=${bean.id}"><img src="${bean.image }" alt="${bean.title}" style="width:264px;height:73px;" /></a>
 						</div>
 					</s:iterator>
-					<a href="updateProgramIndex.do" class="big-downbtn big-downbtn-1 "><span>升级程序<em>升级程序资源免费下载</em>
+					<a href="preDownloadIndex.do" class="big-downbtn big-downbtn-1 "><span>升级程序<em>升级程序资源免费下载</em>
 					</span>
 					</a>
 					<div class="m-s-ban m-s-ban-1">

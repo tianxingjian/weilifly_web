@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="frontDisplay" extends="front-default" namespace="/">
+		<!-- 品牌-->
+		<action name="brandDetail" class="frontDisplayAction" method="brandDetail">
+			<result name="idea" >/WEB-INF/page/front/weili_display_detail.jsp</result>
+			<result name="culture" >/WEB-INF/page/front/weili_cultrue.jsp</result>
+			<result name="news" >/WEB-INF/page/front/weili_display.jsp</result>
+			<result name="report" >/WEB-INF/page/front/weili_display_report.jsp</result>
+			<result name="advertise" >/WEB-INF/page/front/weili_display_advertise.jsp</result>
+			<result name="childDetail" >/WEB-INF/page/front/brand_child_detail.jsp</result>
+			<result name="development" >/WEB-INF/page/front/brand_development.jsp</result>
+		</action>
+		
+		
+		
+		<!-- 前台展示内容开始 -->
+		<action name="queryWeiliDisplayes" class="frontDisplayAction" method="queryWeiliDisplayes">
+			<result name="success">/WEB-INF/page/front/frontDisplay/weili_display_more.jsp</result>
+		</action>
+		<!-- 前台展示内容子模块详情 -->
+		<action name="queryWeiliDisplay" class="frontDisplayAction" method="queryWeiliDisplay">
+			<result name="success" >/WEB-INF/page/front/frontDisplay/weili_display.jsp</result>
+		</action>
+		<!-- 前台展示内容子模块内容详情 -->
+		<action name="weiliDisplayDetail" class="frontDisplayAction" method="weiliDisplayDetail">
+			<result name="success">/WEB-INF/page/front/frontDisplay/weili_display_detail.jsp</result>
+		</action>
+		
+		
+		<action name="kydReport" class="frontDisplayAction" method="kydReport">
+		</action>
+		
+		<action name="brandAdvertise" class="frontDisplayAction" method="brandAdvertise">
+		</action>
+		
+		<!-- 最新动态 -->
+		<action name="queryNewest" class="frontDisplayAction" method="queryNewest">
+			<result name="success" >/WEB-INF/page/front/frontDisplay/newest_more.jsp</result>
+		</action>
+		
+		<action name="NewestDetail" class="frontDisplayAction" method="NewestDetail">
+			<result name="success" >/WEB-INF/page/front/frontDisplay/newest_detail.jsp</result>
+		</action>
+		
+		<!-- sendToUsInit -->
+		<action name="sendToUsInit" class="frontDisplayAction" method="sendToUsInit">
+			<result name="success">/include/sendToUs.jsp</result>
+		</action>
+		<!-- sendToUs -->
+		<action name="sendToUs" class="frontDisplayAction" method="sendToUs">
+			<!-- <result name="success">/WEB-INF/page/success.jsp</result> -->
+		</action>
+	</package>
+</struts>

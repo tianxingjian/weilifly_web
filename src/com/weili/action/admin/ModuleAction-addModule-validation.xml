@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="paramMap.indexs">
+		<field-validator type="requiredstring">
+			<message>排序不能为空</message>
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regexExpression">
+				 <![CDATA[\d{1,3}]]>
+			</param>
+			<message>排序必须为数字，且为1-3位的整数</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.summary">
+		<field-validator type="requiredstring">
+			<message>模块名称不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.description">
+		<field-validator type="requiredstring">
+			<message>模块描述不为能空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.isIntercept">
+		<field-validator type="requiredstring">
+			<message>请选择是否权限分配</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[
+	   					(paramMap.isIntercept != "-1")
+	   				]]>
+			</param>
+			<message>请选择是否权限分配</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.isQuery">
+		<field-validator type="requiredstring">
+			<message>请选择是否启用</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+				<![CDATA[
+	   					(paramMap.isQuery != "-1")
+	   				]]>
+			</param>
+			<message>请选择是否启用</message>
+		</field-validator>
+	</field>
+</validators>

@@ -34,13 +34,13 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
-import com.kuaiyidian.database.Dao;
 import com.shove.Convert;
 import com.shove.data.ConnectionManager;
 import com.shove.data.DataException;
 import com.shove.data.DataSet;
 import com.shove.data.dao.MySQL;
 import com.shove.vo.PageBean;
+import com.weili.database.Dao;
 
 /** 
  * 请添加方法说明注释

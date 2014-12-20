@@ -5,53 +5,47 @@
      <struts>
 	<package name="banner" extends="admin-default" namespace="/admin">
 	
-	 <action name="queryBannerInit"
-			class="bannerAction" method="queryBannerInit">
+	 <action name="queryBannerInit" class="bannerAction" method="queryBannerInit">
 			<result name="success">
-				/WEB-INF/page/admin/banner_index.jsp
+				/WEB-INF/page/admin/banner/banner_index.jsp
 			</result>
 		</action>
 		
-		<action name="queryBanner" class="bannerAction"
-			method="queryBanner">
+		<action name="queryBanner" class="bannerAction" method="queryBanner">
 			<result name="success">
-				/WEB-INF/page/admin/banner_index_info.jsp
+				/WEB-INF/page/admin/banner/banner_index_info.jsp
 			</result>
 		</action>	
 		
-		<action name="addBannerInit" class="bannerAction"
-			method="addBannerInit">
+		<action name="addBannerInit" class="bannerAction" method="addBannerInit">
 			<result name="success">
-				/WEB-INF/page/admin/banner_add.jsp
+				/WEB-INF/page/admin/banner/banner_add.jsp
 			</result>
 		</action>
-		<action name="addBanner" class="bannerAction"
-			method="addBanner">
+		<action name="addBanner" class="bannerAction" method="addBanner">
 			<result name="input">
-				/WEB-INF/page/admin/banner_add.jsp
+				/WEB-INF/page/admin/banner/banner_add.jsp
 			</result>
 			<result name="success" type="redirect">
 				queryBannerInit.do
 			</result>
 		</action>
 		
-		<action name="updateBannerInit" class="bannerAction"
-			method="updateBannerInit">
+		<action name="updateBannerInit" class="bannerAction" method="updateBannerInit">
 			<result name="success">
-				/WEB-INF/page/admin/banner_update.jsp
+				/WEB-INF/page/admin/banner/banner_update.jsp
 			</result>
 		</action>
 		<action name="updateBanner" class="bannerAction"
 			method="updateBanner">
 			<result name="input">
-				/WEB-INF/page/admin/banner_update.jsp
+				/WEB-INF/page/admin/banner/banner_update.jsp
 			</result>
 			<result name="success" type="redirect">
 				queryBannerInit.do?pageNow=%{pageNow}
 			</result>
 		</action>
-		<action name="deleteBanner" class="bannerAction"
-			method="deleteBanner">
+		<action name="deleteBanner" class="bannerAction" method="deleteBanner">
 			<result name="input">
 				queryBannerInit.do
 			</result>

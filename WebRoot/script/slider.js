@@ -25,7 +25,7 @@
                 l();
                 d();
                 t();
-                o()
+                o();
             }
             function l() {
                 k.css({
@@ -36,9 +36,9 @@
                 });
                 for (var y = 0; y < f; y++) {
                     if (y == p) {
-                        r.eq(y).show()
+                        r.eq(y).show();
                     } else {
-                        r.eq(y).hide()
+                        r.eq(y).hide();
                     }
                 }
                 for (var y = 0; y < r.length; y++) {
@@ -57,7 +57,7 @@
                                 opacity: v.opacity,
                                 speed: v.speed,
                                 delay: v.delay == null ? 0 : v.delay
-                            })
+                            });
                         }
                     }
                 }
@@ -67,50 +67,50 @@
                 function() {
                     clearInterval(j);
                     q.show();
-                    g.show()
+                    g.show();
                 });
                 h.bind("mouseleave",
                 function() {
                     t();
                     q.hide();
-                    g.hide()
+                    g.hide();
                 });
                 m.bind("click",
                 function() {
                     if (a(this).index() != p) {
                         p = a(this).index();
-                        o()
+                        o();
                     }
                 });
                 m.bind("mouseenter",
                 function() {
-                    n(a(this).find("img"), "src", "_off", "_on")
+                    n(a(this).find("img"), "src", "_off", "_on");
                 });
                 m.bind("mouseleave",
                 function() {
                     if (p != a(this).index()) {
-                        n(a(this).find("img"), "src", "_on", "_off")
+                        n(a(this).find("img"), "src", "_on", "_off");
                     }
                 });
                 q.bind("click",
                 function() {
-                    u()
+                    u();
                 });
                 g.bind("click",
                 function() {
                     p--;
                     if (p == -1) {
-                        p = f - 1
+                        p = f - 1;
                     }
-                    o()
-                })
+                    o();
+                });
             }
             function u() {
                 p = ++p % f;
-                o()
+                o();
             }
             function t() {
-                j = setInterval(u, c.autoRollingTime)
+                j = setInterval(u, c.autoRollingTime);
             }
             function o() {
                 for (var z = 0; z < r.length; z++) {
@@ -129,42 +129,42 @@
                                         top: A.data("y1"),
                                         opacity: 1,
                                         display: "none"
-                                    })
+                                    });
                                 } else {
                                     A.css({
                                         left: A.data("x1"),
                                         top: A.data("y1"),
                                         opacity: A.data("opacity")
-                                    })
+                                    });
                                 }
                                 A.stop().delay(A.data("delay")).queue(function() {
                                     a(this).css("display", "block");
-                                    a(this).dequeue()
+                                    a(this).dequeue();
                                 }).animate({
                                     left: A.data("x2"),
                                     top: A.data("y2"),
                                     opacity: 1
                                 },
-                                A.data("speed"))
+                                A.data("speed"));
                             }
                         }
                         n(m.eq(z).find("img"), "src", "_off", "_on");
                         m.eq(z).addClass("select");
-                        y.stop(true, true).fadeIn(c.bgSpeed)
+                        y.stop(true, true).fadeIn(c.bgSpeed);
                     } else {
                         A.hide();
                         n(m.eq(z).find("img"), "src", "_on", "_off");
                         m.eq(z).removeClass("select");
-                        y.stop(true, true).fadeOut(c.bgSpeed)
+                        y.stop(true, true).fadeOut(c.bgSpeed);
                     }
                 }
             }
             function n(w, z, v, x) {
                 var y = w.attr(z);
                 if (String(y).search(v) != -1) {
-                    w.attr(z, y.replace(v, x))
+                    w.attr(z, y.replace(v, x));
                 }
             }
-        })
-    }
+        });
+    };
 })(jQuery);

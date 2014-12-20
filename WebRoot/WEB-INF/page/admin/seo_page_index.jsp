@@ -99,6 +99,12 @@
 								class="white12">
 								<a href="querySeoPageInit.do">SEO列表</a>
 							</td>
+							<td width="2">
+								&nbsp;
+							</td>
+								<td width="100" align="center" bgcolor="#8594A9" class="white12">
+									<a href="addSeoPageInit.do">添加SEO</a>
+								</td>
 							<td>
 								&nbsp;
 							</td>

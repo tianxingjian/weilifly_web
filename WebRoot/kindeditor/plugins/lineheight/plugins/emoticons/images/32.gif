@@ -1,0 +1,240 @@
+ut("flag", -1);//失败
+				JSONUtils.printObject(object);
+				return null;
+			}
+			
+		}else{
+			object.put("flag", -1);//失败
+			JSONUtils.printObject(object);
+		}
+		
+		
+		return null;
+	}
+	
+	/** 
+	  * 订单详情
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-5-1
+	  * @edit 2014-5-1
+	  * @version 1.0
+	  * @return
+	 * @throws DataException 
+	 * @throws SQLException 
+	*/
+	public String queryOrderDetail() throws SQLException, DataException{
+		Long orderid = Convert.strToLong(request("id"), -1L);
+		Long userid = (Long)session(IConstants.SESSION_USER_ID);
+		if(userid==null||userid<=0){
+			return LOGIN ;
+		}
+		paramMap = orderService.queryUserOrderById(orderid, userid);
+		Integer saleType = (Integer)Convert.strToInt(paramMap.get("sale_type"), -1);
+		Map<String,String> params = new HashMap<String,String>();
+		List<Map<String,Object>> productList =  orderService.queryUserOrderDetailList(userid,params,null,orderid) ;
+		request("productList",productList);
+		if(saleType==IConstants.ORDER_TYPE_COMMON||saleType==IConstants.ORDER_TYPE_PANIC){
+			return SUCCESS ;
+		}
+		if(saleType==IConstants.ORDER_TYPE_APPOINT){
+			return "appoint" ;
+		}
+		return SUCCESS;
+	}
+	
+	/** 
+	  * 立即支付初始化
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-5-1
+	  * @edit 2014-5-1
+	  * @version 1.0
+	  * @return
+	 * @throws DataException 
+	 * @throws SQLException 
+	*/
+	public String queryOrderPayInit() throws SQLException, DataException{
+		Long orderid = Convert.strToLong(request("orderid"), -1L);
+		Long userid = (Long)session(IConstants.SESSION_USER_ID);
+		if(userid==null||userid<=0){
+			return LOGIN ;
+		}
+		
+		paramMap = orderService.queryUserOrderById(orderid, userid);
+		Map<String,String> params = new HashMap<String,String>();
+		List<Map<String,Object>> productList =  orderService.queryUserOrderDetailList(userid,params,null,orderid) ;
+		request("productList",productList);
+		Integer order_type = Convert.strToInt(paramMap.get("order_type")+"", -1) ;
+		if(null!=order_type&&order_type==IConstants.ORDER_TYPE_APPOINT){
+			return "appoint" ;
+		}
+		if(null!=order_type&&order_type!=IConstants.ORDER_TYPE_APPOINT){
+			return SUCCESS ;
+		}
+		return SUCCESS ;
+	}
+	
+	/** 
+	  * 查询已购买商品
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-5-3
+	  * @edit 2014-5-3
+	  * @version 1.0
+	  * @return
+	*/
+	public String queryOrderProductInit(){
+		return SUCCESS ;
+	}
+	public String queryOrderProductInfo() throws SQLException, DataException{
+		Long userid = (Long)session(IConstants.SESSION_USER_ID);
+		paramMap.put("userid", userid+"");
+		Integer status = IConstants.ORDER_STATUS_SUCCESS;// 订单状态
+		orderService.queryUserProductPage(pageBean,userid,paramMap) ;
+		return SUCCESS ;
+	}
+	/** 
+	  * 评论商品初始化
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-5-29
+	  * @edit 2014-5-29
+	  * @version 1.0
+	  * @return
+	 * @throws Exception 
+	*/
+	public String commentOrderProductInit() throws Exception{
+		Long userid = (Long)session(IConstants.SESSION_USER_ID);
+		if(userid==null||userid<=0){
+			return LOGIN ;
+		}
+		Long productid = Convert.strToLong(request("productid"),-1L);
+		request("orderid" , request("orderid") ) ;
+		request("itemid" , request("id") ) ;
+		paramMap = productService.queryProductById(productid) ;
+		int countType =  1 ;
+		Map<String,String> proMap = productService.queryProductCountInfo(productid,countType) ;
+		if(proMap!=null){
+			paramMap.put("buy_total", proMap.get("comm_total"));
+		}else{
+			paramMap.put("buy_total", "0");
+		}
+		return SUCCESS ;
+	}
+	/** 
+	  * 评论商品
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-5-29
+	  * @edit 2014-5-29
+	  * @version 1.0
+	  * @return
+	 * @throws Exception 
+	*/
+	public String commentOrderProduct() throws Exception{
+		Long userid = (Long)session(IConstants.SESSION_USER_ID);
+		JSONObject object = new JSONObject();
+		Long id = Convert.strToLong(paramMap.get("id"),-1L);
+		Long orderid = Convert.strToLong(paramMap.get("orderid"),-1L);
+		Integer level = Convert.strToInt(paramMap.get("level"),-1);
+		Long productid = Convert.strToLong(paramMap.get("productid"),-1L);
+		String content = Convert.strToStr(paramMap.get("content"),null);
+		if(userid==null||userid<=0){
+			object.put("flag",-1) ;//未登录
+			object.put("msg","你还未登录，请先登录！") ;
+			JSONUtils.printObject(object);
+			return null ;
+		}
+		List<Map<String,Object>> commList = commentService.queryCommentByOrderInfo(userid,orderid,productid);
+		if(commList!=null&&commList.size()>0){
+			object.put("flag",-2) ;//已评论
+			object.put("msg","请勿重复评论商品！") ;
+			JSONUtils.printObject(object);
+			return null ;
+		}
+		Long reid = -1L ;
+		reid = commentService.addComment(id,productid, content, level, userid, orderid);
+		if(reid!=null&&reid>0){
+			object.put("flag",1) ;//评论成功
+			object.put("msg","评论商品成功！") ;
+			JSONUtils.printObject(object);
+			return null ;
+		}else{
+			object.put("flag",2) ;//评论失败
+			object.put("msg","评论商品失败！") ;
+			JSONUtils.printObject(object);
+			return null ;
+		}
+	}
+	
+	/** 
+	  * 删除以购买商品
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-5-3
+	  * @edit 2014-5-3
+	  * @version 1.0
+	  * @return
+	  * @throws SQLException
+	  * @throws DataException
+	  * @throws IOException
+	*/
+	public String deleteOrderProduct() throws SQLException, DataException, IOException{
+		Long uid = Convert.strToLong(paramMap.get("uid"), -1L);
+		String idStr = Convert.strToStr(paramMap.get("ids"), null);
+		Long returnid = orderService.deleteOrderProduct(uid,idStr);
+		JSONObject object = new JSONObject();
+		if(returnid!=null&&returnid>0){
+			object.put("flag",1) ;//成功
+			JSONUtils.printObject(object);
+			return null;
+		}else{
+			object.put("flag",2) ;//失败
+			JSONUtils.printObject(object);
+			return null;
+		}
+	}
+	/** 
+	 * @return the message 
+	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/** 
+	 * @param message the message to set 
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	/** 
+	 * @param OrderService the OrderService to set 
+	 */
+	public void setOrderService(OrderService orderService) {
+		this.orderService = orderService;
+	}
+
+	/** 
+	 * @return the orderService 
+	 */
+	public OrderService getOrderService() {
+		return orderService;
+	}
+
+	/** 
+	 * @return the orderItemService 
+	 */
+	public OrderItemService getOrderItemService() {
+		return orderItemService;
+	}
+
+	/** 
+	 * @param orderItemService the orderItemService to set 
+	 */
+	public void setOrderItemService(OrderItemService orderItemService) {
+		this.orderItemService = orderItemService;
+	}
+	/** 
+	 * @param regionService

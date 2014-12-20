@@ -68,7 +68,7 @@ public class StringUtils {
 	
 	/**
 	 * @Description:
-	 * @Author Yang Cheng
+	 * @Author 微力科技
 	 * @Date: Feb 9, 2012 1:57:52 AM
 	 * @param inputString
 	 * @return

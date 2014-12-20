@@ -1,10 +1,10 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@page import="java.util.Date"%>
 <%@page import="com.shove.web.util.ServletUtils"%>
-<%@page import="com.kuaiyidian.constants.IConstants" %>
+<%@page import="com.weili.constants.IConstants" %>
 <%@ page import="com.shove.web.util.DesSecurityUtil" %>
-<%@ page import="com.kuaiyidian.entity.User" %>
-<%@ page import="com.kuaiyidian.entity.Admin" %>
+<%@ page import="com.weili.entity.User" %>
+<%@ page import="com.weili.entity.Admin" %>
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib prefix="shove" uri="/shove-tags" %>
  <%

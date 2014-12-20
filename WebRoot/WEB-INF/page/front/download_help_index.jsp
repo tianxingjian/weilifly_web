@@ -35,7 +35,7 @@
      <div class="txt">${helpMap.content}</div>
      </div>
      <div class="right-box">
-     <div class="m-s-ban" style="border:1px solid #e1e1e1;"> <a href="updateProgramIndex.do">more+</a>升级程序</div>
+     <div class="m-s-ban" style="border:1px solid #e1e1e1;"> <a href="preDownloadIndex.do">more+</a>升级程序</div>
      <s:iterator  value="#request.queryDownloadHelpList"  var="bean"  status="sta">
        <dl class="down-item" align="left">
          <dt><a href="#"><img src="${bean.image }"/></a></dt>

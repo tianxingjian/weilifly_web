@@ -1,0 +1,54 @@
+机号码格式错误!");
+			JSONUtils.printStr(object.toString());
+			return null;
+		}*/
+		if (StringUtils.isBlank(mobile_phone)&&StringUtils.isBlank(phone)) {
+			object.put("flag","2");
+			object.put("msg", "手机号码或固定电话不能为空,两种联系方式可填写一种即可!");
+			JSONUtils.printStr(object.toString());
+			return null;
+		}
+		/*Pattern patternPhone = Pattern.compile("^((\\(\\d{2,3}\\))|(\\d{3}\\-))?(\\(0\\d{2,3}\\)|0\\d{2,3}-)?[1-9]\\d{6,7}(\\-\\d{1,4})?$");
+		Matcher maPhone = pattern.matcher(phone);
+		if (phone!=null&&!maPhone.matches()) {
+			object.put("flag","3");
+			object.put("msg", "固定电话格式错误!");
+			JSONUtils.printStr(object.toString());
+			return null;
+		}*/
+		if(provinceid<0||cityid<0){
+			object.put("flag","4");
+			object.put("msg", "请选择省市区信息");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		
+		if(StringUtils.isBlank(address)){
+			object.put("flag","5");
+			object.put("msg", "地址不能为空");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		if(address.length()>120){
+			object.put("flag","6");
+			object.put("msg", "地址长度不能超过120个字");
+			JSONUtils.printObject(object);
+			return null;
+		}
+//		if(StringUtils.isBlank(postalcode)){
+//			object.put("flag","7");
+//			object.put("msg", "请输入6位数邮政编码");
+//			JSONUtils.printObject(object);
+//			return null;
+//		}
+		// 验证邮编
+//		Pattern pattern3 = Pattern.compile("^[0-9]{6}$");
+//		Matcher pricess3 = pattern3.matcher(postalcode);
+//		if (postalcode!=null&&!pricess3.matches()) {
+//			object.put("flag","8");
+//			object.put("msg", "邮政编码格式错误!");
+//			JSONUtils.printStr(object.toString());
+//			return null;
+//		}
+		Long returnId = -1L ;
+		returnId = addressService.addAddress(consignee,pro

@@ -1,0 +1,144 @@
+printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		get_content =StrCharSetTool.toUTF_8(get_content);
+   	    return get_content ;
+   }
+   
+   private static String queryExpressInfo() throws Exception{
+		String express_key="112.95.172.42";
+	    String express_url= "http://whois.pconline.com.cn/ipJson.jsp" ;
+	    String request_url =express_url+"?"+"ip="+express_key+"&level=1";  
+		String get_content = "";
+		 try
+			{
+				URL url= new URL(request_url);
+				URLConnection con=url.openConnection();
+				 con.setAllowUserInteraction(false);
+				   InputStream urlStream = url.openStream();
+				   String type = URLConnection.guessContentTypeFromStream(urlStream);
+				   String charSet=null;
+				   if (type == null)
+				    type = con.getContentType();
+				   if (type == null || type.trim().length() == 0 || type.trim().indexOf("text/html") < 0)
+				    return null;
+
+				   if(type.indexOf("charset=") > 0)
+				    charSet = type.substring(type.indexOf("charset=") + 8);
+
+				   byte b[] = new byte[10000];
+				   int numRead = urlStream.read(b);
+				   String content = new String(b, 0, numRead);
+				   while (numRead != -1) {
+				    numRead = urlStream.read(b);
+				    if (numRead != -1) {
+				     //String newContent = new String(b, 0, numRead);
+				     String newContent = new String(b, 0, numRead, charSet);
+				     content += newContent;
+				    }
+				   }
+				   get_content = content ;
+				   urlStream.close();
+			} catch (MalformedURLException e)
+			{
+				e.printStackTrace();
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			get_content =StrCharSetTool.toUTF_8(get_content);
+	   	    return get_content ;
+	   }
+	   
+   /** 
+  * HTML返回
+  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+  * @class com.fs.action.front
+  * @since 2014-6-16
+  * @edit 2014-6-16
+  * @version 1.0
+  * @param delivery_code
+  * @param com
+  * @param showtype
+  * @return
+  * @throws Exception
+*/
+private static   String queryExpressHtml(String delivery_code ,String com ,int showtype) throws Exception{
+	   String express_key=IConstants.EXPRESS_KEY ;
+       String express_url= IConstants.EXPRESS_HTML_URL ;
+       String request_url =express_url+"?"+"key="+express_key+"&com="+com+"&nu="+delivery_code+"" ;
+	  String get_content = "";
+	 try
+		{
+			URL url= new URL(request_url);
+			URLConnection con=url.openConnection();
+			 con.setAllowUserInteraction(false);
+			   InputStream urlStream = url.openStream();
+			   String type = URLConnection.guessContentTypeFromStream(urlStream);
+			   String charSet=null;
+			   if (type == null)
+			    type = con.getContentType();
+			   if(type.indexOf("charset=") > 0){
+				   charSet = type.substring(type.indexOf("charset=") + 8);
+			   }else{
+				   charSet = "UTF-8" ;  //默认
+			   }
+			   byte b[] = new byte[10000];
+			   int numRead = urlStream.read(b);
+			   String content = new String(b, 0, numRead);
+			   while (numRead != -1) {
+			    numRead = urlStream.read(b);
+			    if (numRead != -1) {
+			     String newContent = new String(b, 0, numRead, charSet);
+			     content += newContent;
+			    }
+			   }
+			   get_content = content ;
+			   urlStream.close();
+		} catch (MalformedURLException e)
+		{
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		get_content =StrCharSetTool.toUTF_8(get_content);
+  	    return get_content ;
+   }
+//  public static void main(String[] args) throws Exception {
+//		String com = "yuantong" ;
+//	    String delivery_number ="7613" ;
+//	    //String input = queryExpressHtml(delivery_number ,com,0) ;
+//	   String input = queryExpressInfo();
+//	    System.out.println(input);
+//	    JSONArray  jsona =  JSONUtils.toJSONArray(input);
+//	    JSONObject json = JSON.parseObject(input) ;
+////		String message = json.getString("IPCallBack");
+////		Integer status = json.getInteger("status") ;
+////	    System.out.println("快递提示信息："+message+"\n快递查询状态： "+status+" \n返回内容： "+input);
+////		List<Map<String,Object>> deliveryList = new ArrayList<Map<String,Object>>();
+////		if(status!=null&&status==1){
+////			//快件当前状态
+//////			0：在途，即货物处于运输过程中；
+//////			1：揽件，货物已由快递公司揽收并且产生了第一条跟踪信息；
+//////			2：疑难，货物寄送过程出了问题；
+//////			3：签收，收件人已签收；
+//////			4：退签，即货物由于用户拒签、超区等原因退回，而且发件人已经签收；
+//////			5：派件，即快递正在进行同城派件；
+//////			6：退回，货物正处于退回发件人的途中；
+////			//Integer state = json.getInteger("state");
+////			JSONArray ary = json.getJSONArray("data");
+////			for (Object obj:ary) {
+////				Map<String,Object> map  = new HashMap<String,Object>();
+////				map.put("time", ((JSONObject)obj).getString("time"));
+////				map.put("context", ((JSONObject)obj).getString("context"));
+////				deliveryList.add(map);
+////
+//	    }
+  
+  
+	/**
+	 * 添加订单初始化
+	 

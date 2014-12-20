@@ -1,0 +1,124 @@
+&comDiscont.compareTo(BigDecimal.ZERO)>0&&comAllPrice!=null&&comAllPrice.compareTo(BigDecimal.ZERO)>0){
+				com_price  = com_price.multiply(comDiscont.divide(comAllPrice).setScale(2,BigDecimal.ROUND_HALF_UP));
+				request("com_flag",1) ;
+				request("com_discont",com_price.setScale(2,BigDecimal.ROUND_HALF_UP));
+			}else{
+				request("com_flag",2) ;
+			}
+			
+	   }else{
+		   request("com_flag",2) ;
+	   }
+		//查询运费
+		
+		Map<String,Object> cityShippMap = logisticsShippingService.queryLogisticsShipp(logisticsid ,cityid);
+		if(cityShippMap!=null&&cityShippMap.get("shipping")!=null){
+			BigDecimal shipp = Convert.strToBigDecimal(cityShippMap.get("shipping")+"",new BigDecimal(0));
+			shipp = shipp.setScale(2);
+			request("shipping",shipp);
+		}else{
+			request("shipping",null);
+		}
+		
+		//查询优惠券抵消的金额
+		Map<String,String> cpmap = null; 
+		if(couponid>0){
+			//查询优惠券抵消的金额
+			cpmap = couponDetailService.queryUserCouponDetail(userid, couponid);
+			if(cpmap!=null){
+				request("coupon_flag","1");
+				request("xf_amount",cpmap.get("amount"));
+			}else{
+				request("coupon_flag","2");
+				request("xf_amount",null);
+			}
+		}else{
+			request("coupon_flag","2");
+			request("xf_amount",null);
+		}
+		
+		BigDecimal shipp = Convert.strToBigDecimal(cityShippMap.get("shipping")+"",new BigDecimal(0));
+		BigDecimal cpamount = new BigDecimal(0);
+		if(cpmap!=null){
+			cpamount  = Convert.strToBigDecimal(cpmap.get("amount")+"",new BigDecimal(0));
+		}
+		BigDecimal total_price = Convert.strToBigDecimal(totalPrice+"",new BigDecimal(0));
+		total_price  = total_price.subtract(com_price);
+		//普通商品满多少包邮：
+		int shipp_status = 2 ;//默认不包邮；
+		Map<String,String> contentMap = configService.queryContentMap(9);//满多少包邮;
+		if(contentMap!=null){
+			BigDecimal manPrice = Convert.strToBigDecimal(contentMap.get("content")+"" ,new BigDecimal(0));
+			if(manPrice!=null&&manPrice.compareTo(BigDecimal.ZERO)>0&&total_price.compareTo(manPrice)>=0){
+				shipp_status = 1  ;//包邮
+			}
+		}
+		request("shipp_status",shipp_status);
+		
+		//查询积分抵扣的金额
+		//积分商品
+		BigDecimal product_cashtotal =  new BigDecimal(0);
+		List<Map<String,Object>> intProductList = new ArrayList<Map<String,Object>>() ;
+		for(Map<String,Object> map :carList){
+		    int int_status = -1 ;
+		    if(map.get("intcash_status")!=null){
+		    	int_status = (Integer)map.get("intcash_status") ;
+		    }
+		    if(1==int_status){
+		    	intProductList.add(map) ;
+		    }
+		}
+		product_cashtotal  = Convert.strToBigDecimal(totalMap.get("int_total"),new BigDecimal(0)) ;
+		BigDecimal input_int = Convert.strToBigDecimal( paramMap.get("input_int"),new BigDecimal(0)) ;
+		BigDecimal int_cashtotal =  new BigDecimal(0);
+		//不包邮加运费
+	    if(shipp_status!=1){
+	    	total_price = total_price.add(shipp) ;
+	    }
+		BigDecimal realTotalPrice = total_price.subtract(cpamount); 
+		if(intProductList.size()>0){
+			//查询可用积分
+			Map<String,String> user = userService.queryUserById(userid);
+			BigDecimal integration = Convert.strToBigDecimal(user.get("integration"), new BigDecimal(0)) ;
+			if(integration.compareTo(BigDecimal.ZERO)>0&&product_cashtotal.compareTo(integration)<=0){
+				request("int_flag","1");//存在积分商品且积分够用
+				Map<String,String> intMap = configService.queryContentMap(3);
+				BigDecimal	cashtotal = Convert.strToBigDecimal( intMap.get("content"),new BigDecimal(0)) ;
+				BigDecimal	user_cantotal = integration.subtract(product_cashtotal) ;//扣除积分商品的积分剩余可用
+				BigDecimal	kou_inttotal = new BigDecimal(0);//商品所需积分+积分抵现金的积分
+				BigDecimal	can_input = new BigDecimal(0);//扣除输入的积分剩余可用
+				if(input_int.compareTo(BigDecimal.ZERO)>=0&&input_int.compareTo(user_cantotal)<=0){
+				   int_cashtotal = cashtotal.multiply(input_int.divide(new BigDecimal(100)).setScale(2,BigDecimal.ROUND_HALF_UP)) ;
+				}else{
+					input_int = new BigDecimal(0) ;//积分不合法清零
+					int_cashtotal = new BigDecimal(0) ;
+				}
+                if(realTotalPrice.compareTo(int_cashtotal)>=0){
+                	realTotalPrice = realTotalPrice.subtract(int_cashtotal) ;
+				}else{
+					input_int = new BigDecimal(0) ;//所抵金额超过商品金额清零
+					int_cashtotal = new BigDecimal(0) ;
+				}
+                kou_inttotal = kou_inttotal.add(product_cashtotal).add(input_int) ;
+                user_cantotal =  user_cantotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+                can_input =   integration.subtract(input_int).setScale(2,BigDecimal.ROUND_HALF_UP) ;
+                int_cashtotal = int_cashtotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+                input_int = input_int.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+                product_cashtotal = product_cashtotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+                kou_inttotal =  kou_inttotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+				request("user_int",user_cantotal);//用户积分
+				request("can_input",can_input);//用户可以输入的积分
+				request("int_cashtotal",int_cashtotal);//抵扣总和
+				request("input_int",input_int);
+				request("product_int",product_cashtotal);
+				request("kou_inttotal",kou_inttotal);
+					
+			}else{
+				product_cashtotal = product_cashtotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+				request("product_int",product_cashtotal);
+				request("int_flag","3");
+				request("int_cashtotal","0.00");//抵扣总和
+				integration = integration.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+				request("user_int",integration+"");//用户积分
+				request("can_input",integration+"");//用户可以输入的积分
+				request("int_msg","积分不足,暂时不能购买") ;

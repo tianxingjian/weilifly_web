@@ -7,16 +7,16 @@
 	<package name="frontDownload" extends="front-default" namespace="/">
 		<!-- 下载综合-->
 		<action name="downloadIndex" class="frontDownloadAction" method="downloadIndex">
-			<result name="success" >/WEB-INF/page/front/download_index.jsp</result>
+			<result name="success" >/WEB-INF/page/front/download/download_index.jsp</result>
 		</action>
 		
-		<!-- 升级程序-->
-		<action name="updateProgramIndex" class="frontDownloadAction" method="updateProgramIndex">
-			<result name="success" >/WEB-INF/page/front/update_program_index.jsp</result>
+		<!-- 前台资料下载preDownload开始-->
+		<action name="preDownloadIndex" class="frontDownloadAction" method="preDownloadIndex">
+			<result name="success" >/WEB-INF/page/front/download/download_son_index.jsp</result>
 		</action>
-		
-		<action name="downloadProgram" class="frontDownloadAction" method="downloadProgram">
+		<action name="downloadData" class="frontDownloadAction" method="downloadData">
 		</action>
+		<!-- 前台资料下载preDownload结束-->
 		
 		<!-- 广告片-->
 		<action name="advertiseIndex" class="frontDownloadAction" method="advertiseIndex">
@@ -42,6 +42,18 @@
 		<action name="downloadAndroidMaterials" class="frontDownloadAction" method="downloadAndroidMaterials">
 			<result name="msg" >/WEB-INF/page/message.jsp</result>
 		</action>
+		
+		
+		
+		
+		<!-- 精品视频下载 video-->
+		
+		<!-- 行业报告下载industryReport -->
+		
+		<!-- 案例下载 case-->
+		
+		
+		
 		
 	</package>
 </struts>

@@ -16,6 +16,14 @@
 		<script type="text/javascript" src="script/easing.js"></script>
 		<script type="text/javascript" src="script/json2.js"></script>
 		<script type="text/javascript">
+		  $(function(){
+		  		$(".nav li:eq(4)").attr("class","cur");
+		  		$.sideLi(".nav",".sliding-block");
+		  		$.sideLi(".second-nav",".s-block1");
+		  		$.sideLi(".n-s-nav-1",".s-block","click");
+		  });
+		</script>
+		<script type="text/javascript">
 	      $(function(){
 	      		$(".nav li:eq(4)").attr("class","cur");	   
 	      		init();
@@ -234,14 +242,7 @@
 		<!--内容区域content 结束-->
 		<jsp:include page="/include/footer.jsp"></jsp:include>
 		<script type="text/javascript" src="script/commom.js"></script>
-		<script type="text/javascript">
-		  $(function(){
-		  		$(".nav li:eq(4)").attr("class","cur");
-		  		$.sideLi(".nav",".sliding-block");
-		  		$.sideLi(".second-nav",".s-block1");
-		  		$.sideLi(".n-s-nav-1",".s-block","click");
-		  })
-		</script>
+		
 		<script type="text/javascript"src="http://api.map.baidu.com/api?v=2.0&ak=8227b2e36aa0b645dfd3080b2b748ab7"></script>
 	</body>
 </html>

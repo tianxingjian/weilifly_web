@@ -25,7 +25,7 @@
 				$("#btn_save").click(function(){
 					var even = $(this);
 					even.hide();
-					debugger;
+					//debugger;
 					param["id"] = $("#id").val();
 					param["var"] = editor_details.html();
 					$.shovePost("updateService.do",param,function(data){

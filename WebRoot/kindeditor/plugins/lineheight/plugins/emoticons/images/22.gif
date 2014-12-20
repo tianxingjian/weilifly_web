@@ -1,0 +1,70 @@
+-1 ; 
+		Integer sale_type = Convert.strToInt(pMap.get("product_saletype"), -1) ;
+		if(sale_type==IConstants.PRODUCT_SALTYPE_ORDER){
+			type = IConstants.CART_TYPE_APPOINT_IMM ;//预约立即购买
+			boolean bool =  checkBuyNum(userid,productid) ;
+			if(!bool){
+				msgflag=3;
+				message = "该商品为预约商品，每个账号仅限购买一次" ;
+				return INPUT ;
+			}
+		}
+		if(sale_type==IConstants.PRODUCT_SALTYPE_PANIC){
+			type = IConstants.CART_TYPE_PANIC_IMM ;//抢购立即购买
+			boolean bool =  checkBuyNum(userid,productid) ;
+			if(!bool){
+				msgflag=4;
+				message = "该商品为抢购商品，每个账号仅限购买一次" ;
+				return INPUT ;
+			}
+		}
+		if(sale_type==IConstants.PRODUCT_SALTYPE_COMMON){
+			type = IConstants.CART_TYPE_COMM_IMM ;//普通立即购买
+			Map<String,String> totalMap =productService.queryProductTotalInt(sale_type, productid, product_num, userid) ;
+			if(totalMap!=null){
+				Integer integration_flag  = Convert.strToInt(totalMap.get("inte_flag"), -1) ;
+				if(integration_flag!=null&&integration_flag!=1){
+					 msgflag=5;
+					 message = "购买该商品需要积分，您的账户可用积分不足!" ;
+					 return INPUT ;
+				}
+			}
+		}
+		String carIds = "" ;
+		if(carid>0&&carIds==null){
+			carIds = carid+"," ; 
+		}
+		paramMap.put("status", 1 + ""); // 是否可用
+		paramMap.put("provinceid",IConstants.DEFAULT_PROVINCEID+"");
+		paramMap.put("cityid",IConstants.DEFAULT_CITYID+"");
+		paramMap.put("areaid",IConstants.DEFAULT_AREAID+"");
+		//配送物流
+		List<Map<String,Object>> logistList = logisticsService.queryLogisticsAll();
+		request("logistList",logistList);
+		//加载省份
+		List<Map<String,Object>> provincelist = regionService.queryRegionList(-1L, 1L, 1);
+		request("provinceList",provincelist);
+		//加载地址
+		addressList = addressService.queryUserAddress(userid);
+		request("type",type);
+		request("carIds",carIds);
+		 //1 普通主商品 2普通副商品  3普通立即购买4 预约商品 5抢购商品
+		if(type==IConstants.CART_TYPE_PANIC_IMM||type==IConstants.CART_TYPE_COMM_IMM){
+			Integer[]  statuss = new Integer[1] ;
+			if(type==IConstants.CART_TYPE_PANIC_IMM)statuss[0] = IConstants.CART_TYPE_PANIC_IMM ;
+			if(type==IConstants.CART_TYPE_COMM_IMM)statuss[0] = IConstants.CART_TYPE_COMM_IMM ;
+			Map<String,String> totalMap = cartService.queryProductCartTotalPrice(userid,carIds,statuss);
+				if(totalMap!=null){
+					totalPrice = totalMap.get("total_price");
+					totalItems = totalMap.get("total_items");
+					totalNum = totalMap.get("total_num");
+					if(carIds==null||carIds==""){
+						totalPrice= "0.00" ;
+					}
+				}
+			//根据商品消费总金额查询满足条件的优惠券
+			//可用优惠券
+			Integer coupon_status = IConstants.COUPON_USED_NO ;//未使用的 
+			carList = cartService.queryProductCartByUserId(userid, carIds, statuss) ;
+			List<Long> productidList = new ArrayList<Long>();
+			for(Map<String,Object> map:carLis

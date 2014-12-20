@@ -1,0 +1,83 @@
+
+			order_type = IConstants.ORDER_TYPE_COMMON ;
+		}
+		if(saleType==IConstants.PRODUCT_SALTYPE_PANIC){
+			order_type = IConstants.ORDER_TYPE_PANIC ;
+		}
+		if(saleType==IConstants.PRODUCT_SALTYPE_ORDER){
+			order_type = IConstants.ORDER_TYPE_APPOINT ;
+		}
+	    //添加订单
+		Map<String,String> reflag = orderService.addOrder(input_int ,carIds,userid ,addressid , deliveryid , couponid, send_datetype , pay_type  ,invoice_type  ,invoice ,invoice_name ,remark,saleType,comm_type_flag ,order_type);
+		if(reflag!=null&&(reflag.get("flag")+"").equalsIgnoreCase("14")){
+			paramMap.put("orderid", reflag.get("orderid"));
+			messageService.messageSendAll(paramMap, IConstants.MSG_TYPE_ORDER_CREATED, userid, user.getUserName()) ;
+			object.put("flag",1);
+			object.put("msg","订单提交成功");
+			object.put("orderid",reflag.get("orderid"));
+			JSONUtils.printObject(object);
+			return null;
+		}else if(reflag!=null&&!(reflag.get("flag")+"").equalsIgnoreCase("14")){
+			object.put("flag",reflag.get("flag")+"");//提交失败
+			object.put("msg",reflag.get("msg"));
+			JSONUtils.printObject(object);
+			return null;
+		}else{
+			object.put("flag",2);//提交失败
+			object.put("msg","订单提交失败");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		
+		
+	}
+	
+	/** 
+	  *提交订单成功
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-4-30
+	  * @edit 2014-4-30
+	  * @version 1.0
+	  * @return
+	 * @throws DataException 
+	 * @throws SQLException 
+	*/
+	public String addOrderSuccess() throws SQLException, DataException{
+		Long orderid = Convert.strToLong(request("id"), -1L) ;
+		Long userid  = Convert.strToLong(session(IConstants.SESSION_USER_ID)+"", -1L) ;
+		if(userid==null||userid<=0){
+			return LOGIN ;
+		}
+		paramMap = orderService.queryOrderById(orderid, userid) ;
+		return SUCCESS;
+	}
+	
+	/** 
+	  * 查询订单页面商品
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-4-29
+	  * @edit 2014-4-29
+	  * @version 1.0
+	  * @return
+	 * @throws Exception 
+	*/
+	public String queryCartProduct() throws Exception{
+		//加载商品
+		Integer[]  statuss = {IConstants.CART_TYPE_COMM_MAIN,IConstants.CART_TYPE_COMM_FU,IConstants.CART_TYPE_COMM_IMM,IConstants.CART_TYPE_PANIC_IMM} ;
+		Long userid = (Long)session(IConstants.SESSION_USER_ID);
+		//更新购物车将提交的商品勾选
+		String carIds = Convert.strToStr( paramMap.get("carIds"), null) ;
+		Long couponid = Convert.strToLong( paramMap.get("couponid"), -1L) ;
+		Long logisticsid = Convert.strToLong( paramMap.get("logisticsid"), -1L) ;
+		Long cityid = Convert.strToLong( paramMap.get("cityid"), -1L) ;
+		carList = cartService.queryProductCartByUserId(userid, carIds, statuss) ;
+        Map<String,String> totalMap = cartService.queryProductCartTotalPrice(userid,carIds,statuss);
+		if(totalMap!=null){
+			totalPrice = totalMap.get("total_price");
+			totalPrice = Convert.strToBigDecimal(totalPrice, new BigDecimal(0)).setScale(2,BigDecimal.ROUND_HALF_UP) +"" ;
+			totalItems = totalMap.get("total_items");
+			totalNum = totalMap.get("total_num");
+			if(carIds==null||carIds==""){
+				tot

@@ -1,0 +1,18 @@
+/*******************************************************************************
+* KindEditor - WYSIWYG HTML Editor for Internet
+* Copyright (C) 2006-2011 kindsoft.net
+*
+* @author Roddy <luolonghao@gmail.com>
+* @site http://www.kindsoft.net/
+* @licence http://www.kindsoft.net/license.php
+*******************************************************************************/
+
+KindEditor.plugin('media', function(K) {
+	var self = this, name = 'media', lang = self.lang(name + '.'),
+		allowMediaUpload = K.undef(self.allowMediaUpload, true),
+		allowFileManager = K.undef(self.allowFileManager, false),
+		formatUploadUrl = K.undef(self.formatUploadUrl, true),
+		extraParams = K.undef(self.extraFileUploadParams, {}),
+		filePostName = K.undef(self.filePostName, 'imgFile'),
+		uploadJson = K.undef(self.uploadJson, self.basePath + 'php/upload_json.php');
+	self.plugin.media = {

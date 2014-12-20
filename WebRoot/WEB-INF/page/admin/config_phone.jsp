@@ -20,7 +20,7 @@
 				$("#btn_save").click(function(){
 					var even = $(this);
 					even.hide();
-					debugger;
+					//debugger;
 					param["id"] = $("#id").val();
 					param["name"] =$("#phone").val();
 					$.shovePost("updatePhone.do",param,function(data){

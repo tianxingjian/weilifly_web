@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="paramMap.pageUrl">
+		<field-validator type="requiredstring">
+			<message>页面url不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.seoTitle">
+		<field-validator type="requiredstring">
+			<message>Title不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.seoKeyWord">
+		<field-validator type="requiredstring">
+			<message>Keywords不能为空</message>
+		</field-validator>
+	</field>
+	<field name="paramMap.seoDescription">
+		<field-validator type="requiredstring">	
+			<message>Description不为能空</message>
+		</field-validator>
+	</field>
+</validators>

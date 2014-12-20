@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="weiliDisplay" extends="admin-default" namespace="/admin">
+	
+		<!-- 最新动态初始化 -->
+		<action name="queryNewestInit" class="weiliDisplayAction" method="queryNewestInit">
+			<result name="success">/WEB-INF/page/admin/weiliDisplay/newest_index.jsp</result>
+		</action>
+		<!-- 最新动态 -->
+		<action name="queryNewestInfo" class="weiliDisplayAction" method="queryNewestInfo">
+			<result name="success">/WEB-INF/page/admin/weiliDisplay/newest_index_info.jsp</result>
+		</action>
+	
+		<!-- 添加最新动态初始化 -->
+		<action name="addNewestInit" class="weiliDisplayAction" method="addNewestInit">
+			<result name="success">/WEB-INF/page/admin/weiliDisplay/newest_add.jsp</result>
+		</action>
+		
+		<!-- 添加最新动态 -->
+		<action name="addNewest" class="weiliDisplayAction" method="addNewest">
+		</action>
+	
+		<!-- 删除最新动态 -->
+		<action name="deleteNewest" class="weiliDisplayAction" method="deleteNewest">
+		</action>
+	
+	
+	
+		<!-- 展示内容初始化 -->
+		<action name="queryDisplayInit" class="weiliDisplayAction" method="queryDisplayInit">
+			<result name="success">/WEB-INF/page/admin/weiliDisplay/weili_display_index.jsp</result>
+		</action>
+		
+		<!-- 展示内容 -->
+		<action name="queryDisplayInfo" class="weiliDisplayAction" method="queryDisplayInfo">
+			<result name="success">/WEB-INF/page/admin/weiliDisplay/weili_display_index_info.jsp</result>
+		</action>
+		
+		<!-- 添加展示内容初始化 -->
+		<action name="addDisplayInit" class="weiliDisplayAction" method="addDisplayInit">
+			<result name="success">/WEB-INF/page/admin/weiliDisplay/weili_display_add.jsp</result>
+		</action>
+		
+		<!-- 添加展示内容 -->
+		<action name="addDisplay" class="weiliDisplayAction" method="addDisplay">
+		</action>
+		
+		<!-- 修改展示内容初始化 -->
+		<action name="updateDisplayInit" class="weiliDisplayAction" method="updateDisplayInit">
+			<result name="success">/WEB-INF/page/admin/weiliDisplay/weili_display_update.jsp</result>
+		</action>
+		
+		<!-- 修改展示内容 -->
+		<action name="updateDisplay" class="weiliDisplayAction" method="updateDisplay">
+		</action>
+		
+		<!-- 删除展示内容 -->
+		<action name="deleteDisplay" class="weiliDisplayAction" method="deleteDisplay">
+		</action>
+		
+		<!-- 2级联动 -->
+		<action name="ajaxqueryDisplayType" class="weiliDisplayAction" method="ajaxqueryDisplayType">
+		</action>
+		
+		<!-- 潜在用户信息展示 -->
+		<action name="queryConsumersInit" class="weiliDisplayAction" method="queryConsumersInit">
+			<result name="success">/WEB-INF/page/admin/consumers/consumers_index.jsp</result>
+		</action>
+		
+		<action name="queryConsumersInfo" class="weiliDisplayAction" method="queryConsumersInfo">
+			<result name="success">/WEB-INF/page/admin/consumers/consumers_index_info.jsp</result>
+		</action>
+		<!-- 删除潜在用户信息 deleteConsumers-->
+		<action name="deleteConsumers" class="weiliDisplayAction" method="deleteConsumers">
+		</action>
+		<!-- 备注潜在用户信息 addRemark-->
+		
+		<action name="addRemarkInit" class="weiliDisplayAction" method="addRemarkInit">
+			<result name="success">/WEB-INF/page/admin/consumers/remark_add.jsp</result>
+		</action>
+		<action name="addRemark" class="weiliDisplayAction" method="addRemark">
+		</action>
+	</package>
+</struts>

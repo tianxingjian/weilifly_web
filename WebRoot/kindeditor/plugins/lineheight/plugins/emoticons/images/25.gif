@@ -1,0 +1,60 @@
+rt.strToBigDecimal(totalPrice, new BigDecimal(0)).setScale(2,BigDecimal.ROUND_HALF_UP) +"" ;
+			totalItems = totalMap.get("total_items");//总条目
+			totalAppoint = totalMap.get("appoint_total");//总条目
+			totalFinal = totalMap.get("final_total");//总条目
+			
+			totalNum = totalMap.get("total_num");//总件数
+			if(carIds==null||carIds==""){
+				totalPrice= "0.00" ;
+			}
+		}
+		//查询运费
+		Map<String,Object> cityShippMap = logisticsShippingService.queryLogisticsShipp(logisticsid ,cityid);
+		//运费
+		BigDecimal shipp = new BigDecimal(0) ;
+		
+		if(cityShippMap!=null){
+			shipp = Convert.strToBigDecimal(cityShippMap.get("shipping")+"",new BigDecimal(0));
+			request("shipping",shipp.setScale(2));
+		}else{
+			request("shipping",null);
+		}
+		
+		//优惠券抵扣
+		BigDecimal cpamount = new BigDecimal(0);
+		BigDecimal total_price = Convert.strToBigDecimal(totalPrice+"",new BigDecimal(0));
+		
+		// 实际应支付金额
+		BigDecimal realTotalPrice = total_price.add(shipp);
+		//积分抵现金
+		BigDecimal int_cashtotal =  new BigDecimal(0);
+		//积分商品
+		BigDecimal product_cashtotal =  new BigDecimal(0);
+		BigDecimal input_int =  new BigDecimal(0);
+		Map<String,String> cpmap = new HashMap<String,String>() ;
+		if(type==IConstants.CART_TYPE_PANIC_IMM||type==IConstants.CART_TYPE_COMM_IMM){
+			Long couponid = Convert.strToLong( paramMap.get("couponid"), -1L) ;
+			//查询优惠券抵消的金额
+			cpmap = couponDetailService.queryUserCouponDetail(userid, couponid);
+			if(cpmap!=null){
+				cpamount  = Convert.strToBigDecimal(cpmap.get("amount")+"",new BigDecimal(0));
+				request("coupon_flag","1");
+				request("xf_amount",cpamount);
+			}else{
+				request("coupon_flag","2");
+				request("xf_amount",null);
+			}
+			//抢购和普通立即购买  使用优惠券
+			realTotalPrice = realTotalPrice.subtract(cpamount) ;
+			
+			//查询积分抵扣的金额  积分商品
+			List<Map<String,Object>> intProductList = new ArrayList<Map<String,Object>>() ;
+			for(Map<String,Object> map :carList){
+			    int int_status =  Convert.strToInt(map.get("intcash_status")+"", -1);
+			    if(1==int_status){
+			    	intProductList.add(map) ;
+			    }
+			}
+			product_cashtotal = Convert.strToBigDecimal(totalMap.get("int_total"),new BigDecimal(0)) ;
+			input_int = Convert.strToBigDecimal( paramMap.get("input_int"),new BigDecimal(0)) ;
+			if(intProductList.size()

@@ -92,7 +92,7 @@
         <div style="width: 386px; margin: 90px 0px 0px 0px; margin-left: auto; margin-right: auto;
             overflow: hidden;">
             <div>
-                <img src="../images/admin/logo.jpg" width="386" height="60" border="0" /></div>
+                <img src="../images/logo.png" width="386" height="60" border="0" /></div>
             <div>
                 <img src="../images/admin/text_top.jpg" width="386" height="10" border="0" /></div>
             <div style="background-image: url(../images/admin/text_bg.jpg); width: 386px;">

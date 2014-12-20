@@ -15,6 +15,9 @@
 	
 	<include file="struts/shove/kindEditorUploadAction.xml" />
 	
+
+	<!-- 后台管理 -->
+	<include file="struts/admin/download.xml" />
 	<include file="struts/admin/role.xml" />
 	<include file="struts/admin/admin.xml" />
 	<include file="struts/admin/productCategory.xml" />
@@ -27,7 +30,7 @@
 	<include file="struts/admin/attribute.xml" />
 	<include file="struts/admin/config.xml" />
 	<include file="struts/admin/materialsAttribute.xml" />
-	<include file="struts/admin/updateProgram.xml" />
+	<include file="struts/admin/courseware.xml" />
 	<include file="struts/admin/downloadHelp.xml" />
 	<include file="struts/admin/region.xml" />
 	<include file="struts/admin/advertisement.xml" />
@@ -42,7 +45,7 @@
 	<include file="struts/admin/info.xml" />
 	<include file="struts/admin/infoContent.xml" />
 	<include file="struts/admin/brandAdvertise.xml" />
-	<include file="struts/admin/weiliResearch.xml" />
+	<include file="struts/admin/weiliDisplay.xml" />
 	<include file="struts/admin/development.xml" />
 	<include file="struts/admin/banner.xml" />
 	<include file="struts/admin/seoPage.xml" />
@@ -51,11 +54,13 @@
 	<include file="struts/admin/imgList.xml" />
 	<include file="struts/admin/webDistributeType.xml" />
 	<include file="struts/admin/recruitType.xml" />
+	<include file="struts/admin/navigationBar.xml" />
+	<include file="struts/admin/module.xml" />
 	
 	<!-- 前台 -->
 	<include file="struts/front/index.xml" />
 	<include file="struts/front/service.xml" />
-	<include file="struts/front/frontBrand.xml" />
+	<include file="struts/front/frontDisplay.xml" />
  	<include file="struts/front/login.xml" />
  	<include file="struts/front/frontInfoContent.xml"></include>
  	<include file="struts/front/frontRecruit.xml"></include>
@@ -69,8 +74,7 @@
  	<include file="struts/front/frontDownload.xml" />
 	<include file="struts/front/frontWebsiteMap.xml" />
 	<include file="struts/front/search.xml"/>
-	
-	<include file="struts/front/frontNavigationBar.xml" />
+ 	<include file="struts/front/frontNavigationBar.xml" />
  	
 	<!-- 代理商 -->
 	
@@ -80,7 +84,7 @@
 	
 	<package name="admin-default" extends="struts-default">
 		<interceptors>
-			<interceptor name="AdminSessionInterceptor" class="com.kuaiyidian.system.interceptor.AdminSessionInterceptor" />
+			<interceptor name="AdminSessionInterceptor" class="com.weili.system.interceptor.AdminSessionInterceptor" />
 			<interceptor-stack name="adminStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="AdminSessionInterceptor" />
@@ -152,7 +156,7 @@
 	
 	<package name="usercenter-default" extends="injectionInterceptor-1">
 		<interceptors>
-			<interceptor name="frontUserSessionInterceptor" class="com.kuaiyidian.system.interceptor.FrontUserSeesionInterceptor" />
+			<interceptor name="frontUserSessionInterceptor" class="com.weili.system.interceptor.FrontUserSeesionInterceptor" />
 			<interceptor-stack name="userCenterStack">
 				<interceptor-ref name="injectionInterceptorStack" />
 				<interceptor-ref name="defaultStack" />
@@ -171,7 +175,7 @@
 	
 	<package name="front-default" extends="injectionInterceptor-0">
 		<interceptors>
-	     	<interceptor name="frontPageJumpInterceptor" class="com.kuaiyidian.system.interceptor.FrontPageJumpInterceptor" />
+	     	<interceptor name="frontPageJumpInterceptor" class="com.weili.system.interceptor.FrontPageJumpInterceptor" />
 	     	<interceptor-stack name="FrontStack">
 	     			<interceptor-ref name="injectionInterceptorStack" />
 			      <interceptor-ref name="frontPageJumpInterceptor"/>
@@ -193,7 +197,7 @@
 		
 	<package name="app-default" extends="struts-default">
 		<interceptors>
-			<interceptor name="frontUserSessionInterceptor" class="com.kuaiyidian.system.interceptor.FrontUserSeesionInterceptor" />
+			<interceptor name="frontUserSessionInterceptor" class="com.weili.system.interceptor.FrontUserSeesionInterceptor" />
 			<interceptor-stack name="userCenterStack">
 				<interceptor-ref name="defaultStack" />
 				<interceptor-ref name="frontUserSessionInterceptor" />
@@ -204,6 +208,9 @@
 			<result name="noLogin" type="redirect">../login.do?u=%{afterLoginUrl}</result>
 			<result name="msg">/WEB-INF/page/message.jsp</result> 
 		</global-results>
+		<action name="loginOut" class="indexAction" method="loginOut">
+			<result name="success" type="redirect">index.do</result>
+		</action>
 	</package>
 </struts>
 

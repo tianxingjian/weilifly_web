@@ -20,15 +20,15 @@
 		    $("#search").click(function(){
 		    param["pageBean.pageNum"] = 1;
 			initListInfo(param);
-		    	});
-		    }
+		    });
+		  }
 	    )
-	   //加载用户信息信息
+	   //加载Menu信息信息
 	   function initListInfo(praData) {
-		    param["paramMap.userName"] = $("#userName").val();
-			param["paramMap.roleId"] = $("#roleId").val();
-			param["paramMap.enable"] = $("#enable").val();
-	   		$.shovePost("queryAdminInfo.do",praData,initCallBack);
+		    param["paramMap.name"] = $("#name").val();//菜单名称
+			param["paramMap.orderName"] = $("#orderName").val();//菜单等级
+			param["paramMap.enable"] = $("#enable").val();//是否启用
+	   		$.shovePost("queryNavigationBarInfo.do",praData,initCallBack);
    		}
    		
    		function initCallBack(data){
@@ -42,16 +42,16 @@
    		}
    		
    		//删除单个
-   		function deleteAdminById(adminIds,pageNow){
+   		function deleteNavigationBarById(navigationBarIds,pageNow){
 	 		if(window.confirm("确定要删除吗?")){
-	 			window.location.href = "deleteAdmin.do?id="+adminIds+"&pageNow="+pageNow;
+	 			window.location.href = "deleteNavigationBar.do?id="+navigationBarIds+"&pageNow="+pageNow;
 	 		}
    		}
    		
    		//判断是否有选中项
    		function checked(str){
    			var c = 0;
-   			$(".adminId").each( function(i, n){
+   			$(".navigationBarId").each( function(i, n){
 				if(n.checked){
 					c = 1;
 				}
@@ -64,33 +64,32 @@
    		}
    		
    		//删除多个选中项
-   		function deleteAdmins(pageNow){
+   		function deleteNavigationBars(pageNow){
    			if(!checked("删除")){
    				return;
    			}
 	 		if(!window.confirm("确定要删除所有选中记录?")){
 	 			return;
 	 		}
-	 		var adminIds = "";
-			$(".adminId").each( function(i, n){
+	 		var navigationBarIds = "";
+			$(".navigationBarId").each( function(i, n){
 				if(n.checked){
-					adminIds += n.value+",";
+					navigationBarIds += n.value+",";
 				}
 			});
-			adminIds = adminIds.substring(0,adminIds.lastIndexOf(","));
-		 	window.location.href = "deleteAdmin.do?id="+adminIds+"&pageNow="+pageNow;
+			navigationBarIds = navigationBarIds.substring(0,navigationBarIds.lastIndexOf(","));
+		 	window.location.href = "deleteNavigationBar.do?id="+navigationBarIds+"&pageNow="+pageNow;
    		}
 
    		//全选
    		function checkAll(e){
 	   		if(e.checked){
-	   			$(".adminId").attr("checked","checked");
+	   			$(".navigationBarId").attr("checked","checked");
 	   		}else{
-	   			$(".adminId").removeAttr("checked");
+	   			$(".navigationBarId").removeAttr("checked");
 	   		}
    		}
 	</script>
-
 	</head>
 	<body>
 		<div id="right"
@@ -101,13 +100,13 @@
 						<tr>
 							<td width="100" height="28" align="center" bgcolor="#CC0000"
 								class="white12">
-								<a href="queryAdminInit.do">Menu列表</a>
+								<a href="queryNavigationBarInit.do">Menu列表</a>
 							</td>
 							<td width="2">
 								&nbsp;
 							</td>
 								<td width="100" align="center" bgcolor="#8594A9" class="white12">
-									<a href="addAdminInit.do">添加Menu</a>
+									<a href="addNavigationBarInit.do">添加Menu</a>
 								</td>
 							<td>
 								&nbsp;
@@ -122,15 +121,15 @@
 						<tbody>
 							<tr>
 								<td class="f66" align="left" width="50%" height="36px">
-									按管理员账号查询：
-									<input id="userName" name="paramMap.userName" />&nbsp;&nbsp; 
-									角色:
-									<s:select name="roleId" id="roleId" theme="simple"
-										list="roleList" value="-2" listKey="id" listValue="name" headerKey="-2" headerValue="-请选择-">
+									按菜单名称查询：
+									<input id="name" name="paramMap.name" />&nbsp;&nbsp; 
+									菜单级别:
+									<s:select name="orderName" id="orderName" theme="simple"
+										list="#{'':'-请选择-','一级':'一级','二级':'二级'}" value="">
 									</s:select>
-									是否禁用:
+									是否显示:
 									<s:select name="enable" id="enable" theme="simple"
-										list="#{-1:'-请选择-',1:'否',2:'是'}" value="-1">
+										list="#{-1:'-请选择-',1:'是',2:'否'}" value="-1">
 									</s:select>
 									<input id="search" type="button" value="确定" name="search" />
 								</td>

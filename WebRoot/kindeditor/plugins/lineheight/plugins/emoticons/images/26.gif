@@ -1,0 +1,89 @@
+al.ROUND_HALF_UP) ;
+	                can_input = integration.subtract(input_int).setScale(2,BigDecimal.ROUND_HALF_UP) ;
+	                int_cashtotal = int_cashtotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+	                input_int = input_int.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+	                product_cashtotal = product_cashtotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+	                kou_inttotal =  kou_inttotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+	                realTotalPrice = realTotalPrice.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+					//request("user_int",user_cantotal);//用户积分
+					request("user_int",integration);//用户积分
+					request("can_input",can_input);//用户可以输入的积分
+					request("int_cashtotal",int_cashtotal);//抵扣总和
+					request("input_int",input_int);
+					request("product_int",product_cashtotal);
+					request("kou_inttotal",kou_inttotal);
+					request("realTotalPrice",realTotalPrice);	
+				}else{
+					product_cashtotal = product_cashtotal.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+					request("product_int",product_cashtotal);
+					request("int_flag","3");
+					request("int_cashtotal","0.00");//抵扣总和
+					integration = integration.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+					request("user_int",integration+"");//用户积分
+					request("can_input",integration+"");//用户可以输入的积分
+					//request("int_msg","积分不足,暂时不能购买") ;
+				}
+			}else{
+				request("int_flag","2");
+			}
+			
+		}
+		if(type==IConstants.CART_TYPE_PANIC_IMM){
+			realTotalPrice = realTotalPrice.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+			request("realTotalPrice",realTotalPrice);
+			return "panic" ;//抢购订单页面立即购买商品
+		}
+		if(type==IConstants.CART_TYPE_COMM_IMM){
+			BigDecimal totalPrice = realTotalPrice.subtract(shipp) ;
+			//普通商品满多少包邮：
+			int shipp_status = 2 ;//默认不包邮；
+			Map<String,String> contentMap = configService.queryContentMap(9);//满多少包邮;
+			if(contentMap!=null){
+				BigDecimal manPrice = Convert.strToBigDecimal(contentMap.get("content")+"" ,new BigDecimal(0));
+				if(manPrice!=null&&manPrice.compareTo(BigDecimal.ZERO)>0&&totalPrice.compareTo(manPrice)>=0){
+					shipp_status = 1  ;//包邮
+				}
+			}
+			totalPrice = totalPrice.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+			realTotalPrice = realTotalPrice.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+			if(shipp_status==1){
+				request("realTotalPrice",totalPrice);
+			}else{
+				request("realTotalPrice",realTotalPrice);
+			}
+			request("shipp_status",shipp_status);
+			return "common" ;//普通订单页面立即购买商品
+		}
+		if(type==IConstants.CART_TYPE_APPOINT_IMM){
+			BigDecimal total_appoint = Convert.strToBigDecimal(totalAppoint+"",new BigDecimal(0));//定金
+			BigDecimal total_final = Convert.strToBigDecimal(totalFinal+"",new BigDecimal(0));
+			BigDecimal total_final_all = total_price.add(shipp).subtract(total_appoint) ;//尾款合计 =总金额+运费-定金
+			realTotalPrice = realTotalPrice.setScale(2,BigDecimal.ROUND_HALF_UP) ;
+			request("realTotalPrice",realTotalPrice);
+			request("totalAppoint",total_appoint);
+			request("totalFinal",total_final);
+			request("coupon_flag","2");//禁用优惠券
+			request("int_flag","2");//禁用积分
+			return "success" ;//预约订单页面立即购买商品
+		}
+		return SUCCESS ;
+	}
+	
+	
+	public String addOrder() throws IOException, SQLException, DataException{
+		JSONObject object = new JSONObject();
+		Long userid  = Convert.strToLong(session(IConstants.SESSION_USER_ID)+"", -1L) ;
+		
+		if(userid==null||userid<=0){
+			object.put("flag","8");
+			object.put("msg", "没有登陆");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		User user  = (User)session(IConstants.SESSION_USER)  ;
+		Long returnId = -1L ;
+		Long addressid = -1L ;
+		//查询是否用新地址
+		String flag = paramMap.get("flag") ;
+		if("1".equals(flag)){//新地址
+			Lon

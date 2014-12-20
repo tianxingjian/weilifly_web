@@ -1,0 +1,53 @@
+package com.weili.action.front;
+
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.weili.service.AdvertisementService;
+import com.weili.service.WeiliResearchesService;
+import com.weili.service.BrandService;
+import com.weili.service.DownloadHelpService;
+import com.weili.service.InfoContentService;
+import com.weili.service.KydReportService;
+import com.weili.service.NewspaperService;
+import com.weili.service.ProductCategoryService;
+import com.weili.service.QuestionService;
+import com.weili.service.RecruitService;
+import com.weili.service.DownloadService;
+import com.weili.service.WebDistributeService;
+import com.shove.Convert;
+
+public class SearchAction extends BaseFrontAction {
+	private WeiliResearchesService WeiliResearchesService;  //品牌资讯
+	private QuestionService questionService; //常见问题
+	private BrandService brandService;  //品牌
+	private ProductCategoryService productCategoryService;  //产品类型
+	private DownloadHelpService downloadHelpService; //下载帮助
+	private DownloadService downloadService;  //升级程序
+	private AdvertisementService advertisementService; //广告片
+	private WebDistributeService webDistributeService;  //网点分布
+	private NewspaperService newspaperService; //华普报
+	private KydReportService kydReportService; //微力科技报道
+	private RecruitService recruitService; //人才招聘
+	
+	public String querySearch() throws Exception {
+		Map<String,String> seoMap = getSeoMap("querySearch.do");//seo
+		request("seoMap",seoMap);
+		String keyWords= paramMap.get("keyWord");
+		paramMap.put("keyWord", paramMap.get("keyWord")) ;
+		if(StringUtils.isNotBlank(keyWords)){
+			keyWords  = URLDecoder.decode(keyWords, "utf-8");
+			
+			List<Map<String, Object>> questionList=questionService.queryQuestionList(keyWords);//常见问题
+			List<Map<String, Object>> bnList=WeiliResearchesService.queryBrandNewsList(keyWords); //品牌资讯
+			List<Map<String, Object>> brandList=brandService.queryBrandList(keyWords); //品牌
+			List<Map<String, Object>> productCategoryList=productCategoryService.queryProductCategoryList(keyWords);  //产品类型
+			List<Map<String, Object>> downHelpList=downloadHelpService.queryDownloadHelpList(keyWords);  //下载帮助
+			List<Map<String, Object>> coursewareList=downloadService.queryCoursewareList(k

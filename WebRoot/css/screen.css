@@ -1,0 +1,72 @@
+
+	
+#container{	
+	margin:0 auto;
+	background:#fff;
+	width:300px;
+	padding:0px 0px;
+	text-align:left;
+	}
+#form3{
+	margin:0em 0;
+	background:url(../images/form3/form_bg.jpg) no-repeat 0 0;
+	width:270px;
+	height:364px; /* fixed size (envelope graphic) */
+	overflow:hidden;
+	}
+#form3 h3{display:none;}	
+#form3 fieldset {
+	margin:0;
+	padding:0;
+	border:none;	
+	float:left;
+	display:inline;
+	width:200px;
+	margin-left:34px;
+	padding-top:30px;
+	}	
+#form3 fieldset.last{
+	width:254px;
+	margin-left:17px;
+	}				
+#form3 legend{display:none;}	
+#form3 p{margin:0em 0;}	
+#form3 label{display:block;color: #FF0000;}	
+#form3 input, #form3 textarea,#form3 select{		
+	width:192px;
+	border:1px solid #000;
+	background:#fff url(../images/form3/form_input.gif) repeat-x;
+	padding:3px;
+	color:#000;
+	}	
+	/*复选框
+#form3	.item-option {
+    float: left;
+    height: 25px;
+    margin: 3px 10px 3px 0;
+    padding-left: 10px;
+}	*/
+#form3 textarea{
+	width:192px;
+	height:78px;
+	overflow:auto;
+	}					
+#form3 p.submit{
+	margin:0 34px;
+	clear:both;
+	position:relative;
+	}	
+#form3 button{
+	padding:10px;
+	position:absolute;
+	right:68px;
+	top:0em;
+	width:95px;
+	height:36px;
+	text-indent:-8000px;
+	overflow:hidden;
+	border:none;
+	background:url(../images/form3/form_button.gif) no-repeat 0 0;
+	color:#fff;
+	cursor:pointer;
+	}

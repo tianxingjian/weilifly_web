@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="moduleInfo" extends="admin-default" namespace="/admin">
+		<action name="queryModuleInit" class="moduleAction" method="queryModuleInit">
+			<result name="success" >/WEB-INF/page/admin/module_index.jsp</result>
+		</action>
+		
+		<action name="queryModuleInfo" class="moduleAction" method="queryModuleInfo" >
+			<result name="success" >/WEB-INF/page/admin/module_index_info.jsp</result>
+		</action>
+		
+		<action name="addModuleInit" class="moduleAction" method="addModuleInit" >
+			<result name="success" >/WEB-INF/page/admin/module_add.jsp</result>
+		</action>
+		
+		<action name="addModule" class="moduleAction" method="addModule" >
+			<result name="input" >/WEB-INF/page/admin/module_add.jsp</result>
+			<result name="success" type="redirect">queryModuleInit.do</result>
+		</action>
+		
+		<action name="updateModuleInit" class="moduleAction" method="updateModuleInit" >
+			<result name="success" >/WEB-INF/page/admin/module_update.jsp</result>
+		</action>
+		
+		<action name="updateModule" class="moduleAction" method="updateModule" >
+			<result name="input" >/WEB-INF/page/admin/module_update.jsp</result>
+			<result name="success" type="redirect">queryModuleInit.do?pageNow=%{pageNow}</result>
+		</action>
+		
+		<action name="deleteModule" class="moduleAction" method="deleteModule" >
+			<result name="success" type="redirect">queryModuleInit.do?pageNow=%{pageNow}</result>
+		</action>
+		
+	</package>
+</struts>

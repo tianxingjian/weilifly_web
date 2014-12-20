@@ -1,0 +1,29 @@
+/*******************************************************************************
+* KindEditor - WYSIWYG HTML Editor for Internet
+* Copyright (C) 2006-2011 kindsoft.net
+*
+* @author Roddy <luolonghao@gmail.com>
+* @site http://www.kindsoft.net/
+* @licence http://www.kindsoft.net/license.php
+*******************************************************************************/
+
+
+(function(K) {
+
+function KSWFUpload(options) {
+	this.init(options);
+}
+K.extend(KSWFUpload, {
+	init : function(options) {
+		var self = this;
+		options.afterError = options.afterError || function(str) {
+			alert(str);
+		};
+		self.options = options;
+		self.progressbars = {};
+		// template
+		self.div = K(options.container).html([
+			'<div class="ke-swfupload">',
+			'<div class="ke-swfupload-top">',
+			'<div class="ke-inline-block ke-swfupload-button">',
+			'<input type="button" value

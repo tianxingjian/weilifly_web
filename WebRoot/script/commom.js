@@ -3,7 +3,7 @@
 
 $(function(){
 	$(window).scroll(function() {
-		if($(window).scrollTop()>=400){
+		if($(window).scrollTop()>=50){
 			$('.back-top').show();
 			 $('.suspend-box').show();
 		}else{
@@ -17,7 +17,7 @@ $(function(){
 	});
 	$("#jt").click(function(){
 	    if(bools){
-	      $('.suspend-box').animate({'right':-78},'slow'); 
+	      $('.suspend-box').animate({'right':-88},'slow'); 
 	        bools=false;
 	 	}else{
 	 	   $('.suspend-box').animate({'right':0},'slow'); 
@@ -250,6 +250,7 @@ var alicc=$('.nav-item .check');
  		var sula=$(obj);
  		var slia=sula.find("li");
  		var sblock=$(cur);
+ 		
  		var curobj=sula.find(".cur");
  		var s_curW=curobj.outerWidth();
  		var curLeft=curobj.position().left;
@@ -259,7 +260,7 @@ var alicc=$('.nav-item .check');
 			 var s_w=$(this).find("a").outerWidth();
 			    sblock.css('width',s_w);
 				position=$(this).position().left;
-			    sblock.css({"width":s_w}).stop(true,false).animate({left:position},300)
+			    sblock.css({"width":s_w}).stop(true,false).animate({left:position},300);
 			    $(this).addClass('cur').siblings().removeClass();
 			});
 		}else{
@@ -272,7 +273,7 @@ var alicc=$('.nav-item .check');
 			    var s_w=$(this).find("a").outerWidth(),
 			       position=$(this).position().left;
 			      // sblock.css({left:position});
-				  sblock.css({"width":s_curW}).stop(true,false).animate({left:curLeft},300)
+				  sblock.css({"width":s_curW}).stop(true,false).animate({left:curLeft},300);
 			});
 		    slia.click(function(){
 			  $(this).addClass('cur').siblings().removeClass();
@@ -281,18 +282,18 @@ var alicc=$('.nav-item .check');
         
     	}
  		
- 	})
+ 	});
 
 			$(function(){
 			  $.sideLi(".nav",".sliding-block");
-			})
+			});
 		
 		  $(function(){
 		   //$.sideLi(".n-s-nav",".s-block")//下载
-		  })
+		  });
 		  $(function(){
 		    // $.sideLi(".second-nav",".s-block1")//品牌
-		  })
+		  });
 		
 		
 	
@@ -342,4 +343,4 @@ var alicc=$('.nav-item .check');
 			parli.toggleClass('cur');
 			parli.find('.close').toggleClass('cur');
  		
- 	}
+ 	};

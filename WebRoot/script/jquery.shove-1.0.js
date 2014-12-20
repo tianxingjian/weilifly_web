@@ -6,7 +6,7 @@ var param = {};
 * @param url 请求地址
 * @param param 请求参数
 * @param callBack 成功后回调方法
-* @Author Yang Cheng
+* @Author 微力科技
 * @Date: 2012-2-17 18：00  
 * @Version  1.0
 *    
@@ -24,13 +24,13 @@ $.shovePost = function(url,param,callBack){
 		}
 		callBack(data);
 	});
-}
+};
 
 /**   
 *    
 * @Description 跳转页面方法
 * @param i 跳转页数
-* @Author Yang Cheng
+* @Author 微力科技
 * @Date: 2012-2-17 18：10
 * @Version  1.0
 *    
@@ -72,7 +72,7 @@ function getCookies(cookieName){
 
 $(function(){
 	trEvenColor();
-})
+});
 
 function hideAndShow(str){
 	$(str).hide();

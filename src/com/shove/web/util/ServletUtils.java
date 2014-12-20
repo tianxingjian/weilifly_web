@@ -12,7 +12,7 @@ import org.apache.struts2.ServletActionContext;
 /**
  * 
  * @Description
- * @Author Yang Cheng
+ * @Author 微力科技
  * @Date: Feb 9, 2012 2:03:44 AM
  * @Version
  * 
@@ -21,7 +21,7 @@ public class ServletUtils {
 
 	/**
 	 * @Description: 获取根目录
-	 * @Author Yang Cheng
+	 * @Author 微力科技
 	 * @Date: Feb 9, 2012 2:07:30 AM
 	 * @return
 	 * @return String
@@ -33,7 +33,7 @@ public class ServletUtils {
 
 	/**
 	 * @Description: 获取请求地址
-	 * @Author Yang Cheng
+	 * @Author 微力科技
 	 * @Date: Feb 9, 2012 2:08:15 AM
 	 * @return
 	 * @return String
@@ -48,7 +48,7 @@ public class ServletUtils {
 
 	/**
 	 * @Description: 获取当前请求的URL地址域参数
-	 * @Author Yang Cheng
+	 * @Author 微力科技
 	 * @Date: Feb 9, 2012 2:10:02 AM
 	 * @param request
 	 * @return

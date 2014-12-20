@@ -57,7 +57,7 @@
 				$("#btn_save").click(function(){
 					var even = $(this);
 					even.hide();
-					debugger;
+					
 					param["id"] = $("#id").val();
 					param["name"]=$("#qq").val();
 					param["var"] = $("#image").val();

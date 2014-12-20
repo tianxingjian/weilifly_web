@@ -58,7 +58,7 @@
 				$("#btn_save").click(function(){
 					var even = $(this);
 					even.hide();
-					debugger;
+					//debugger;
 					param["id"] = $("#id").val();
 					param["var"] = $("#image").val();
 					$.shovePost("updateWeiXin.do",param,function(data){

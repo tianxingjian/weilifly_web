@@ -1,0 +1,8 @@
+h.internal.ui.SearchDialog.create(SearchDialog.java:281)
+	at org.eclipse.jface.window.Window.open(Window.java:790)
+	at org.eclipse.search.internal.ui.OpenSearchDialogAction.run(OpenSearchDialogAction.java:54)
+	at org.eclipse.search.internal.ui.OpenSearchDialogAction.run(OpenSearchDialogAction.java:45)
+	at org.eclipse.ui.internal.handlers.ActionDelegateHandlerProxy.execute(ActionDelegateHandlerProxy.java:289)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCom

@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="com.shove.web.util.DesSecurityUtil" %>
-<%@page import="com.kuaiyidian.constants.IConstants" %>
-<%@ page import="com.kuaiyidian.entity.User" %>
-<%@ page import="com.kuaiyidian.entity.Admin" %>
+<%@page import="com.weili.constants.IConstants" %>
+<%@ page import="com.weili.entity.User" %>
+<%@ page import="com.weili.entity.Admin" %>
 <% 
 	//加密/解密 工具类
 	DesSecurityUtil des = new DesSecurityUtil();

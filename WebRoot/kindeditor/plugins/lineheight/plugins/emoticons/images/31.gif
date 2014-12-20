@@ -1,0 +1,138 @@
+;
+		paramMap = orderService.queryOrderById(id, null);
+		String order_flag =request("order_flag");  //标志位
+		
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();//订单项
+		list = orderItemService.queryOrderItemAll(id);
+		request().setAttribute("itemList", list);
+		if ("cancelOrder".equalsIgnoreCase(order_flag)) { //撤销订单
+			return "cancel";
+		}if("checkOrder".equalsIgnoreCase(order_flag)){//审核订单
+			List<Map<String,Object>> provincelist = regionService.queryRegionList(-1L, 1L, 1);
+			request("provinceList",provincelist);
+			return "check";
+		}if("sendOrder".equals(order_flag)){//发货订单
+			List<Map<String,Object>> provincelist = regionService.queryRegionList(-1L, 1L, 1);
+			request("provinceList",provincelist);
+			return "ship";
+		}
+		
+		return SUCCESS;
+	}
+	/** 
+	  * 修改地址
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.admin
+	  * @since 2014-4-16
+	  * @edit 2014-4-16
+	  * @version 1.0
+	  * @return
+	  * @throws SQLException
+	  * @throws DataException
+	  * @throws IOException
+	*/
+	public String updateOrderAddresss() throws SQLException, DataException, IOException{
+		Long orderid  = Convert.strToLong(paramMap.get("orderid"), -1L) ;
+		Long provinceid = Convert.strToLong(paramMap.get("provinceid"), -1L) ;
+		Long cityid = Convert.strToLong(paramMap.get("cityid"), -1L) ;
+		Long areaid = Convert.strToLong(paramMap.get("areaid"), -1L) ;
+		String address = paramMap.get("address") ;
+		JSONObject object = new JSONObject();
+		if(orderid<0){
+			object.put("msg", "数据错误");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		if(provinceid<0||cityid<0||areaid<0){
+			object.put("msg", "请将省市区信息填写完整");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		if(StringUtils.isBlank(address)){
+			object.put("msg", "地址不能为空");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		if(address.length()>120){
+			object.put("msg", "地址长度不能超过120个字");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		Long returnId = -1L ;
+		returnId = orderService.updateOrderAddress(orderid,provinceid,cityid,areaid,address) ;
+		if(returnId>0){
+			object.put("flag", 1);
+			JSONUtils.printObject(object);
+		}else{
+			object.put("flag", -1);
+			JSONUtils.printObject(object);
+		}
+		return null;
+	}
+	/** 
+	  * 订单操作初始化
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.admin
+	  * @since 2014-4-15
+	  * @edit 2014-4-15
+	  * @version 1.0
+	  * @return
+	 * @throws Exception 
+	*/
+	public String operateOrderInit()throws Exception{
+		Long id = Convert.strToLong(request("id"), -1);
+		paramMap = orderService.queryOrderById(id, null);
+		String order_flag =request("order_flag");  //标志位
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();//订单项
+		list = orderItemService.queryOrderItemAll(id);
+		request().setAttribute("itemList", list);
+		return SUCCESS;
+	}
+	
+	/**
+	 * 操作订单 ( 1用户付款  ,2 管理员审核 , 3 管理员发货,4用户确认 ,5 管理员取消, 6用户取消 ,7系统自动取消 8 系统自动确认 )
+	 * @return
+	 * @throws Exception 
+	 */
+	public String operateOrder() throws Exception{
+		JSONObject object = new JSONObject();
+		Integer operate_type =  Convert.strToInt(paramMap.get("operate_type"), -1);//操作类型
+		if(operate_type==null||operate_type<0){
+			object.put("flag", -1);
+			object.put("msg", "数据错误");
+			JSONUtils.printObject(object);
+			return null;
+		}
+		Map<String,Object> paramInfo  =  new HashMap<String,Object>();
+		paramInfo.put("operate_type", operate_type) ;
+		//批量或单个 operate_flag 值存在则为批量处理
+		paramInfo.put("operate_flag", Convert.strToStr(paramMap.get("operate_flag"), null)) ;
+		User user = null;
+		Long operator = -1L ;
+		paramInfo.put("order_number", paramMap.get("order_number")) ;
+		paramInfo.put("orderid", paramMap.get("orderid")) ;
+		paramInfo.put("operate_desc", paramMap.get("operate_desc")) ;//操作描述可填写审核 或取消原因
+		Integer order_status = -1 ;
+		long returnId  = -1L ;
+		if(operate_type ==IConstants.ORDER_USER_PAY){//1用户付款
+			order_status = IConstants.ORDER_STATUS_CHECK ; //待审核状态
+			user = (User)session().getAttribute(IConstants.SESSION_USER);
+			operator = user.getId();
+		}
+        
+        
+        if(operate_type==IConstants.ORDER_USER_CONFIRM){//4用户确认
+        	order_status = IConstants.ORDER_STATUS_SUCCESS ;//交易成功状态
+        	user = (User)session().getAttribute(IConstants.SESSION_USER);
+        	if(user==null){
+        		object.put("flag", -1);
+        		object.put("msg", "未登录,请先登录");
+    			JSONUtils.printObject(object);
+    			return null;
+        	}
+        	operator = user.getId();
+        }
+       
+        if(operate_type==IConstants.ORDER_USER_CANCEL){//6用户取消
+        	order_status = IConstants.ORDER_STATUS_CANCEL ;//取消状态
+        	user = (User)session().getAttribute(IConstants.SESSION_USER);

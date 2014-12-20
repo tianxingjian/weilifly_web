@@ -39,5 +39,12 @@
 				querySeoPageInit.do?pageNow=%{pageNow}
 			</result>
 		</action>
+		<action name="addSeoPageInit" class="seoPageAction" method="addSeoPageInit" >
+			<result name="success" >/WEB-INF/page/admin/seo_page_add.jsp</result>
+		</action>
+		<action name="addSeoPage" class="seoPageAction" method="addSeoPage" >
+			<result name="input" >/WEB-INF/page/admin/seo_page_add.jsp</result>
+			<result name="success" type="redirect">querySeoPageInit.do</result>
+		</action>
 	</package>
 </struts>

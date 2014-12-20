@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="black" name="apple-mobile-web-app-status-bar-style" />
-<title>手机（支付订单-支付成功）</title>
+<title>朵唯手机（支付订单-支付成功）</title>
 <script type="text/javascript" src="script/jquery-1.8.0.min.js"></script>
  <link rel="stylesheet" href="css/style1.css" />	
  <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />	

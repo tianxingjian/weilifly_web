@@ -1,0 +1,91 @@
+
+		carList = cartService.queryProductCartByUserId(userid, carIds, statuss) ;
+		List<Long> productidList = new ArrayList<Long>();
+		for(Map<String,Object> map:carList){
+			Long productid = (Long)map.get("productid");
+			productidList.add(productid);
+		}
+		List<Map<String,Object>>  couponList = couponDetailService.queryCouponDetails(userid, coupon_status,totalPrice,productidList) ;
+		request("couponList",couponList);	
+		request("type",IConstants.CART_TYPE_COMM_MAIN);
+		Map<String,String> invoiceInfo = configService.queryContentMap(10);
+		request("invoice_tip",invoiceInfo==null ? "" :invoiceInfo.get("content")) ;
+		return SUCCESS;
+	} 
+	
+	/** 
+	  * 添加商品之前检查
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-6-28
+	  * @edit 2014-6-28
+	  * @version 1.0
+	  * @return
+	 * @throws Exception 
+	*/
+	public String addOrderImmedCheckInit() throws Exception{
+		JSONObject object = new JSONObject();
+		Integer type = -1 ;//主商品 ;
+		productid = Convert.strToLong(paramMap.get("productid"), -1L) ;
+		Integer product_num = Convert.strToInt(paramMap.get("product_num"), -1) ;
+		Long colorid = Convert.strToLong(paramMap.get("colorid"), -1L) ;
+		Long userid = (Long)session(IConstants.SESSION_USER_ID) ;
+		if(userid==null){
+			object.put("flag", -1);//失败
+			object.put("msg", "您还未登陆，请先登录");
+			object.put("loadLoginUrl", "addOrderImmedInit.do?pid="+productid+"&pnum="+product_num+"&pcor="+colorid+"");//失败
+			JSONUtils.printObject(object);
+		}
+		Long cartid  = -1L;
+		
+		//存在数据 则首先添加商品到购物车
+		Map<String,String> pMap = productService.queryProductById(productid);
+		BigDecimal cart_price = new BigDecimal(0);
+		if(pMap!=null){
+			cart_price = Convert.strToBigDecimal(pMap.get("cur_price")+"",new BigDecimal(0));
+		}else{
+			object.put("flag",2);//失败
+			object.put("msg", "商品已下架");
+			JSONUtils.printObject(object);
+			return null ;
+		}
+		Integer sale_type = Convert.strToInt(pMap.get("product_saletype"), -1) ;
+		if(sale_type==IConstants.PRODUCT_SALTYPE_ORDER){
+			type = IConstants.CART_TYPE_APPOINT_IMM ;//预约立即购买
+			boolean bool =  checkBuyNum(userid,productid) ;
+			if(!bool){
+				object.put("flag",3);
+				object.put("msg","该商品为预约商品，每个账号仅限购买一次" );
+				JSONUtils.printObject(object);
+				return null ;
+			}
+		}
+		if(sale_type==IConstants.PRODUCT_SALTYPE_PANIC){
+			type = IConstants.CART_TYPE_PANIC_IMM ;//抢购立即购买
+			boolean bool =  checkBuyNum(userid,productid) ;
+			if(!bool){
+				object.put("flag",4);
+				object.put("msg","该商品为抢购商品，每个账号仅限购买一次" );
+				JSONUtils.printObject(object);
+				return null ;
+			}
+		}
+		if(sale_type==IConstants.PRODUCT_SALTYPE_COMMON){
+			type = IConstants.CART_TYPE_COMM_IMM ;//普通立即购买
+			Map<String,String> totalMap = productService.queryProductTotalInt(sale_type, productid, product_num, userid) ;
+			if(totalMap!=null){
+				Integer integration_flag  = Convert.strToInt(totalMap.get("inte_flag"), -1) ;
+				if(integration_flag!=null&&integration_flag!=1){
+					 object.put("flag",5);
+					 object.put("msg","购买该商品需要积分，您的账户可用积分不足!");
+					 JSONUtils.printObject(object);
+					 return null ;
+				}
+			}
+		}
+		
+		if((productid>0)&&(product_num>0)&&(colorid>0)){
+			session("cart_time"+productid,System.currentTimeMillis());
+			Map<String,String> colorMap = productService.queryProductColorByColorId(colorid);
+			if(pMap!=null){
+				Integer total_stocks = Convert.strToInt(pM

@@ -1,5 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/include/taglib.jsp"%>
+<script type="text/javascript">
+    function changeShow() {
+              $("#slider1").children(".i-t").each(function () {
+                  $(this).click(function () {
+                     $(this).siblings(".i-c").hide();
+                     $(this).next().slideToggle("slow");
+                  });
+              });
+    }
+	changeShow();
+</script>
 <div class="map-list">
 	<div class="hd">
 		<span class="s1">售后店铺</span>
@@ -37,14 +48,3 @@
 			totalCount="${pageBean.totalNum}">
 		</shove:page>
 </div>
-<script type="text/javascript">
-    function changeShow() {
-              $("#slider1").children(".i-t").each(function () {
-                  $(this).click(function () {
-                     $(this).siblings(".i-c").hide();
-                     $(this).next().slideToggle("slow");
-                  });
-              });
-    }
-	changeShow();
-</script>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="navigationBarInfo" extends="admin-default" namespace="/admin">
+		<action name="queryNavigationBarInit" class="navigationBarAction" method="queryNavigationBarInit">
+			<result name="success" >/WEB-INF/page/admin/navigation_index.jsp</result>
+		</action>
+		
+		<action name="queryNavigationBarInfo" class="navigationBarAction" method="queryNavigationBarInfo" >
+			<result name="success" >/WEB-INF/page/admin/navigation_index_info.jsp</result>
+		</action>
+		
+		<action name="addNavigationBarInit" class="navigationBarAction" method="addNavigationBarInit" >
+			<result name="success" >/WEB-INF/page/admin/navigation_add.jsp</result>
+		</action>
+		
+		<action name="addNavigationBar" class="navigationBarAction" method="addNavigationBar" >
+			<result name="input" >/WEB-INF/page/admin/navigation_add.jsp</result>
+			<result name="success" type="redirect">queryNavigationBarInit.do</result>
+		</action>
+		
+		<action name="updateNavigationBarInit" class="navigationBarAction" method="updateNavigationBarInit" >
+			<result name="success" >/WEB-INF/page/admin/navigation_update.jsp</result>
+		</action>
+		
+		<action name="updateNavigationBar" class="navigationBarAction" method="updateNavigationBar" >
+			<result name="input" >/WEB-INF/page/admin/navigation_update.jsp</result>
+			<result name="success" type="redirect">queryNavigationBarInit.do?pageNow=%{pageNow}</result>
+		</action>
+		
+		<action name="deleteNavigationBar" class="navigationBarAction" method="deleteNavigationBar" >
+			<result name="success" type="redirect">queryNavigationBarInit.do?pageNow=%{pageNow}</result>
+		</action>
+		
+	</package>
+</struts>

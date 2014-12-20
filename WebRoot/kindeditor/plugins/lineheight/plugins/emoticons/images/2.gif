@@ -1,0 +1,45 @@
+
+		carList = cartService.queryProductCartByUserId(userid, carIds, statuss) ;
+		List<Long> productidList = new ArrayList<Long>();
+		for(Map<String,Object> map:carList){
+			Long productid = (Long)map.get("productid");
+			productidList.add(productid);
+		}
+		List<Map<String,Object>>  couponList = couponDetailService.queryCouponDetails(userid, coupon_status,totalPrice,productidList) ;
+		request("couponList",couponList);	
+		request("type",IConstants.CART_TYPE_COMM_MAIN);
+		Map<String,String> invoiceInfo = configService.queryContentMap(10);
+		request("invoice_tip",invoiceInfo==null ? "" :invoiceInfo.get("content")) ;
+		return SUCCESS;
+	} 
+	
+	/** 
+	  * 添加商品之前检查
+	  * @author <a href="mailto:xuzhangchu@eims.com.cn">xzc</a>
+	  * @class com.fs.action.front
+	  * @since 2014-6-28
+	  * @edit 2014-6-28
+	  * @version 1.0
+	  * @return
+	 * @throws Exception 
+	*/
+	public String addOrderImmedCheckInit() throws Exception{
+		JSONObject object = new JSONObject();
+		Integer type = -1 ;//主商品 ;
+		productid = Convert.strToLong(paramMap.get("productid"), -1L) ;
+		Integer product_num = Convert.strToInt(paramMap.get("product_num"), -1) ;
+		Long colorid = Convert.strToLong(paramMap.get("colorid"), -1L) ;
+		Long userid = (Long)session(IConstants.SESSION_USER_ID) ;
+		if(userid==null){
+			object.put("flag", -1);//失败
+			object.put("msg", "您还未登陆，请先登录");
+			object.put("loadLoginUrl", "addOrderImmedInit.do?pid="+productid+"&pnum="+product_num+"&pcor="+colorid+"");//失败
+			JSONUtils.printObject(object);
+		}
+		Long cartid  = -1L;
+		
+		//存在数据 则首先添加商品到购物车
+		Map<String,String> pMap = productService.queryProductById(productid);
+		BigDecimal cart_price = new BigDecimal(0);
+		if(pMap!=null){
+			cart_

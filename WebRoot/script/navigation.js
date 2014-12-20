@@ -3,16 +3,15 @@ $(document).ready(function () {
 	var hasFirst = false;//二级菜单
 	var hasSecond = false;//二级菜单
 	var htmlContent = "";
-	alert($.hasData(menu));
-	alert($("#menu").data('menuBar'));
 	if(null != $("#menu").data('menuBar')){
 		$("#menu").append($("#menu").data('menuBar'));//加载缓存内容
 		return ;
 	}
 	$(document).ready(function () {
+		//alert('ok');
 	//alert($.hasData(menu));
 	$.ajax({
-        url:'navigationBar.do',
+        url:'frontNavigationBar.do',
         type:'POST',
         data:'',
         cache:true,
@@ -66,13 +65,14 @@ $(document).ready(function () {
 				$("#menu").append(htmlContent);
 				//缓存元素数据
 				$("#menu").data('menuBar',htmlContent);
-				alert($("#menu").data('menuBar'));
-				alert($.hasData(menu));
+				//alert($.hasData(menu));
+				
+
         	}
         	else{
         		htmlContent = "导航栏无法加载，请重新刷新页面！";
         		//菜单项显示
-				$("#menu").append(htmlContent);
+        		$("#menu").append(htmlContent);
         	}
         },
         error:function () {

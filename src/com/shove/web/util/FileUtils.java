@@ -21,12 +21,12 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
 import org.aspectj.util.FileUtil;
 
-import com.kuaiyidian.constants.IConstants;
+import com.weili.constants.IConstants;
 
 /**   
 *    
 * @Description 用户文件操作
-* @Author Yang Cheng
+* @Author 微力科技
 * @Date: Feb 9, 2012 2:42:48 AM   
 * @Version    
 *    
@@ -37,7 +37,7 @@ public class FileUtils {
 	
 	/** 
 	* @Description: 创建目录
-	* @Author Yang Cheng
+	* @Author 微力科技
 	* @Date: Feb 9, 2012 3:20:47 AM  
 	* @param path  
 	* @return void    

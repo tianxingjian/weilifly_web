@@ -20,7 +20,7 @@ import org.apache.struts2.ServletActionContext;
 /**   
 *    
 * @Description 将集合、对象、字符串转换程json输出
-* @author Yang Cheng
+* @author 微力科技
 * @date: Feb 9, 2012 1:48:35 AM   
 * @version    
 *    
@@ -29,7 +29,7 @@ public class JSONUtils {
 	
 	/** 
 	* @Description: 将字符串以json格式输出
-	* @Author Yang Cheng
+	* @Author 微力科技
 	* @Date: Feb 9, 2012 1:53:02 AM  
 	* @param jsonStr
 	* @throws IOException  
@@ -47,7 +47,7 @@ public class JSONUtils {
 	
 	/** 
 	* @Description: 将对象以json格式输出
-	* @Author Yang Cheng
+	* @Author 微力科技
 	* @Date: Feb 9, 2012 1:53:58 AM  
 	* @param obj
 	* @throws Exception  
@@ -61,7 +61,7 @@ public class JSONUtils {
 	
 	/** 
 	* @Description: 将字集合以json格式输出
-	* @Author Yang Cheng 
+	* @Author 微力科技 
 	* @Date: Feb 9, 2012 1:54:24 AM  
 	* @param list
 	* @throws Exception  
@@ -74,7 +74,7 @@ public class JSONUtils {
 	
 	/** 
 	* @Description: 根据key获取json对象中的值
-	* @Author Yang Cheng
+	* @Author 微力科技
 	* @Date: Feb 9, 2012 1:54:41 AM  
 	* @param json
 	* @param key

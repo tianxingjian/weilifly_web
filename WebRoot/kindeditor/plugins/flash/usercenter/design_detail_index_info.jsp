@@ -1,0 +1,30 @@
+legatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.genuitec.pulse.eclipse.launcher.Main.main(Main.java:110)
+
+!ENTRY org.topcased.search.ui 1 0 2014-12-09 23:20:01.865
+!MESSAGE Impossible to load dialog settings !
+!STACK 0
+java.io.FileNotFoundException: modelSearchParticipantArea.settings (系统找不到指定的文件。)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at org.eclipse.jface.dialogs.DialogSettings.load(DialogSettings.java:283)
+	at org.topcased.search.ui.areas.AbstractModelSearchParticipantArea.loadDialogSettings(AbstractModelSearchParticipantArea.java:184)
+	at org.topcased.search.ui.pages.ModelExtensibleSearchPage.createParticipantTabsArea(ModelExtensibleSearchPage.java:182)
+	at org.topcased.search.ui.pages.ModelExtensibleSearchPage.createControl(ModelExtensibleSearchPage.java:206)
+	at org.eclipse.search.internal.ui.SearchDialog$9.run(SearchDialog.java:710)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.search.internal.ui.SearchDialog$8.run(SearchDialog.java:705)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.search.internal.ui.SearchDialog.createPageControl(SearchDialog.java:703)
+	at org.eclipse.search.internal.ui.SearchDialog.createPageArea(SearchDialog.java:418)
+	at org.eclipse.search.internal.ui.util.ExtendedDialogWindow.createDialogArea(ExtendedDialogWindow.java:140)
+	at org.eclipse.jface.dialogs.Dialog.createContents(Dialog.java:760)
+	at org.eclipse.jface.window.Window.create(Window.java:431)
+	at org.eclipse.jface.dialogs.Dialog.create(Dialog.java:1089)
+	at org.eclipse.search.internal.ui.SearchDialog.create(SearchDialog.java:281)
+	at org.eclipse.jface.window.Window.open(Window.java:790)
+	at org.eclipse.search.internal.ui.OpenSearchDialogAction.run(OpenSearchDialogAction.java:54)
+	at org.eclipse.search.internal.ui.OpenSearchDialogAction.run(OpenSearchDialogAction.java:45)
+	at org.eclipse.ui.internal.handlers.ActionDelegateHand

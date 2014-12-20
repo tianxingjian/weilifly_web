@@ -175,12 +175,12 @@
 					<!---包围滚动条的外层盒子---->
 
 					<div class="kyd-info" >
-						<h3>快易典报道内容介绍</h3>
+						<h3>微力科技报道内容介绍</h3>
 						<div id="content" style="font-size:14px;line-height:24px;">${reportList[0].content}</div>
 					</div>
 
 				</div>
-				<!---快易典报道结束--->
+				<!---微力科技报道结束--->
 			</div>
 			<!---main-content结束---->
 		</div>

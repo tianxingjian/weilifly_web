@@ -25,7 +25,7 @@
 				$("#btn_save").click(function(){
 					var even = $(this);
 					even.hide();
-					debugger;
+					
 					param["id"] = $("#id").val();
 					param["var"] = editor_details.html();
 					$.shovePost("updateConfig.do",param,function(data){

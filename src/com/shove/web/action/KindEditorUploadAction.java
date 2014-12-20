@@ -19,14 +19,14 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
 import org.aspectj.util.FileUtil;
 
-import com.kuaiyidian.constants.IConstants;
-import com.kuaiyidian.entity.Admin;
-import com.kuaiyidian.entity.User;
 import com.shove.Convert;
 import com.shove.web.util.DesSecurityUtil;
 import com.shove.web.util.FileUtils;
 import com.shove.web.util.ImageUtils;
 import com.shove.web.util.ServletUtils;
+import com.weili.constants.IConstants;
+import com.weili.entity.Admin;
+import com.weili.entity.User;
 
 
 

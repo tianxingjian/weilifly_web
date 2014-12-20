@@ -16,11 +16,11 @@
 	<body>
 		<jsp:include page="/include/top.jsp"></jsp:include>
 		<!--头部外围盒子结束 head-box-->
-		<div class="content">
-			<div class="main-content" style="border: 0; width: 1000px;overflow:hidden;">
-				<div class="left-box left-box-1">
-					<div class="m-s-ban1">
-						App专区
+		<div class="content1">
+			<div class="main-content1" style="border: 0; width: 1000px;overflow:hidden;">
+				<%--<div class="left-box left-box-1">
+					--%><div class="m-s-ban1">
+						App专区(案例下载)
 					</div>
 					<ul class="ad-pic-list clearfix">
 						<s:iterator value="pageBean.page" var="bean" status="st">
@@ -45,28 +45,6 @@
 						</shove:page>
 					</div>
 				</div>
-				<!---左侧列表结束--->
-				<div class="right-box">
-					<div class="m-s-ban" style="border: 1px solid #e1e1e1;">
-						<a href="queryDownloadHelpInit.do">more+</a>下载帮助
-					</div>
-					<s:iterator value="#request.downloadHelpList" var="bean" status="st">
-						<div class="down-item-list">
-							<!-- <dt>
-								<a href="queryDownloadHelpInit.do?id=${bean.id}"><img src="${bean.image }" alt="${bean.title}" style="width:57px;height:57px;" /></a>
-							</dt>
-							<dd>
-								适用机型：
-								<span title="${bean.fit}">${bean.fit}</span>
-							</dd> -->
-							<a href="queryDownloadHelpInit.do?id=${bean.id}"><img src="${bean.image }" alt="${bean.title}" style="width:264px;height:73px;" /></a>
-						</div>
-					</s:iterator>
-					<a href="downloadIndex.do" class="big-downbtn  "><span>资料下载<em>学习资源免费下载</em>
-					</span>
-					</a>
-				</div>
-			</div>
 			
 			<!--内容区域main-content 结束-->
 		</div>

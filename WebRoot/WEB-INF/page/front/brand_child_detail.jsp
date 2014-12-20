@@ -37,7 +37,7 @@
 				<div class="nr-txt">
 					${paramMap.content}
 				</div>
-				<!---快易典报道结束--->
+				<!---微力科技报道结束--->
 			</div>
 			<!---main-content结束---->
 		</div>

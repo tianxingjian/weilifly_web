@@ -77,10 +77,10 @@
 						</div>
 					</div>
 					<div class="m-s-ban m-s-ban-1">
-						<a href="updateProgramIndex.do">more+</a>升级程序
+						<a href="preDownloadIndex.do">more+</a>升级程序
 					</div>
 					<ul class="down-list">
-						<s:iterator value="#request.updateProgramList" var="bean" status="st">
+						<s:iterator value="#request.coursewareList" var="bean" status="st">
 							<li>
 								<a href="javascript:;" class="tit">${bean.name}</a>
 								<div class="other">

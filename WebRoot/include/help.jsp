@@ -2,7 +2,7 @@
 <%@ include file="/include/taglib.jsp"%>
 <div class="left-raea">
 	<div class="h3">
-		了解微力科技
+		帮助中心
 	</div>
 	<div class="left-nav ">
 		<ul class="nav-item">
@@ -28,7 +28,7 @@
 									<a  href="queryInfoContent.do?id=${beans.id }&a=${beans.infoId }" >${beans.title }</a>
 								</li>
 							</s:if>
-							<s:elseif test="#bean.id==5&&#beans.title=='官方商城'">
+							<s:elseif test="#bean.id==5&&#beans.title=='å®æ¹åå'">
 								<li>
 									<a href="${beans.linkPath }" target="_blank">${beans.title}</a>
 								</li>
@@ -46,7 +46,7 @@
 							<s:else>
 								<li>
 							</s:else>
-							<a href="mapInit.do?a=3a">网站地图</a>
+							<a href="mapInit.do?a=3a">帮助中心</a>
 							</li>
 						</s:if>
 					</ul>
@@ -56,4 +56,4 @@
 		</ul>
 	</div>
 </div>
-<!--左侧导航结束--->
+<!--å·¦ä¾§å¯¼èªç»æ--->

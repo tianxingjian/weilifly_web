@@ -81,7 +81,7 @@
 				<input id="chkAll" onclick="checkAll(this); " type="checkbox"
 					value="checkbox" name="chkAll" />
 				全选 &nbsp;&nbsp;&nbsp;&nbsp;
-				<input id="btnDel" onclick="deleteImgList();" type="button"
+				<input id="btnDel" onclick="deleteImgList();}}" type="button"
 					value="删除选中记录" name="btnDel" />
 			</td>
 		</tr>

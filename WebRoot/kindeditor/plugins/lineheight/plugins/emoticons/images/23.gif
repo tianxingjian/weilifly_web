@@ -1,0 +1,50 @@
+�加
+		//商品类型 1 普通主商品 2普通副商品  3普通立即购买4 预约商品 5抢购商品
+		Integer type = -1 ;
+		productid = Convert.strToLong(request("productid"), -1L) ;
+		Integer product_num = Convert.strToInt(request("product_num"), -1) ;
+		Long colorid = Convert.strToLong(request("colorid"), -1L) ;
+		Long userid = (Long)session(IConstants.SESSION_USER_ID) ;
+		Long cart_time = Convert.strToLong(request("cart_time"), -1L) ;
+		if(userid==null){
+			msgflag=1;
+			message = "您还未登陆，请先登录!" ;
+			return LOGIN ;
+		}
+        Long cartid  = -1L;
+		
+	
+		Map<String,String> pMap = productService.queryProductById(productid);
+		if(pMap==null){
+			 msgflag=2;
+			 message = "提交的数据有误，请重新提交!" ;
+			 return INPUT ;
+		}
+		
+		Integer sale_type = Convert.strToInt(pMap.get("product_saletype"), -1) ;
+		if(sale_type==IConstants.PRODUCT_SALTYPE_ORDER){
+			type = IConstants.CART_TYPE_APPOINT_IMM ;//预约立即购买
+			boolean bool =  checkBuyNum(userid,productid) ;
+			if(!bool){
+				msgflag=3;
+				message = "该商品为预约商品，每个账号仅限购买一次" ;
+				return INPUT ;
+			}
+		}
+		if(sale_type==IConstants.PRODUCT_SALTYPE_PANIC){
+			type = IConstants.CART_TYPE_PANIC_IMM ;//抢购立即购买
+			boolean bool =  checkBuyNum(userid,productid) ;
+			if(!bool){
+				msgflag=4;
+				message = "该商品为抢购商品，每个账号仅限购买一次" ;
+				return INPUT ;
+			}
+		}
+		if(sale_type==IConstants.PRODUCT_SALTYPE_COMMON){
+			type = IConstants.CART_TYPE_COMM_IMM ;//普通立即购买
+			Map<String,String> totalMap =productService.queryProductTotalInt(sale_type, productid, product_num, userid) ;
+			if(totalMap!=null){
+				Integer integration_flag  = Convert.strToInt(totalMap.get("inte_flag"), -1) ;
+				if(integration_flag!=null&&integration_flag!=1){
+					 msgflag=5;
+					 message = "购买该商品需要积分，您

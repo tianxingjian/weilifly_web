@@ -1,0 +1,47 @@
+r [] types = null ;
+				String carIds = null ;
+				if(type == IConstants.CART_TYPE_APPOINT_IMM||type==IConstants.CART_TYPE_PANIC_IMM){
+					types =  new Integer[1];
+					types[0] = type ;
+					List<Map<String,Object>> proList = cartService.queryProductCartByUserId(userid, carIds, types);
+					if(proList!=null&&proList.size()>0){
+						StringBuffer cids  =  new StringBuffer() ;
+						for(int i = 0;i<proList.size();i++){
+							if(i==0){
+								cids.append(" "+proList.get(0).get("id")+" ");
+							}else{
+								cids.append(" , "+proList.get(0).get("id")+" ");
+						}
+							
+						}
+						cartService.deleteCart(userid, cids.toString());
+					}
+					cartid = cartService.addProductCart(productid,product_num , colorid ,userid,cart_price,type);
+					if(cartid==null||cartid<=0){
+						 object.put("flag",7);
+						 object.put("msg","添加商品失败!");
+						 JSONUtils.printObject(object);
+						 return null ;
+					}
+				}
+				if(type==IConstants.CART_TYPE_COMM_IMM){
+					types =  new Integer[4];
+					types[0] = IConstants.CART_TYPE_COMM_IMM ;
+					List<Map<String,Object>> proList = cartService.queryProductCartByUserIdCondition(userid,productid,product_num,colorid, types) ;
+					if(proList!=null&&proList.size()>0){
+						cartid = Convert.strToLong(proList.get(0).get("id")+"",-1L ) ;
+					}else{
+						cartid = cartService.addProductCart(productid,product_num , colorid ,userid,cart_price,type);
+					}
+					if(cartid==null||cartid<=0){
+						 object.put("flag",8);
+						 object.put("msg","添加商品失败!");
+						 JSONUtils.printObject(object);
+						 return null ;
+					}
+				}
+				
+			}else{
+				 object.put("flag",9);
+				 object.put("msg","添加商品失败!");
+				 JSONUtils.pri

@@ -1,0 +1,1 @@
+package com.weili.system.exception;public class FrontHelpMessageException extends Exception{private static final long serialVersionUID = 1L;		public FrontHelpMessageException(){			}		public FrontHelpMessageException(String arg0){		super(arg0);	}}

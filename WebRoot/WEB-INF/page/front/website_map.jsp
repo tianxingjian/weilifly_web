@@ -26,7 +26,7 @@
 					</div>
 					<dl class="web-map">
 						<dt>
-							品牌
+							微力研究院
 						</dt>
 						<dd>
 							<s:iterator value="#request.brandList" var="beanB" status="st">
@@ -36,7 +36,7 @@
 					</dl>
 					<dl class="web-map">
 						<dt>
-							产品
+							O2O兵器库
 						</dt>
 						<dd>
 							<s:iterator value="#request.categoryList" var="beanP" status="st">
@@ -46,18 +46,22 @@
 					</dl>
 					<dl class="web-map">
 						<dt>
-							下载
+							下载专区
 						</dt>
 						<dd>
-							<a href="downloadIndex.do">资料下载</a><a href="queryDownloadHelpInit.do">下载帮助</a><a href="updateProgramIndex.do">升级程序</a>
+							<a href="downloadIndex.do">资料下载</a>
+							<%--
+								<a href="queryDownloadHelpInit.do">下载帮助</a>
+								<a href="preDownloadIndex.do">升级程序</a>
+							--%>
 						</dd>
 					</dl>
 					<dl class="web-map">
 						<dt>
-							社区
+							微力论坛
 						</dt>
 					</dl>
-					<dl class="web-map">
+					<%--<dl class="web-map">
 						<dt>
 							服务
 						</dt>
@@ -69,6 +73,7 @@
 							<a href="queryServicePolicy.do">服务政策</a>
 						</dd>
 					</dl>
+					--%>
 					<dl class="web-map">
 						<dt>
 							关于我们

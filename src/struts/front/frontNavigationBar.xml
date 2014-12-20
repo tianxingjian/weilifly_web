@@ -6,7 +6,7 @@
 <struts>
 	<package name="frontNavigationBar" extends="json-default" namespace="/">
 		<!-- 导航菜单项-->
-		<action name="navigationBar" class="navigationBarAction" method="navigationBar">
+		<action name="frontNavigationBar" class="frontNavigationBarAction" method="navigationBar">
 			<result name="success" type="json">
 				<param name="root">navigationBarJson</param>
 			</result>

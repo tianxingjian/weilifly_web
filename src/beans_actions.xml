@@ -13,166 +13,175 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<bean id="commonAction" class="com.shove.web.action.CommonAction" scope="prototype"></bean>
 	
 	<!-- 管理员管理 -->
-	<bean id="adminAction" class="com.kuaiyidian.action.admin.AdminAction" scope="prototype">
+	
+	<bean id="adminAction" class="com.weili.action.admin.AdminAction" scope="prototype">
 		<property name="adminService" ref="adminService" />
 		<property name="roleService" ref="roleService" />
 		<property name="roleRightsService" ref="roleRightsService" />
 	</bean>
-	
+	<!-- Menu管理 -->
+	<bean id="navigationBarAction" class="com.weili.action.admin.NavigationBarAction" scope="prototype">
+		<property name="navigationBarService" ref="navigationBarService" />
+	</bean>
+	<!-- 后台模块管理 -->
+	<bean id="moduleAction" class="com.weili.action.admin.ModuleAction" scope="prototype">
+		<property name="moduleService" ref="moduleService" />
+	</bean>
 	<!-- 角色管理 -->
-	<bean id="roleAction" class="com.kuaiyidian.action.admin.RoleAction" scope="prototype">
+	<bean id="roleAction" class="com.weili.action.admin.RoleAction" scope="prototype">
 		<property name="rightsService" ref="rightsService" />
 		<property name="roleService" ref="roleService" />
 		<property name="roleRightsService" ref="roleRightsService" />
 	</bean>
 	
-	<bean id="productCategoryAction" class="com.kuaiyidian.action.admin.ProductCategoryAction" scope="prototype">
+	<bean id="productCategoryAction" class="com.weili.action.admin.ProductCategoryAction" scope="prototype">
 		<property name="productCategoryService" ref="productCategoryService" />
 	</bean>
 	
-	<bean id="regionAction" class="com.kuaiyidian.action.admin.RegionAction" scope="prototype">
+	<bean id="regionAction" class="com.weili.action.admin.RegionAction" scope="prototype">
 		<property name="regionService" ref="regionService" />
 	</bean>
 	
-	<bean id="parameterAction" class="com.kuaiyidian.action.admin.ParameterAction" scope="prototype">
+	<bean id="parameterAction" class="com.weili.action.admin.ParameterAction" scope="prototype">
 		<property name="parameterService" ref="parameterService" />
 	</bean>
 	<!-- 常见问题 -->
-	<bean id="questionAction" class="com.kuaiyidian.action.admin.QuestionAction" scope="prototype">
+	<bean id="questionAction" class="com.weili.action.admin.QuestionAction" scope="prototype">
 		<property name="questionService" ref="questionService" />
 	</bean>
 	<!-- 网点分布 -->
-	<bean id="webDistributeAction" class="com.kuaiyidian.action.admin.WebDistributeAction" scope="prototype">
+	<bean id="webDistributeAction" class="com.weili.action.admin.WebDistributeAction" scope="prototype">
 		<property name="webDistributeService" ref="webDistributeService" />
 		<property name="regionService" ref="regionService" />
 		<property name="webDistributeTypeService" ref="webDistributeTypeService" />
 	</bean>
 	<!-- 配置管理 -->
-	<bean id="configAction" class="com.kuaiyidian.action.admin.ConfigAction" scope="prototype">
+	<bean id="configAction" class="com.weili.action.admin.ConfigAction" scope="prototype">
 		<property name="configService" ref="configService" />
 	</bean>
 	
-	<bean id="productAction" class="com.kuaiyidian.action.admin.ProductAction" scope="prototype">
+	<bean id="productAction" class="com.weili.action.admin.ProductAction" scope="prototype">
 		<property name="productService" ref="productService" />
 		<property name="productCategoryService" ref="productCategoryService" />
 		<property name="parameterService" ref="parameterService" />
 	</bean>
 	
-	<bean id="productParameterAction" class="com.kuaiyidian.action.admin.ProductParameterAction" scope="prototype">
+	<bean id="productParameterAction" class="com.weili.action.admin.ProductParameterAction" scope="prototype">
 		<property name="productParameterService" ref="productParameterService" />
 		<property name="productService" ref="productService" />
 	</bean>
 	
-	<bean id="attributeAction" class="com.kuaiyidian.action.admin.AttributeAction" scope="prototype">
+	<bean id="attributeAction" class="com.weili.action.admin.AttributeAction" scope="prototype">
 		<property name="attributeService" ref="attributeService" />
 		<property name="productService" ref="productService" />
 	</bean>
 	
-	<bean id="materialsAction" class="com.kuaiyidian.action.admin.MaterialsAction" scope="prototype">
+	<bean id="materialsAction" class="com.weili.action.admin.MaterialsAction" scope="prototype">
 		<property name="materialsService" ref="materialsService" />
 		<property name="productService" ref="productService" />
 		<property name="attributeService" ref="attributeService" />
 	</bean>
 	
-	<bean id="materialsAttributeAction" class="com.kuaiyidian.action.admin.MaterialsAttributeAction" scope="prototype">
+	<bean id="materialsAttributeAction" class="com.weili.action.admin.MaterialsAttributeAction" scope="prototype">
 		<property name="materialsAttributeService" ref="materialsAttributeService" />
 		<property name="materialsService" ref="materialsService" />
 	</bean>
 	
-	<bean id="updateProgramAction" class="com.kuaiyidian.action.admin.UpdateProgramAction" scope="prototype">
-		<property name="updateProgramService" ref="updateProgramService" />
-		<property name="productCategoryService" ref="productCategoryService" />
+	<!-- 下载资料管理  -->
+	<bean id="downloadAction" class="com.weili.action.admin.DownloadAction" scope="prototype">
+		<property name="downloadService" ref="downloadService" />
 	</bean>
 	
-	<bean id="downloadHelpAction" class="com.kuaiyidian.action.admin.DownloadHelpAction" scope="prototype">
+	<bean id="downloadHelpAction" class="com.weili.action.admin.DownloadHelpAction" scope="prototype">
 		<property name="downloadHelpService" ref="downloadHelpService" />
 	</bean>
 	
-	<bean id="advertisementAction" class="com.kuaiyidian.action.admin.AdvertisementAction" scope="prototype">
+	<bean id="advertisementAction" class="com.weili.action.admin.AdvertisementAction" scope="prototype">
 		<property name="advertisementService" ref="advertisementService" />
 	</bean>
 	<!-- 代理商管理 -->
-	<bean id="userAction" class="com.kuaiyidian.action.admin.UserAction" scope="prototype">
+	<bean id="userAction" class="com.weili.action.admin.UserAction" scope="prototype">
 		<property name="userService" ref="userService" />
 	</bean>
 	<!-- 设计素材分类 -->
-	<bean id="designCategoryAction" class="com.kuaiyidian.action.admin.DesignCategoryAction" scope="prototype">
+	<bean id="designCategoryAction" class="com.weili.action.admin.DesignCategoryAction" scope="prototype">
 		<property name="designCategoryService" ref="designCategoryService" />
 	</bean>
 	<!-- 设计素材管理 -->
-	<bean id="designAction" class="com.kuaiyidian.action.admin.DesignAction" scope="prototype">
+	<bean id="designAction" class="com.weili.action.admin.DesignAction" scope="prototype">
 		<property name="designService" ref="designService" />
 		<property name="designCategoryService" ref="designCategoryService" />
 	</bean>
 		<!-- 质检报告管理 -->
-	<bean id="reportAction" class="com.kuaiyidian.action.admin.ReportAction" scope="prototype">
+	<bean id="reportAction" class="com.weili.action.admin.ReportAction" scope="prototype">
 		<property name="reportService" ref="reportService" />
 		<property name="productCategoryService" ref="productCategoryService" />
 	</bean>
 	<!-- 人才招聘管理 -->
-	<bean id="recruitAction" class="com.kuaiyidian.action.admin.RecruitAction" scope="prototype">
+	<bean id="recruitAction" class="com.weili.action.admin.RecruitAction" scope="prototype">
 		<property name="recruitService" ref="recruitService" />
 		<property name="recruitTypeService" ref="recruitTypeService" />
 	</bean>
 	<!-- 底部信息类型管理 -->
-	<bean id="infoAction" class="com.kuaiyidian.action.admin.InfoAction" scope="prototype">
+	<bean id="infoAction" class="com.weili.action.admin.InfoAction" scope="prototype">
 		<property name="infoService" ref="infoService" />
 	</bean>
 	<!-- 底部信息管理 -->
-	<bean id="infoContentAction" class="com.kuaiyidian.action.admin.InfoContentAction" scope="prototype">
+	<bean id="infoContentAction" class="com.weili.action.admin.InfoContentAction" scope="prototype">
 		<property name="infoContentService" ref="infoContentService" />
 		<property name="infoService" ref="infoService" />
 	</bean>
-	<bean id="brandAction" class="com.kuaiyidian.action.admin.BrandAction" scope="prototype">
+	<bean id="brandAction" class="com.weili.action.admin.BrandAction" scope="prototype">
 		<property name="brandService" ref="brandService" />
 	</bean>
 	
-	<bean id="newspaperAction" class="com.kuaiyidian.action.admin.NewspaperAction" scope="prototype">
+	<bean id="newspaperAction" class="com.weili.action.admin.NewspaperAction" scope="prototype">
 		<property name="newspaperService" ref="newspaperService" />
 	</bean>
 	
-	<bean id="kydReportAction" class="com.kuaiyidian.action.admin.KydReportAction" scope="prototype">
+	<bean id="kydReportAction" class="com.weili.action.admin.KydReportAction" scope="prototype">
 		<property name="kydReportService" ref="kydReportService" />
 	</bean>
 	
-	<bean id="brandAdvertiseAction" class="com.kuaiyidian.action.admin.BrandAdvertiseAction" scope="prototype">
+	<bean id="brandAdvertiseAction" class="com.weili.action.admin.BrandAdvertiseAction" scope="prototype">
 		<property name="brandAdvertiseService" ref="brandAdvertiseService" />
 	</bean>
 	
-	<bean id="weiliResearchAction" class="com.kuaiyidian.action.admin.WeiliResearchAction" scope="prototype">
-		<property name="weiliResearchesService" ref="weiliResearchesService" />
+	<bean id="weiliDisplayAction" class="com.weili.action.admin.WeiliDisplayAction" scope="prototype">
+		<property name="weiliDisplayService" ref="weiliDisplayService" />
+		<property name="consumerService" ref="consumerService" />
 	</bean>
 	
-	<bean id="developmentAction" class="com.kuaiyidian.action.admin.DevelopmentAction" scope="prototype">
+	<bean id="developmentAction" class="com.weili.action.admin.DevelopmentAction" scope="prototype">
 		<property name="developmentService" ref="developmentService" />
 	</bean>
 	<!-- Banner -->
-	<bean id="bannerAction" class="com.kuaiyidian.action.admin.BannerAction" scope="prototype">
+	<bean id="bannerAction" class="com.weili.action.admin.BannerAction" scope="prototype">
 		<property name="bannerService" ref="bannerService" />
 	</bean>
 	<!-- SEO设置 -->
-	<bean id="seoPageAction" class="com.kuaiyidian.action.admin.SeoPageAction" scope="prototype">
+	<bean id="seoPageAction" class="com.weili.action.admin.SeoPageAction" scope="prototype">
 		<property name="seoPageService" ref="seoPageService" />
 	</bean>
 	<!-- SEO设置 -->
-	<bean id="productDetailAction" class="com.kuaiyidian.action.admin.ProductDetailAction" scope="prototype">
+	<bean id="productDetailAction" class="com.weili.action.admin.ProductDetailAction" scope="prototype">
 		<property name="productDetailService" ref="productDetailService" />
 		<property name="productService" ref="productService" />
 	</bean>
 		<!-- 服务类型 -->
-	<bean id="serviceTypeAction" class="com.kuaiyidian.action.admin.ServiceTypeAction" scope="prototype">
+	<bean id="serviceTypeAction" class="com.weili.action.admin.ServiceTypeAction" scope="prototype">
 		<property name="serviceTypeService" ref="serviceTypeService" />
 	</bean>
 	<!-- 设计素材图片列表-->
-	<bean id="imgListAction" class="com.kuaiyidian.action.admin.ImgListAction" scope="prototype">
+	<bean id="imgListAction" class="com.weili.action.admin.ImgListAction" scope="prototype">
 		<property name="imgListService" ref="imgListService" />
 	</bean>	
 	<!-- 网点分布类型-->
-	<bean id="webDistributeTypeAction" class="com.kuaiyidian.action.admin.WebDistributeTypeAction" scope="prototype">
+	<bean id="webDistributeTypeAction" class="com.weili.action.admin.WebDistributeTypeAction" scope="prototype">
 		<property name="webDistributeTypeService" ref="webDistributeTypeService" />
 	</bean>
 	<!-- 人才招聘类型-->
-	<bean id="recruitTypeAction" class="com.kuaiyidian.action.admin.RecruitTypeAction" scope="prototype">
+	<bean id="recruitTypeAction" class="com.weili.action.admin.RecruitTypeAction" scope="prototype">
 		<property name="recruitTypeService" ref="recruitTypeService" />
 	</bean>
 	
@@ -182,46 +191,46 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<!-- 前台 -->
 	
 	<!-- 前台  -->
-	<bean id="baseFrontAction" class="com.kuaiyidian.action.front.BaseFrontAction" scope="prototype">
+	<bean id="baseFrontAction" class="com.weili.action.front.BaseFrontAction" scope="prototype">
 		<property name="configService" ref="configService" />
 		<property name="infoContentService" ref="infoContentService" />
 		<property name="infoService" ref="infoService"></property>
 		<property name="seoPageService" ref="seoPageService"></property>
 		<property name="serviceTypeService" ref="serviceTypeService"></property>
 	</bean>
-	<!-- 了解快易典 -->
-	<bean id="frontInfoContentAction" class="com.kuaiyidian.action.front.FrontInfoContentAction" scope="prototype"  parent="baseFrontAction">
+	<!-- 了解微力科技 -->
+	<bean id="frontInfoContentAction" class="com.weili.action.front.FrontInfoContentAction" scope="prototype"  parent="baseFrontAction">
 	</bean>
 	<!-- 首页 -->
-	<bean id="indexAction" class="com.kuaiyidian.action.front.IndexAction" scope="prototype" parent="baseFrontAction">
+	<bean id="indexAction" class="com.weili.action.front.IndexAction" scope="prototype" parent="baseFrontAction">
+		<property name="weiliDisplayService" ref="weiliDisplayService" />
 		<property name="bannerService" ref="bannerService" />
-		<property name="weiliResearchesService" ref="weiliResearchesService" />
-		<property name="productService" ref="productService" />
 	</bean>
 	<!-- 服务 -->
-	<bean id="serviceAction" class="com.kuaiyidian.action.front.ServiceAction" scope="prototype" parent="baseFrontAction">
+	<bean id="serviceAction" class="com.weili.action.front.ServiceAction" scope="prototype" parent="baseFrontAction">
 		<property name="questionService" ref="questionService" />
 	</bean>
 		<!-- 登录 -->
-	<bean id="loginAction" class="com.kuaiyidian.action.front.LoginAction" scope="prototype" parent="baseFrontAction">
+	<bean id="loginAction" class="com.weili.action.front.LoginAction" scope="prototype" parent="baseFrontAction">
 		<property name="userService" ref="userService" />
 	</bean>
-	<!-- 品牌-->
-	<bean id="frontBrandAction" class="com.kuaiyidian.action.front.FrontBrandAction" scope="prototype" parent="baseFrontAction">
+	<!-- 微力展示内容-->
+	<bean id="frontDisplayAction" class="com.weili.action.front.FrontDisplayAction" scope="prototype" parent="baseFrontAction">
 		<property name="brandService" ref="brandService" />
+		<property name="consumerService" ref="consumerService" />
 		<property name="newspaperService" ref="newspaperService" />
-		<property name="weiliResearchesService" ref="weiliResearchesService" />
+		<property name="weiliDisplayService" ref="weiliDisplayService" />
 		<property name="kydReportService" ref="kydReportService" />
 		<property name="brandAdvertiseService" ref="brandAdvertiseService" />
 		<property name="developmentService" ref="developmentService" />
 	</bean>
 	<!-- 人才招聘-->
-	<bean id="frontRecruitAction" class="com.kuaiyidian.action.front.FrontRecruitAction" scope="prototype" parent="frontInfoContentAction">
+	<bean id="frontRecruitAction" class="com.weili.action.front.FrontRecruitAction" scope="prototype" parent="frontInfoContentAction">
 		<property name="recruitService" ref="recruitService"></property>
 		<property name="recruitTypeService" ref="recruitTypeService"></property>
 	</bean>
 	<!-- 产品 -->
-	<bean id="frontProductAction" class="com.kuaiyidian.action.front.FrontProductAction" scope="prototype" parent="baseFrontAction">
+	<bean id="frontProductAction" class="com.weili.action.front.FrontProductAction" scope="prototype" parent="baseFrontAction">
 		<property name="productService" ref="productService" />
 		<property name="productCategoryService" ref="productCategoryService" />
 		<property name="productParameterService" ref="productParameterService" />
@@ -230,33 +239,33 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	</bean>
 
 	<!-- 质检报告 -->
-	<bean id="frontReportAction" class="com.kuaiyidian.action.usercenter.FrontReportAction" scope="prototype" parent="baseFrontAction">
+	<bean id="frontReportAction" class="com.weili.action.usercenter.FrontReportAction" scope="prototype" parent="baseFrontAction">
 		<property name="reportService" ref="reportService" />
 		<property name="designCategoryService" ref="designCategoryService" />
 		<property name="productCategoryService" ref="productCategoryService" />
 	</bean>
 	<!-- 下载帮助 -->
-	<bean id="frontDownloadHelpAction" class="com.kuaiyidian.action.front.FrontDownloadHelpAction" scope="prototype" parent="baseFrontAction">
+	<bean id="frontDownloadHelpAction" class="com.weili.action.front.FrontDownloadHelpAction" scope="prototype" parent="baseFrontAction">
 		<property name="downloadHelpService" ref="downloadHelpService" />
 		<property name="advertisementService" ref="advertisementService" />
 	</bean>
 	<!-- 设计素材 -->
-	<bean id="frontDesignCategoryAction" class="com.kuaiyidian.action.usercenter.FrontDesignCategoryAction" scope="prototype" parent="baseFrontAction">
+	<bean id="frontDesignCategoryAction" class="com.weili.action.usercenter.FrontDesignCategoryAction" scope="prototype" parent="baseFrontAction">
 		<property name="designCategoryService" ref="designCategoryService" />
 	</bean>
 
 	<!-- 网点分布-->
-	<bean id="frontWebDistributeAction" class="com.kuaiyidian.action.front.FrontWebDistributeAction" scope="prototype" parent="baseFrontAction">
+	<bean id="frontWebDistributeAction" class="com.weili.action.front.FrontWebDistributeAction" scope="prototype" parent="baseFrontAction">
 		<property name="webDistributeService" ref="webDistributeService"></property>
 		<property name="regionService" ref="regionService"></property>
 		<property name="webDistributeTypeService" ref="webDistributeTypeService"></property>
 	</bean>
 	
 	<!-- 下载-->
-	<bean id="frontDownloadAction" class="com.kuaiyidian.action.front.FrontDownloadAction" scope="prototype" parent="baseFrontAction">
+	<bean id="frontDownloadAction" class="com.weili.action.front.FrontDownloadAction" scope="prototype" parent="baseFrontAction">
 		<property name="productService" ref="productService" />
 		<property name="productCategoryService" ref="productCategoryService" />
-		<property name="updateProgramService" ref="updateProgramService" />
+		<property name="downloadService" ref="downloadService" />
 		<property name="downloadHelpService" ref="downloadHelpService" />
 		<property name="advertisementService" ref="advertisementService" />
 		<property name="attributeService" ref="attributeService" />
@@ -265,35 +274,35 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	</bean>
 	
 	<!-- 网站地图 -->
-	<bean id="frontWebsiteMapAction" class="com.kuaiyidian.action.front.FrontWebsiteMapAction" scope="prototype" parent="frontInfoContentAction">
+	<bean id="frontWebsiteMapAction" class="com.weili.action.front.FrontWebsiteMapAction" scope="prototype" parent="frontInfoContentAction">
 		<property name="productCategoryService" ref="productCategoryService"></property>
 		<property name="brandService" ref="brandService"></property>
 	</bean>
 	
 	<!-- 搜索 -->
-	<bean id="searchAction" class="com.kuaiyidian.action.front.SearchAction" scope="prototype" parent="baseFrontAction">
-		<property name="weiliResearchesService" ref="weiliResearchesService"></property>
+	<bean id="searchAction" class="com.weili.action.front.SearchAction" scope="prototype" parent="baseFrontAction">
+		<property name="weiliDisplayService" ref="weiliDisplayService"></property>
 		<property name="questionService" ref="questionService"></property>
 		<property name="brandService" ref="brandService"></property>
 		<property name="productCategoryService" ref="productCategoryService"></property>
 		<property name="downloadHelpService" ref="downloadHelpService"></property>
-	  	<property name="updateProgramService" ref="updateProgramService"></property>
+	  	<property name="downloadService" ref="downloadService"></property>
 		<property name="advertisementService" ref="advertisementService"></property>
 		<property name="webDistributeService" ref="webDistributeService"></property>
 		<property name="newspaperService" ref="newspaperService"></property>
 		<property name="kydReportService" ref="kydReportService"></property>
 		<property name="recruitService" ref="recruitService"></property>
 	</bean>
-	<!-- NavigationBar -->
-	<bean id="navigationBarAction" class="com.kuaiyidian.action.front.NavigationBarAction" scope="prototype">
+	<!-- 导航菜单 -->
+	<bean id="frontNavigationBarAction" class="com.weili.action.front.FrontNavigationBarAction" scope="prototype">
 		<property name="navigationBarService" ref="navigationBarService" />
 	</bean>
-	<bean id="frontReportsAction" class="com.kuaiyidian.action.usercenter.FrontReportsAction" scope="prototype" parent="baseFrontAction">
+	<bean id="frontReportsAction" class="com.weili.action.usercenter.FrontReportsAction" scope="prototype" parent="baseFrontAction">
 		<property name="reportService" ref="reportService"></property>
 		<property name="productCategoryService" ref="productCategoryService"></property>
 		<property name="designCategoryService" ref="designCategoryService"></property>
 		</bean>
-	<bean id="frontDesingsAction" class="com.kuaiyidian.action.usercenter.FrontDesingsAction" scope="prototype" parent="baseFrontAction">
+	<bean id="frontDesingsAction" class="com.weili.action.usercenter.FrontDesingsAction" scope="prototype" parent="baseFrontAction">
 		<property name="designCategoryService" ref="designCategoryService"></property>
 		</bean>
 </beans>

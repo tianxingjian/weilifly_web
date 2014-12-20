@@ -1,0 +1,40 @@
+�!") ;
+					return INPUT ;
+				}
+			}
+			
+			Map<String,String> carMap = cartService.addComProductCartImm(main_productid,product_num , colorid , userid,cart_price, colorList);
+			if(carMap==null||StringUtils.isBlank(carMap.get("carIds"))){
+				msgflag = 11;
+				//request("msg","购买组合商品失败!") ;
+				return INPUT;
+			}
+			//添加成功跳转到订单填写页面
+			if(carMap!=null&&StringUtils.isNotBlank(carMap.get("carIds"))){
+				//查询该组合的所有组合商品包含主商品
+				String carIds = carMap.get("carIds") ;
+				request("carIds",carIds);
+				//配送物流
+				List<Map<String,Object>> logistList = logisticsService.queryLogisticsAll();
+				request("logistList",logistList);
+				//加载省份
+				List<Map<String,Object>> provincelist = regionService.queryRegionList(-1L, 1L, 1);
+				request("provinceList",provincelist);
+				//加载地址
+				addressList = addressService.queryUserAddress(userid);
+				Integer[]  statuss = {IConstants.CART_TYPE_COMM_MAIN,IConstants.CART_TYPE_COMM_FU,IConstants.CART_TYPE_COMM_IMM,IConstants.CART_TYPE_PANIC_IMM} ;//1 普通主商品 2普通副商品  3普通立即购买4 预约商品 5抢购商品
+				Map<String,String> totalMap = cartService.queryProductCartTotalPrice(userid,carIds,statuss);
+					if(totalMap!=null){
+						totalPrice = totalMap.get("total_price");
+						totalItems = totalMap.get("total_items");
+						totalNum = totalMap.get("total_num");
+						if(carIds==null||carIds==""){
+							totalPrice= "0.00" ;
+						}
+						//检查用户积分是否够用
+						BigDecimal int_total =Convert.strToBigDecimal(totalMap.get("int_total"), new BigDecimal(0)) ;
+						if(int_total!=null&&int_total.compareTo(BigDecimal.ZERO)>=0){
+							boolean int_bool = this.checkUserInt(userid,int_total);
+							if(!int_bool){
+								msgflag= 14;
+					

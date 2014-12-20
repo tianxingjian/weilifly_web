@@ -5,7 +5,7 @@
 <struts>
 	<package name="brand" extends="admin-default" namespace="/admin">
 	
-		<action name="queryBrandInit" class="brandAction" method="queryBrandInit">
+		<action name="queryWeiliResearchTypeInit" class="brandAction" method="queryWeiliResearchTypeInit">
 			<result name="success">/WEB-INF/page/admin/brand_index.jsp</result>
 		</action>
 		

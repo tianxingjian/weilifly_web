@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="courseware" extends="admin-default" namespace="/admin">
+	
+		<!-- 后台查询下载资料初始化 -->
+		<action name="queryDownloadInit" class="downloadAction" method="queryDownloadInit">
+			<result name="success">/WEB-INF/page/admin/download/download_index.jsp</result>
+		</action>
+		<!-- 后台查询下载资料详细化 -->
+		<action name="queryDownloadInfo" class="downloadAction" method="queryDownloadInfo">
+			<result name="success">/WEB-INF/page/admin/download/download_index_info.jsp</result>
+		</action>
+		<!-- 后台添加下载资料初始化 -->
+		<action name="addDownloadInit" class="downloadAction" method="addDownloadInit"> 
+			<result name="success">/WEB-INF/page/admin/download/download_add.jsp</result>
+		</action>
+		<!-- 后台添加下载资料详细化 -->
+		<action name="addDownload" class="downloadAction" method="addDownload"> 
+		</action>
+		<!-- 后台修改下载资料初始化 -->
+		<action name="updateDownloadInit" class="downloadAction" method="updateDownloadInit"> 
+			<result name="success">/WEB-INF/page/admin/download/download_update.jsp</result>
+		</action>
+		<!-- 后台修改下载资料详细化 -->
+		<action name="updateDownload" class="downloadAction" method="updateDownload"> 
+		</action>
+		<!-- 后台删除下载资料 -->
+		<action name="deleteDownload" class="downloadAction" method="deleteDownload"> <!-- deleteCourseware -->
+		</action>
+		
+	</package>
+</struts>
